@@ -1,1 +1,0 @@
-# nodeum-sdk-java
