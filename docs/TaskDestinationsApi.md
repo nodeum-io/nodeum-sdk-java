@@ -1,6 +1,6 @@
 # TaskDestinationsApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,34 +22,43 @@ Creates a new task destination.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskDestinationsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskDestinationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskDestinationsApi apiInstance = new TaskDestinationsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-TaskDestinationUp taskDestinationBody = new TaskDestinationUp(); // TaskDestinationUp | 
-try {
-    TaskDestinationDown result = apiInstance.createTaskDestination(taskId, taskDestinationBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskDestinationsApi#createTaskDestination");
-    e.printStackTrace();
+    TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    TaskDestinationUp taskDestinationBody = new TaskDestinationUp(); // TaskDestinationUp | 
+    try {
+      TaskDestinationDown result = apiInstance.createTaskDestination(taskId, taskDestinationBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskDestinationsApi#createTaskDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -73,6 +82,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific task destination. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyTaskDestination"></a>
 # **destroyTaskDestination**
 > destroyTaskDestination(taskId, taskDestinationId)
@@ -84,33 +99,42 @@ Destroys a specific task destination.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskDestinationsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskDestinationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskDestinationsApi apiInstance = new TaskDestinationsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
-try {
-    apiInstance.destroyTaskDestination(taskId, taskDestinationId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskDestinationsApi#destroyTaskDestination");
-    e.printStackTrace();
+    TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
+    try {
+      apiInstance.destroyTaskDestination(taskId, taskDestinationId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskDestinationsApi#destroyTaskDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -131,8 +155,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Task destination destroyed. |  -  |
 
 <a name="indexTaskDestinations"></a>
 # **indexTaskDestinations**
@@ -145,33 +174,42 @@ Filter and pagination parameters are not available for this API.  **API Key Scop
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskDestinationsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskDestinationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskDestinationsApi apiInstance = new TaskDestinationsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-try {
-    TaskDestinationCollection result = apiInstance.indexTaskDestinations(taskId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskDestinationsApi#indexTaskDestinations");
-    e.printStackTrace();
+    TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    try {
+      TaskDestinationCollection result = apiInstance.indexTaskDestinations(taskId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskDestinationsApi#indexTaskDestinations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -191,8 +229,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of task destinations. |  -  |
 
 <a name="showTaskDestination"></a>
 # **showTaskDestination**
@@ -205,34 +248,43 @@ Displays a specific task destination.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskDestinationsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskDestinationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskDestinationsApi apiInstance = new TaskDestinationsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
-try {
-    TaskDestinationDown result = apiInstance.showTaskDestination(taskId, taskDestinationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskDestinationsApi#showTaskDestination");
-    e.printStackTrace();
+    TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
+    try {
+      TaskDestinationDown result = apiInstance.showTaskDestination(taskId, taskDestinationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskDestinationsApi#showTaskDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -253,8 +305,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific task destination. |  -  |
 
 <a name="updateTaskDestination"></a>
 # **updateTaskDestination**
@@ -267,35 +324,44 @@ Updates a specific task destination.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskDestinationsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskDestinationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskDestinationsApi apiInstance = new TaskDestinationsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
-TaskDestinationUp taskDestinationBody = new TaskDestinationUp(); // TaskDestinationUp | 
-try {
-    TaskDestinationDown result = apiInstance.updateTaskDestination(taskId, taskDestinationId, taskDestinationBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskDestinationsApi#updateTaskDestination");
-    e.printStackTrace();
+    TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer taskDestinationId = 56; // Integer | Numeric ID of task destination.
+    TaskDestinationUp taskDestinationBody = new TaskDestinationUp(); // TaskDestinationUp | 
+    try {
+      TaskDestinationDown result = apiInstance.updateTaskDestination(taskId, taskDestinationId, taskDestinationBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskDestinationsApi#updateTaskDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -319,4 +385,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific task destination. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

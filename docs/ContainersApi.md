@@ -1,6 +1,6 @@
 # ContainersApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,33 +27,42 @@ It **does not** yet create the file structure and configure the samba connection
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-Container containerBody = new Container(); // Container | 
-try {
-    Container result = apiInstance.createContainer(containerBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#createContainer");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    Container containerBody = new Container(); // Container | 
+    try {
+      Container result = apiInstance.createContainer(containerBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#createContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -76,6 +85,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific container. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="createContainerPrivilege"></a>
 # **createContainerPrivilege**
 > ContainerPrivilege createContainerPrivilege(containerId, containerPrivilegeBody)
@@ -87,34 +102,43 @@ Creates a new privilege on the container.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-ContainerPrivilege containerPrivilegeBody = new ContainerPrivilege(); // ContainerPrivilege | 
-try {
-    ContainerPrivilege result = apiInstance.createContainerPrivilege(containerId, containerPrivilegeBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#createContainerPrivilege");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    ContainerPrivilege containerPrivilegeBody = new ContainerPrivilege(); // ContainerPrivilege | 
+    try {
+      ContainerPrivilege result = apiInstance.createContainerPrivilege(containerId, containerPrivilegeBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#createContainerPrivilege");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -138,6 +162,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific container privilege. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyContainer"></a>
 # **destroyContainer**
 > destroyContainer(containerId)
@@ -149,32 +179,41 @@ Destroys a specific container.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-try {
-    apiInstance.destroyContainer(containerId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#destroyContainer");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    try {
+      apiInstance.destroyContainer(containerId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#destroyContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -194,8 +233,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Container destroyed. |  -  |
 
 <a name="destroyContainerPrivilege"></a>
 # **destroyContainerPrivilege**
@@ -208,33 +252,42 @@ Destroys a specific privilege.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
-try {
-    apiInstance.destroyContainerPrivilege(containerId, containerPrivilegeId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#destroyContainerPrivilege");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
+    try {
+      apiInstance.destroyContainerPrivilege(containerId, containerPrivilegeId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#destroyContainerPrivilege");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -255,8 +308,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Container privilege destroyed. |  -  |
 
 <a name="indexContainerPrivileges"></a>
 # **indexContainerPrivileges**
@@ -269,40 +327,49 @@ Lists all privilege on the container.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String privilege = "privilege_example"; // String | Filter on privilege
-String type = "type_example"; // String | Filter on type
-try {
-    ContainerPrivilegeCollection result = apiInstance.indexContainerPrivileges(containerId, limit, offset, sortBy, id, name, privilege, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#indexContainerPrivileges");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String privilege = "privilege_example"; // String | Filter on privilege
+    String type = "type_example"; // String | Filter on type
+    try {
+      ContainerPrivilegeCollection result = apiInstance.indexContainerPrivileges(containerId, limit, offset, sortBy, id, name, privilege, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#indexContainerPrivileges");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -329,8 +396,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of container privileges. |  -  |
 
 <a name="indexContainers"></a>
 # **indexContainers**
@@ -343,45 +415,54 @@ Lists all containers.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String comment = "comment_example"; // String | Filter on comment
-String quotaTotalSize = "quotaTotalSize_example"; // String | Filter on quota total size
-String quotaOnCache = "quotaOnCache_example"; // String | Filter on quota on cache
-String statTotalFiles = "statTotalFiles_example"; // String | Filter on stat total files
-String statTotalSize = "statTotalSize_example"; // String | Filter on stat total size
-String statSizeOnCache = "statSizeOnCache_example"; // String | Filter on stat size on cache
-String guestRight = "guestRight_example"; // String | Filter on guest right
-String lastUpdate = "lastUpdate_example"; // String | Filter on last update
-try {
-    ContainerCollection result = apiInstance.indexContainers(limit, offset, sortBy, id, name, comment, quotaTotalSize, quotaOnCache, statTotalFiles, statTotalSize, statSizeOnCache, guestRight, lastUpdate);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#indexContainers");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String comment = "comment_example"; // String | Filter on comment
+    String quotaTotalSize = "quotaTotalSize_example"; // String | Filter on quota total size
+    String quotaOnCache = "quotaOnCache_example"; // String | Filter on quota on cache
+    String statTotalFiles = "statTotalFiles_example"; // String | Filter on stat total files
+    String statTotalSize = "statTotalSize_example"; // String | Filter on stat total size
+    String statSizeOnCache = "statSizeOnCache_example"; // String | Filter on stat size on cache
+    String guestRight = "guestRight_example"; // String | Filter on guest right
+    String lastUpdate = "lastUpdate_example"; // String | Filter on last update
+    try {
+      ContainerCollection result = apiInstance.indexContainers(limit, offset, sortBy, id, name, comment, quotaTotalSize, quotaOnCache, statTotalFiles, statTotalSize, statSizeOnCache, guestRight, lastUpdate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#indexContainers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -413,8 +494,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of containers. |  -  |
 
 <a name="showContainer"></a>
 # **showContainer**
@@ -427,33 +513,42 @@ Displays a specific container.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-try {
-    Container result = apiInstance.showContainer(containerId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#showContainer");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    try {
+      Container result = apiInstance.showContainer(containerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#showContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -473,8 +568,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific container. |  -  |
 
 <a name="showContainerPrivilege"></a>
 # **showContainerPrivilege**
@@ -487,34 +587,43 @@ Displays a specific privilege.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
-try {
-    ContainerPrivilege result = apiInstance.showContainerPrivilege(containerId, containerPrivilegeId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#showContainerPrivilege");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
+    try {
+      ContainerPrivilege result = apiInstance.showContainerPrivilege(containerId, containerPrivilegeId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#showContainerPrivilege");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -535,8 +644,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific container privilege. |  -  |
 
 <a name="updateContainer"></a>
 # **updateContainer**
@@ -549,34 +663,43 @@ It **does not** yet create the file structure and configure the samba connection
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Container containerBody = new Container(); // Container | 
-try {
-    Container result = apiInstance.updateContainer(containerId, containerBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#updateContainer");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Container containerBody = new Container(); // Container | 
+    try {
+      Container result = apiInstance.updateContainer(containerId, containerBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#updateContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -600,6 +723,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific container. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="updateContainerPrivilege"></a>
 # **updateContainerPrivilege**
 > ContainerPrivilege updateContainerPrivilege(containerId, containerPrivilegeId, containerPrivilegeBody)
@@ -611,35 +740,44 @@ Updates a specific privilege.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContainersApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.ContainersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-ContainersApi apiInstance = new ContainersApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
-ContainerPrivilege containerPrivilegeBody = new ContainerPrivilege(); // ContainerPrivilege | 
-try {
-    ContainerPrivilege result = apiInstance.updateContainerPrivilege(containerId, containerPrivilegeId, containerPrivilegeBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContainersApi#updateContainerPrivilege");
-    e.printStackTrace();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer containerPrivilegeId = 56; // Integer | Numeric ID of container privilege.
+    ContainerPrivilege containerPrivilegeBody = new ContainerPrivilege(); // ContainerPrivilege | 
+    try {
+      ContainerPrivilege result = apiInstance.updateContainerPrivilege(containerId, containerPrivilegeId, containerPrivilegeBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#updateContainerPrivilege");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -663,4 +801,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific container privilege. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

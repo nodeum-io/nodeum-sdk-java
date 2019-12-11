@@ -1,6 +1,6 @@
 # TaskExecutionsApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,50 +21,59 @@ Lists all task executions.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskExecutionsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskExecutionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskExecutionsApi apiInstance = new TaskExecutionsApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String taskId = "taskId_example"; // String | Filter on task id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String status = "status_example"; // String | Filter on status
-String logTime = "logTime_example"; // String | Filter on log time
-String jobStarted = "jobStarted_example"; // String | Filter on job started
-String jobFinished = "jobFinished_example"; // String | Filter on job finished
-String toProcessSize = "toProcessSize_example"; // String | Filter on to process size
-String processedSize = "processedSize_example"; // String | Filter on processed size
-String toProcessFiles = "toProcessFiles_example"; // String | Filter on to process files
-String processedFiles = "processedFiles_example"; // String | Filter on processed files
-String finalizedFiles = "finalizedFiles_example"; // String | Filter on finalized files
-String estimationTime = "estimationTime_example"; // String | Filter on estimation time
-String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
-try {
-    TaskExecutionCollection result = apiInstance.indexTaskExecutions(limit, offset, sortBy, id, taskId, name, type, status, logTime, jobStarted, jobFinished, toProcessSize, processedSize, toProcessFiles, processedFiles, finalizedFiles, estimationTime, bandwidth);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskExecutionsApi#indexTaskExecutions");
-    e.printStackTrace();
+    TaskExecutionsApi apiInstance = new TaskExecutionsApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String taskId = "taskId_example"; // String | Filter on task id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String status = "status_example"; // String | Filter on status
+    String logTime = "logTime_example"; // String | Filter on log time
+    String jobStarted = "jobStarted_example"; // String | Filter on job started
+    String jobFinished = "jobFinished_example"; // String | Filter on job finished
+    String toProcessSize = "toProcessSize_example"; // String | Filter on to process size
+    String processedSize = "processedSize_example"; // String | Filter on processed size
+    String toProcessFiles = "toProcessFiles_example"; // String | Filter on to process files
+    String processedFiles = "processedFiles_example"; // String | Filter on processed files
+    String finalizedFiles = "finalizedFiles_example"; // String | Filter on finalized files
+    String estimationTime = "estimationTime_example"; // String | Filter on estimation time
+    String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
+    try {
+      TaskExecutionCollection result = apiInstance.indexTaskExecutions(limit, offset, sortBy, id, taskId, name, type, status, logTime, jobStarted, jobFinished, toProcessSize, processedSize, toProcessFiles, processedFiles, finalizedFiles, estimationTime, bandwidth);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskExecutionsApi#indexTaskExecutions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -101,8 +110,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of task executions. |  -  |
 
 <a name="indexTaskExecutionsByTask"></a>
 # **indexTaskExecutionsByTask**
@@ -115,33 +129,42 @@ Lists all task executions.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskExecutionsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskExecutionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskExecutionsApi apiInstance = new TaskExecutionsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-try {
-    TaskExecutionCollection result = apiInstance.indexTaskExecutionsByTask(taskId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskExecutionsApi#indexTaskExecutionsByTask");
-    e.printStackTrace();
+    TaskExecutionsApi apiInstance = new TaskExecutionsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    try {
+      TaskExecutionCollection result = apiInstance.indexTaskExecutionsByTask(taskId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskExecutionsApi#indexTaskExecutionsByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -161,8 +184,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of task executions. |  -  |
 
 <a name="showTaskExecution"></a>
 # **showTaskExecution**
@@ -175,33 +203,42 @@ Displays a specific task execution.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskExecutionsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskExecutionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskExecutionsApi apiInstance = new TaskExecutionsApi();
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-try {
-    TaskExecution result = apiInstance.showTaskExecution(taskExecutionId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskExecutionsApi#showTaskExecution");
-    e.printStackTrace();
+    TaskExecutionsApi apiInstance = new TaskExecutionsApi(defaultClient);
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    try {
+      TaskExecution result = apiInstance.showTaskExecution(taskExecutionId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskExecutionsApi#showTaskExecution");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -221,8 +258,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific task execution. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
 <a name="showTaskExecutionByTask"></a>
 # **showTaskExecutionByTask**
@@ -235,34 +278,43 @@ Displays a specific task execution.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TaskExecutionsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TaskExecutionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TaskExecutionsApi apiInstance = new TaskExecutionsApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-try {
-    TaskExecution result = apiInstance.showTaskExecutionByTask(taskId, taskExecutionId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TaskExecutionsApi#showTaskExecutionByTask");
-    e.printStackTrace();
+    TaskExecutionsApi apiInstance = new TaskExecutionsApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    try {
+      TaskExecution result = apiInstance.showTaskExecutionByTask(taskId, taskExecutionId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TaskExecutionsApi#showTaskExecutionByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -283,6 +335,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific task execution. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 

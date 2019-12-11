@@ -1,11 +1,13 @@
 
+
 # TaskDestinationDown
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**folder** | **Object** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
+**folder** | [**NodeumFile**](NodeumFile.md) |  |  [optional]
 **tapeId** | **Integer** |  |  [optional]
 **tapePoolId** | **Integer** |  |  [optional]
 **cloudPoolId** | **Integer** |  |  [optional]

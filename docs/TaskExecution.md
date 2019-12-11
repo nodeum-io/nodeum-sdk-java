@@ -1,7 +1,9 @@
 
+
 # TaskExecution
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
@@ -21,8 +23,9 @@ Name | Type | Description | Notes
 **bandwidth** | **Integer** |  |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 EXPORT_ACTIVE_ARCHIVE_COPY | &quot;export_active_archive_copy&quot;
@@ -75,8 +78,9 @@ DATA_ENRICHMENT_GOOGLE_VISION | &quot;data_enrichment_google_vision&quot;
 DATA_ENRICHMENT_DEPTHEN | &quot;data_enrichment_depthen&quot;
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
+
 Name | Value
 ---- | -----
 NOT_ACTIVATED | &quot;not_activated&quot;

@@ -1,32 +1,35 @@
 
+
 # Task
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
 **name** | **String** |  |  [optional]
 **comment** | **String** |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**workflowType** | [**WorkflowTypeEnum**](#WorkflowTypeEnum) |  |  [optional]
-**workflowAction** | [**WorkflowActionEnum**](#WorkflowActionEnum) |  |  [optional]
+**workflowType** | [**WorkflowTypeEnum**](#WorkflowTypeEnum) |  |  [optional] [readonly]
+**workflowAction** | [**WorkflowActionEnum**](#WorkflowActionEnum) |  |  [optional] [readonly]
 **priority** | **Integer** |  |  [optional]
 **conflictResolution** | [**ConflictResolutionEnum**](#ConflictResolutionEnum) |  |  [optional]
-**action** | [**ActionEnum**](#ActionEnum) |  |  [optional]
+**action** | [**ActionEnum**](#ActionEnum) |  |  [optional] [readonly]
 **activate** | **Boolean** |  |  [optional]
-**creationDate** | **String** |  |  [optional]
-**modificationDate** | **String** |  |  [optional]
-**creationUsername** | **String** |  |  [optional]
-**modificationUsername** | **String** |  |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
-**jobStarted** | **String** |  |  [optional]
-**jobFinished** | **String** |  |  [optional]
-**processedSize** | **Integer** |  |  [optional]
-**toProcessSize** | **Integer** |  |  [optional]
+**creationDate** | **String** |  |  [optional] [readonly]
+**modificationDate** | **String** |  |  [optional] [readonly]
+**creationUsername** | **String** |  |  [optional] [readonly]
+**modificationUsername** | **String** |  |  [optional] [readonly]
+**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] [readonly]
+**jobStarted** | **String** |  |  [optional] [readonly]
+**jobFinished** | **String** |  |  [optional] [readonly]
+**processedSize** | **Integer** |  |  [optional] [readonly]
+**toProcessSize** | **Integer** |  |  [optional] [readonly]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 EXPORT_ACTIVE_ARCHIVE_COPY | &quot;export_active_archive_copy&quot;
@@ -79,8 +82,9 @@ DATA_ENRICHMENT_GOOGLE_VISION | &quot;data_enrichment_google_vision&quot;
 DATA_ENRICHMENT_DEPTHEN | &quot;data_enrichment_depthen&quot;
 
 
-<a name="WorkflowTypeEnum"></a>
+
 ## Enum: WorkflowTypeEnum
+
 Name | Value
 ---- | -----
 ACTIVE_ARCHIVE | &quot;active_archive&quot;
@@ -90,8 +94,9 @@ MAINTENANCE | &quot;maintenance&quot;
 DATA_ENRICHMENT | &quot;data_enrichment&quot;
 
 
-<a name="WorkflowActionEnum"></a>
+
 ## Enum: WorkflowActionEnum
+
 Name | Value
 ---- | -----
 COPY | &quot;copy&quot;
@@ -103,8 +108,9 @@ CHECK_CONSISTENCY | &quot;check_consistency&quot;
 DUPLICATION | &quot;duplication&quot;
 
 
-<a name="ConflictResolutionEnum"></a>
+
 ## Enum: ConflictResolutionEnum
+
 Name | Value
 ---- | -----
 RENAME | &quot;rename&quot;
@@ -112,8 +118,9 @@ OVERWRITE | &quot;overwrite&quot;
 IGNORE | &quot;ignore&quot;
 
 
-<a name="ActionEnum"></a>
+
 ## Enum: ActionEnum
+
 Name | Value
 ---- | -----
 NOOP | &quot;noop&quot;
@@ -123,8 +130,9 @@ STOP | &quot;stop&quot;
 RESUME | &quot;resume&quot;
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
+
 Name | Value
 ---- | -----
 NOT_ACTIVATED | &quot;not_activated&quot;

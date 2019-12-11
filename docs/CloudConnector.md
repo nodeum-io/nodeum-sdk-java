@@ -1,10 +1,12 @@
 
+
 # CloudConnector
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
 **name** | **String** |  |  [optional]
 **url** | **String** |  |  [optional]
 **urlProxy** | **String** |  |  [optional]
@@ -14,8 +16,9 @@ Name | Type | Description | Notes
 **secretKey** | **String** |  |  [optional]
 
 
-<a name="ProviderEnum"></a>
+
 ## Enum: ProviderEnum
+
 Name | Value
 ---- | -----
 GENERIC_S3 | &quot;generic_s3&quot;

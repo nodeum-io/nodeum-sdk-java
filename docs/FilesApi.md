@@ -1,6 +1,6 @@
 # FilesApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -41,45 +41,54 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildren(fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildren");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildren(fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildren");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -111,8 +120,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByCloudPool"></a>
 # **filesChildrenByCloudPool**
@@ -125,46 +139,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByCloudPool(cloudPoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByCloudPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByCloudPool(cloudPoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -197,8 +220,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByContainer"></a>
 # **filesChildrenByContainer**
@@ -211,46 +239,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByContainer(containerId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByContainer");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByContainer(containerId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -283,8 +320,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByNasPool"></a>
 # **filesChildrenByNasPool**
@@ -297,46 +339,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByNasPool(nasPoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByNasPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByNasPool(nasPoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -369,8 +420,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByTapePool"></a>
 # **filesChildrenByTapePool**
@@ -383,46 +439,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByTapePool(tapePoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByTapePool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByTapePool(tapePoolId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByTapePool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -455,8 +520,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByTask"></a>
 # **filesChildrenByTask**
@@ -469,46 +539,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByTask(taskId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByTask(taskId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -541,8 +620,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByTaskExecution"></a>
 # **filesChildrenByTaskExecution**
@@ -555,46 +639,55 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByTaskExecution(taskExecutionId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByTaskExecution");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByTaskExecution(taskExecutionId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByTaskExecution");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -627,8 +720,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="filesChildrenByTaskExecutionByTask"></a>
 # **filesChildrenByTaskExecutionByTask**
@@ -641,47 +739,56 @@ Lists files under a specific folder.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.filesChildrenByTaskExecutionByTask(taskId, taskExecutionId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#filesChildrenByTaskExecutionByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer fileParentId = 56; // Integer | Numeric ID of parent folder.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.filesChildrenByTaskExecutionByTask(taskId, taskExecutionId, fileParentId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#filesChildrenByTaskExecutionByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -715,8 +822,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFiles"></a>
 # **indexFiles**
@@ -729,44 +841,53 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFiles(limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFiles");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFiles(limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFiles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -797,8 +918,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByCloudPool"></a>
 # **indexFilesByCloudPool**
@@ -811,45 +937,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByCloudPool(cloudPoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByCloudPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByCloudPool(cloudPoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -881,8 +1016,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByContainer"></a>
 # **indexFilesByContainer**
@@ -895,45 +1035,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByContainer(containerId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByContainer");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByContainer(containerId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -965,8 +1114,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByNasPool"></a>
 # **indexFilesByNasPool**
@@ -979,45 +1133,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByNasPool(nasPoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByNasPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByNasPool(nasPoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1049,8 +1212,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByTapePool"></a>
 # **indexFilesByTapePool**
@@ -1063,45 +1231,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByTapePool(tapePoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByTapePool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByTapePool(tapePoolId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByTapePool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1133,8 +1310,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByTask"></a>
 # **indexFilesByTask**
@@ -1147,45 +1329,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByTask(taskId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByTask(taskId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1217,8 +1408,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByTaskExecution"></a>
 # **indexFilesByTaskExecution**
@@ -1231,45 +1427,54 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByTaskExecution(taskExecutionId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByTaskExecution");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByTaskExecution(taskExecutionId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByTaskExecution");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1301,8 +1506,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="indexFilesByTaskExecutionByTask"></a>
 # **indexFilesByTaskExecutionByTask**
@@ -1315,46 +1525,55 @@ Lists files on root.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-String fileId = "fileId_example"; // String | Filter on file id
-String name = "name_example"; // String | Filter on name
-String type = "type_example"; // String | Filter on type
-String permission = "permission_example"; // String | Filter on permission
-String size = "size_example"; // String | Filter on size
-String changeDate = "changeDate_example"; // String | Filter on change date
-String modificationDate = "modificationDate_example"; // String | Filter on modification date
-String accessDate = "accessDate_example"; // String | Filter on access date
-String gid = "gid_example"; // String | Filter on gid
-String uid = "uid_example"; // String | Filter on uid
-try {
-    NodeumFileCollection result = apiInstance.indexFilesByTaskExecutionByTask(taskId, taskExecutionId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#indexFilesByTaskExecutionByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    String fileId = "fileId_example"; // String | Filter on file id
+    String name = "name_example"; // String | Filter on name
+    String type = "type_example"; // String | Filter on type
+    String permission = "permission_example"; // String | Filter on permission
+    String size = "size_example"; // String | Filter on size
+    String changeDate = "changeDate_example"; // String | Filter on change date
+    String modificationDate = "modificationDate_example"; // String | Filter on modification date
+    String accessDate = "accessDate_example"; // String | Filter on access date
+    String gid = "gid_example"; // String | Filter on gid
+    String uid = "uid_example"; // String | Filter on uid
+    try {
+      NodeumFileCollection result = apiInstance.indexFilesByTaskExecutionByTask(taskId, taskExecutionId, limit, offset, fileId, name, type, permission, size, changeDate, modificationDate, accessDate, gid, uid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#indexFilesByTaskExecutionByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1387,8 +1606,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of files. |  -  |
 
 <a name="showFile"></a>
 # **showFile**
@@ -1401,33 +1625,42 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFile(fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFile");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFile(fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1447,8 +1680,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByCloudPool"></a>
 # **showFileByCloudPool**
@@ -1461,34 +1699,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByCloudPool(cloudPoolId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByCloudPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByCloudPool(cloudPoolId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1509,8 +1756,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByContainer"></a>
 # **showFileByContainer**
@@ -1523,34 +1775,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String containerId = "containerId_example"; // String | Numeric ID or name of container.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByContainer(containerId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByContainer");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String containerId = "containerId_example"; // String | Numeric ID or name of container.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByContainer(containerId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByContainer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1571,8 +1832,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByNasPool"></a>
 # **showFileByNasPool**
@@ -1585,34 +1851,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByNasPool(nasPoolId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByNasPool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByNasPool(nasPoolId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1633,8 +1908,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByTapePool"></a>
 # **showFileByTapePool**
@@ -1647,34 +1927,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByTapePool(tapePoolId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByTapePool");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String tapePoolId = "tapePoolId_example"; // String | Numeric ID, or name of tape pool.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByTapePool(tapePoolId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByTapePool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1695,8 +1984,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByTask"></a>
 # **showFileByTask**
@@ -1709,34 +2003,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByTask(taskId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByTask(taskId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1757,8 +2060,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByTaskExecution"></a>
 # **showFileByTaskExecution**
@@ -1771,34 +2079,43 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByTaskExecution(taskExecutionId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByTaskExecution");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByTaskExecution(taskExecutionId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByTaskExecution");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1819,8 +2136,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 
 <a name="showFileByTaskExecutionByTask"></a>
 # **showFileByTaskExecutionByTask**
@@ -1833,35 +2155,44 @@ Displays a specific file.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.FilesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.FilesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-FilesApi apiInstance = new FilesApi();
-String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
-Long taskExecutionId = 789L; // Long | Numeric ID of task execution.
-Integer fileId = 56; // Integer | Numeric ID of file.
-try {
-    NodeumFileWithPath result = apiInstance.showFileByTaskExecutionByTask(taskId, taskExecutionId, fileId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilesApi#showFileByTaskExecutionByTask");
-    e.printStackTrace();
+    FilesApi apiInstance = new FilesApi(defaultClient);
+    String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Long taskExecutionId = 56L; // Long | Numeric ID of task execution.
+    Integer fileId = 56; // Integer | Numeric ID of file.
+    try {
+      NodeumFileWithPath result = apiInstance.showFileByTaskExecutionByTask(taskId, taskExecutionId, fileId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#showFileByTaskExecutionByTask");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1883,6 +2214,11 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific file. |  -  |
 

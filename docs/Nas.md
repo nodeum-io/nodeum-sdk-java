@@ -1,10 +1,12 @@
 
+
 # Nas
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
 **name** | **String** |  |  [optional]
 **host** | **String** |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
@@ -12,8 +14,9 @@ Name | Type | Description | Notes
 **price** | **String** |  |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 SMB_V1 | &quot;smb_v1&quot;

@@ -1,12 +1,13 @@
 # CloudPoolsApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createCloudPool**](CloudPoolsApi.md#createCloudPool) | **POST** /cloud_pools | Creates a new cloud pool.
 [**destroyCloudPool**](CloudPoolsApi.md#destroyCloudPool) | **DELETE** /cloud_pools/{cloud_pool_id} | Destroys a specific cloud pool.
 [**indexCloudPools**](CloudPoolsApi.md#indexCloudPools) | **GET** /cloud_pools | Lists all cloud pools.
+[**mountStatusCloudPool**](CloudPoolsApi.md#mountStatusCloudPool) | **GET** /cloud_pools/{cloud_pool_id}/mount | Get mount status of Cloud pool.
 [**showCloudPool**](CloudPoolsApi.md#showCloudPool) | **GET** /cloud_pools/{cloud_pool_id} | Displays a specific cloud pool.
 [**updateCloudPool**](CloudPoolsApi.md#updateCloudPool) | **PUT** /cloud_pools/{cloud_pool_id} | Updates a specific cloud pool.
 
@@ -22,33 +23,42 @@ Creates a new cloud pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudPoolsApi apiInstance = new CloudPoolsApi();
-CloudPoolUp cloudPoolBody = new CloudPoolUp(); // CloudPoolUp | 
-try {
-    CloudPool result = apiInstance.createCloudPool(cloudPoolBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudPoolsApi#createCloudPool");
-    e.printStackTrace();
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    CloudPoolUp cloudPoolBody = new CloudPoolUp(); // CloudPoolUp | 
+    try {
+      CloudPool result = apiInstance.createCloudPool(cloudPoolBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#createCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -71,6 +81,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific cloud pool. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyCloudPool"></a>
 # **destroyCloudPool**
 > destroyCloudPool(cloudPoolId)
@@ -82,32 +98,41 @@ Destroys a specific cloud pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudPoolsApi apiInstance = new CloudPoolsApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-try {
-    apiInstance.destroyCloudPool(cloudPoolId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudPoolsApi#destroyCloudPool");
-    e.printStackTrace();
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    try {
+      apiInstance.destroyCloudPool(cloudPoolId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#destroyCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -127,8 +152,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Cloud pool destroyed. |  -  |
 
 <a name="indexCloudPools"></a>
 # **indexCloudPools**
@@ -141,39 +171,48 @@ Lists all cloud pools.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudPoolsApi apiInstance = new CloudPoolsApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String comment = "comment_example"; // String | Filter on comment
-String type = "type_example"; // String | Filter on type
-try {
-    CloudPoolCollection result = apiInstance.indexCloudPools(limit, offset, sortBy, id, name, comment, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudPoolsApi#indexCloudPools");
-    e.printStackTrace();
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String comment = "comment_example"; // String | Filter on comment
+    String type = "type_example"; // String | Filter on type
+    try {
+      CloudPoolCollection result = apiInstance.indexCloudPools(limit, offset, sortBy, id, name, comment, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#indexCloudPools");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -199,8 +238,88 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of cloud pools. |  -  |
+
+<a name="mountStatusCloudPool"></a>
+# **mountStatusCloudPool**
+> MountStatus mountStatusCloudPool(cloudPoolId)
+
+Get mount status of Cloud pool.
+
+**API Key Scope**: cloud_pools / mount_status
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    try {
+      MountStatus result = apiInstance.mountStatusCloudPool(cloudPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#mountStatusCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloudPoolId** | **String**| Numeric ID or name of cloud pool. |
+
+### Return type
+
+[**MountStatus**](MountStatus.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Mount status of storage. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
 <a name="showCloudPool"></a>
 # **showCloudPool**
@@ -213,33 +332,42 @@ Displays a specific cloud pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudPoolsApi apiInstance = new CloudPoolsApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-try {
-    CloudPool result = apiInstance.showCloudPool(cloudPoolId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudPoolsApi#showCloudPool");
-    e.printStackTrace();
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    try {
+      CloudPool result = apiInstance.showCloudPool(cloudPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#showCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -259,8 +387,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud pool. |  -  |
 
 <a name="updateCloudPool"></a>
 # **updateCloudPool**
@@ -273,34 +406,43 @@ Updates a specific cloud pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudPoolsApi apiInstance = new CloudPoolsApi();
-String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
-CloudPoolUp cloudPoolBody = new CloudPoolUp(); // CloudPoolUp | 
-try {
-    CloudPool result = apiInstance.updateCloudPool(cloudPoolId, cloudPoolBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudPoolsApi#updateCloudPool");
-    e.printStackTrace();
+    CloudPoolsApi apiInstance = new CloudPoolsApi(defaultClient);
+    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    CloudPoolUp cloudPoolBody = new CloudPoolUp(); // CloudPoolUp | 
+    try {
+      CloudPool result = apiInstance.updateCloudPool(cloudPoolId, cloudPoolBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudPoolsApi#updateCloudPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -323,4 +465,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud pool. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

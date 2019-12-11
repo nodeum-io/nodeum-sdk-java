@@ -1,7 +1,9 @@
 
+
 # TaskDestinationUp
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **folderId** | **Integer** |  |  [optional]

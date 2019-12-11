@@ -1,12 +1,14 @@
 
+
 # NasShare
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**nasId** | **Integer** |  |  [optional]
-**nasPoolId** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
+**nasId** | **Integer** |  |  [optional] [readonly]
+**nasPoolId** | **Integer** |  |  [optional] [readonly]
 **path** | **String** |  |  [optional]
 **options** | **String** |  |  [optional]
 **username** | **String** |  |  [optional]

@@ -1,24 +1,27 @@
 
+
 # NodeumFile
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**name** | **String** |  |  [optional]
-**parent** | **Integer** |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**permission** | **Integer** |  |  [optional]
-**size** | **Integer** |  |  [optional]
-**changeDate** | **String** |  |  [optional]
-**modificationDate** | **String** |  |  [optional]
-**accessDate** | **String** |  |  [optional]
-**uid** | **Integer** |  |  [optional]
-**gid** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
+**name** | **String** |  |  [optional] [readonly]
+**parent** | **Integer** |  |  [optional] [readonly]
+**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] [readonly]
+**permission** | **Integer** |  |  [optional] [readonly]
+**size** | **Integer** |  |  [optional] [readonly]
+**changeDate** | **String** |  |  [optional] [readonly]
+**modificationDate** | **String** |  |  [optional] [readonly]
+**accessDate** | **String** |  |  [optional] [readonly]
+**uid** | **Integer** |  |  [optional] [readonly]
+**gid** | **Integer** |  |  [optional] [readonly]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 FILE | &quot;file&quot;

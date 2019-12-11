@@ -1,10 +1,14 @@
 
+
 # MountStatus
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Object** |  |  [optional]
+**mounted** | **Boolean** |  |  [optional] [readonly]
+**message** | **String** |  |  [optional] [readonly]
+**status** | [**MountInfo**](MountInfo.md) |  |  [optional]
 
 
 

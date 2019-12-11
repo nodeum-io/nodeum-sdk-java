@@ -1,6 +1,6 @@
 # CloudConnectorsApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -24,33 +24,42 @@ Creates a new cloud connector.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
-try {
-    CloudConnector result = apiInstance.createCloudConnector(cloudConnectorBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#createCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
+    try {
+      CloudConnector result = apiInstance.createCloudConnector(cloudConnectorBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#createCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -73,6 +82,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific cloud connector. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyCloudConnector"></a>
 # **destroyCloudConnector**
 > destroyCloudConnector(cloudConnectorId)
@@ -84,32 +99,41 @@ Destroys a specific cloud connector.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
-try {
-    apiInstance.destroyCloudConnector(cloudConnectorId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#destroyCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
+    try {
+      apiInstance.destroyCloudConnector(cloudConnectorId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#destroyCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -129,8 +153,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Cloud connector destroyed. |  -  |
 
 <a name="indexCloudConnectors"></a>
 # **indexCloudConnectors**
@@ -143,42 +172,51 @@ Lists all cloud connectors.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String url = "url_example"; // String | Filter on url
-String urlProxy = "urlProxy_example"; // String | Filter on url proxy
-String provider = "provider_example"; // String | Filter on provider
-String region = "region_example"; // String | Filter on region
-String accessKey = "accessKey_example"; // String | Filter on access key
-try {
-    CloudConnectorCollection result = apiInstance.indexCloudConnectors(limit, offset, sortBy, id, name, url, urlProxy, provider, region, accessKey);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#indexCloudConnectors");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String url = "url_example"; // String | Filter on url
+    String urlProxy = "urlProxy_example"; // String | Filter on url proxy
+    String provider = "provider_example"; // String | Filter on provider
+    String region = "region_example"; // String | Filter on region
+    String accessKey = "accessKey_example"; // String | Filter on access key
+    try {
+      CloudConnectorCollection result = apiInstance.indexCloudConnectors(limit, offset, sortBy, id, name, url, urlProxy, provider, region, accessKey);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#indexCloudConnectors");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -207,8 +245,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of cloud connectors. |  -  |
 
 <a name="showCloudConnector"></a>
 # **showCloudConnector**
@@ -221,33 +264,42 @@ Displays a specific cloud connector.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
-try {
-    CloudConnector result = apiInstance.showCloudConnector(cloudConnectorId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#showCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
+    try {
+      CloudConnector result = apiInstance.showCloudConnector(cloudConnectorId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#showCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -267,8 +319,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud connector. |  -  |
 
 <a name="testCloudConnector"></a>
 # **testCloudConnector**
@@ -281,33 +338,42 @@ Test an unsaved cloud connector.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
-try {
-    ActiveJobStatus result = apiInstance.testCloudConnector(cloudConnectorBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#testCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
+    try {
+      ActiveJobStatus result = apiInstance.testCloudConnector(cloudConnectorBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#testCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -328,7 +394,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, queued, working, failed
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="testResultCloudConnector"></a>
 # **testResultCloudConnector**
@@ -341,33 +412,42 @@ Check result of cloud connector test job.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-String jobId = "jobId_example"; // String | ID of active job
-try {
-    CloudBucketSimpleCollection result = apiInstance.testResultCloudConnector(jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#testResultCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    String jobId = "jobId_example"; // String | ID of active job
+    try {
+      CloudBucketSimpleCollection result = apiInstance.testResultCloudConnector(jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#testResultCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -387,8 +467,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, queued, working, failed, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Simple list of cloud buckets. |  -  |
+**202** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="updateCloudConnector"></a>
 # **updateCloudConnector**
@@ -401,34 +487,43 @@ Updates a specific cloud connector.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.CloudConnectorsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudConnectorsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-CloudConnectorsApi apiInstance = new CloudConnectorsApi();
-String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
-CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
-try {
-    CloudConnector result = apiInstance.updateCloudConnector(cloudConnectorId, cloudConnectorBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CloudConnectorsApi#updateCloudConnector");
-    e.printStackTrace();
+    CloudConnectorsApi apiInstance = new CloudConnectorsApi(defaultClient);
+    String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
+    CloudConnector cloudConnectorBody = new CloudConnector(); // CloudConnector | 
+    try {
+      CloudConnector result = apiInstance.updateCloudConnector(cloudConnectorId, cloudConnectorBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudConnectorsApi#updateCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -451,4 +546,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud connector. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

@@ -1,12 +1,13 @@
 # NasPoolsApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createNasPool**](NasPoolsApi.md#createNasPool) | **POST** /nas_pools | Creates a new NAS pool.
 [**destroyNasPool**](NasPoolsApi.md#destroyNasPool) | **DELETE** /nas_pools/{nas_pool_id} | Destroys a specific NAS pool.
 [**indexNasPools**](NasPoolsApi.md#indexNasPools) | **GET** /nas_pools | Lists all NAS pools.
+[**mountStatusNasPool**](NasPoolsApi.md#mountStatusNasPool) | **GET** /nas_pools/{nas_pool_id}/mount | Get mount status of NAS pool.
 [**showNasPool**](NasPoolsApi.md#showNasPool) | **GET** /nas_pools/{nas_pool_id} | Displays a specific NAS pool.
 [**updateNasPool**](NasPoolsApi.md#updateNasPool) | **PUT** /nas_pools/{nas_pool_id} | Updates a specific NAS pool.
 
@@ -22,33 +23,42 @@ Creates a new NAS pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasPoolsApi apiInstance = new NasPoolsApi();
-NasPoolUp nasPoolBody = new NasPoolUp(); // NasPoolUp | 
-try {
-    NasPool result = apiInstance.createNasPool(nasPoolBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasPoolsApi#createNasPool");
-    e.printStackTrace();
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    NasPoolUp nasPoolBody = new NasPoolUp(); // NasPoolUp | 
+    try {
+      NasPool result = apiInstance.createNasPool(nasPoolBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#createNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -71,6 +81,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific NAS pool. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyNasPool"></a>
 # **destroyNasPool**
 > destroyNasPool(nasPoolId)
@@ -82,32 +98,41 @@ Destroys a specific NAS pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasPoolsApi apiInstance = new NasPoolsApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-try {
-    apiInstance.destroyNasPool(nasPoolId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasPoolsApi#destroyNasPool");
-    e.printStackTrace();
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    try {
+      apiInstance.destroyNasPool(nasPoolId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#destroyNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -127,8 +152,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | NAS pool destroyed. |  -  |
 
 <a name="indexNasPools"></a>
 # **indexNasPools**
@@ -141,39 +171,48 @@ Lists all NAS pools.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasPoolsApi apiInstance = new NasPoolsApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String comment = "comment_example"; // String | Filter on comment
-String type = "type_example"; // String | Filter on type
-try {
-    NasPoolCollection result = apiInstance.indexNasPools(limit, offset, sortBy, id, name, comment, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasPoolsApi#indexNasPools");
-    e.printStackTrace();
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String comment = "comment_example"; // String | Filter on comment
+    String type = "type_example"; // String | Filter on type
+    try {
+      NasPoolCollection result = apiInstance.indexNasPools(limit, offset, sortBy, id, name, comment, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#indexNasPools");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -199,8 +238,88 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of NAS pools. |  -  |
+
+<a name="mountStatusNasPool"></a>
+# **mountStatusNasPool**
+> MountStatus mountStatusNasPool(nasPoolId)
+
+Get mount status of NAS pool.
+
+**API Key Scope**: nas_pools / mount_status
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    try {
+      MountStatus result = apiInstance.mountStatusNasPool(nasPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#mountStatusNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
+
+### Return type
+
+[**MountStatus**](MountStatus.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Mount status of storage. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
 <a name="showNasPool"></a>
 # **showNasPool**
@@ -213,33 +332,42 @@ Displays a specific NAS pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasPoolsApi apiInstance = new NasPoolsApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-try {
-    NasPool result = apiInstance.showNasPool(nasPoolId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasPoolsApi#showNasPool");
-    e.printStackTrace();
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    try {
+      NasPool result = apiInstance.showNasPool(nasPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#showNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -259,8 +387,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS pool. |  -  |
 
 <a name="updateNasPool"></a>
 # **updateNasPool**
@@ -273,34 +406,43 @@ Updates a specific NAS pool.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasPoolsApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasPoolsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasPoolsApi apiInstance = new NasPoolsApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-NasPoolUp nasPoolBody = new NasPoolUp(); // NasPoolUp | 
-try {
-    NasPool result = apiInstance.updateNasPool(nasPoolId, nasPoolBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasPoolsApi#updateNasPool");
-    e.printStackTrace();
+    NasPoolsApi apiInstance = new NasPoolsApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    NasPoolUp nasPoolBody = new NasPoolUp(); // NasPoolUp | 
+    try {
+      NasPool result = apiInstance.updateNasPool(nasPoolId, nasPoolBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasPoolsApi#updateNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -323,4 +465,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS pool. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

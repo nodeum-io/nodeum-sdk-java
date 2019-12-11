@@ -1,6 +1,6 @@
 # NasSharesApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**indexNasShares**](NasSharesApi.md#indexNasShares) | **GET** /nas_shares | Lists all NAS shares.
 [**indexNasSharesByNas**](NasSharesApi.md#indexNasSharesByNas) | **GET** /nas/{nas_id}/nas_shares | Lists all NAS shares.
 [**indexNasSharesByNasPool**](NasSharesApi.md#indexNasSharesByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares | Lists all NAS shares.
+[**mountStatusNasShare**](NasSharesApi.md#mountStatusNasShare) | **GET** /nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
+[**mountStatusNasShareByNas**](NasSharesApi.md#mountStatusNasShareByNas) | **GET** /nas/{nas_id}/nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
+[**mountStatusNasShareByNasPool**](NasSharesApi.md#mountStatusNasShareByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
 [**showNasShareByNas**](NasSharesApi.md#showNasShareByNas) | **GET** /nas/{nas_id}/nas_shares/{nas_share_id} | Displays a specific NAS share.
 [**showNasShares**](NasSharesApi.md#showNasShares) | **GET** /nas_shares/{nas_share_id} | Displays a specific NAS share.
 [**showNasSharesByNasPool**](NasSharesApi.md#showNasSharesByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id} | Displays a specific NAS share.
@@ -32,34 +35,43 @@ Creates a new NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-NasShare nasShareBody = new NasShare(); // NasShare | 
-try {
-    NasShare result = apiInstance.createNasShareByNas(nasId, nasShareBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#createNasShareByNas");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    NasShare nasShareBody = new NasShare(); // NasShare | 
+    try {
+      NasShare result = apiInstance.createNasShareByNas(nasId, nasShareBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#createNasShareByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -83,6 +95,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific NAS share. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyNasShare"></a>
 # **destroyNasShare**
 > destroyNasShare(nasShareId)
@@ -94,32 +112,41 @@ Destroys a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    apiInstance.destroyNasShare(nasShareId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#destroyNasShare");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      apiInstance.destroyNasShare(nasShareId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#destroyNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -139,8 +166,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | NAS share destroyed. |  -  |
 
 <a name="destroyNasShareByNas"></a>
 # **destroyNasShareByNas**
@@ -153,33 +185,42 @@ Destroys a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    apiInstance.destroyNasShareByNas(nasId, nasShareId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#destroyNasShareByNas");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      apiInstance.destroyNasShareByNas(nasId, nasShareId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#destroyNasShareByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -200,8 +241,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | NAS share destroyed. |  -  |
 
 <a name="destroyNasShareByNasPool"></a>
 # **destroyNasShareByNasPool**
@@ -214,33 +260,42 @@ Destroys a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    apiInstance.destroyNasShareByNasPool(nasPoolId, nasShareId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#destroyNasShareByNasPool");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      apiInstance.destroyNasShareByNasPool(nasPoolId, nasShareId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#destroyNasShareByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -261,8 +316,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | NAS share destroyed. |  -  |
 
 <a name="indexNasShares"></a>
 # **indexNasShares**
@@ -275,41 +335,50 @@ Lists all NAS shares.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String path = "path_example"; // String | Filter on path
-String options = "options_example"; // String | Filter on options
-String username = "username_example"; // String | Filter on username
-String nasId = "nasId_example"; // String | Filter on NAS id
-String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
-try {
-    NasShareCollection result = apiInstance.indexNasShares(limit, offset, sortBy, id, path, options, username, nasId, nasPoolId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#indexNasShares");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String path = "path_example"; // String | Filter on path
+    String options = "options_example"; // String | Filter on options
+    String username = "username_example"; // String | Filter on username
+    String nasId = "nasId_example"; // String | Filter on NAS id
+    String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
+    try {
+      NasShareCollection result = apiInstance.indexNasShares(limit, offset, sortBy, id, path, options, username, nasId, nasPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#indexNasShares");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -337,8 +406,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of NAS shares. |  -  |
 
 <a name="indexNasSharesByNas"></a>
 # **indexNasSharesByNas**
@@ -351,41 +425,50 @@ Lists all NAS shares.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String path = "path_example"; // String | Filter on path
-String options = "options_example"; // String | Filter on options
-String username = "username_example"; // String | Filter on username
-String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
-try {
-    NasShareCollection result = apiInstance.indexNasSharesByNas(nasId, limit, offset, sortBy, id, path, options, username, nasPoolId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#indexNasSharesByNas");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String path = "path_example"; // String | Filter on path
+    String options = "options_example"; // String | Filter on options
+    String username = "username_example"; // String | Filter on username
+    String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
+    try {
+      NasShareCollection result = apiInstance.indexNasSharesByNas(nasId, limit, offset, sortBy, id, path, options, username, nasPoolId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#indexNasSharesByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -413,8 +496,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of NAS shares. |  -  |
 
 <a name="indexNasSharesByNasPool"></a>
 # **indexNasSharesByNasPool**
@@ -427,41 +515,50 @@ Lists all NAS shares.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String path = "path_example"; // String | Filter on path
-String options = "options_example"; // String | Filter on options
-String username = "username_example"; // String | Filter on username
-String nasId = "nasId_example"; // String | Filter on NAS id
-try {
-    NasShareCollection result = apiInstance.indexNasSharesByNasPool(nasPoolId, limit, offset, sortBy, id, path, options, username, nasId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#indexNasSharesByNasPool");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String path = "path_example"; // String | Filter on path
+    String options = "options_example"; // String | Filter on options
+    String username = "username_example"; // String | Filter on username
+    String nasId = "nasId_example"; // String | Filter on NAS id
+    try {
+      NasShareCollection result = apiInstance.indexNasSharesByNasPool(nasPoolId, limit, offset, sortBy, id, path, options, username, nasId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#indexNasSharesByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -489,8 +586,242 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of NAS shares. |  -  |
+
+<a name="mountStatusNasShare"></a>
+# **mountStatusNasShare**
+> MountStatus mountStatusNasShare(nasShareId)
+
+Get mount status of NAS Share.
+
+**API Key Scope**: nas_shares / mount_status
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      MountStatus result = apiInstance.mountStatusNasShare(nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#mountStatusNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nasShareId** | **Integer**| Numeric ID of NAS share. |
+
+### Return type
+
+[**MountStatus**](MountStatus.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Mount status of storage. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="mountStatusNasShareByNas"></a>
+# **mountStatusNasShareByNas**
+> MountStatus mountStatusNasShareByNas(nasId, nasShareId)
+
+Get mount status of NAS Share.
+
+**API Key Scope**: nas_shares / mount_status
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      MountStatus result = apiInstance.mountStatusNasShareByNas(nasId, nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#mountStatusNasShareByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nasId** | **String**| Numeric ID or name of NAS. |
+ **nasShareId** | **Integer**| Numeric ID of NAS share. |
+
+### Return type
+
+[**MountStatus**](MountStatus.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Mount status of storage. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="mountStatusNasShareByNasPool"></a>
+# **mountStatusNasShareByNasPool**
+> MountStatus mountStatusNasShareByNasPool(nasPoolId, nasShareId)
+
+Get mount status of NAS Share.
+
+**API Key Scope**: nas_shares / mount_status
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      MountStatus result = apiInstance.mountStatusNasShareByNasPool(nasPoolId, nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#mountStatusNasShareByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
+ **nasShareId** | **Integer**| Numeric ID of NAS share. |
+
+### Return type
+
+[**MountStatus**](MountStatus.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Mount status of storage. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
 <a name="showNasShareByNas"></a>
 # **showNasShareByNas**
@@ -503,34 +834,43 @@ Displays a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    NasShare result = apiInstance.showNasShareByNas(nasId, nasShareId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#showNasShareByNas");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      NasShare result = apiInstance.showNasShareByNas(nasId, nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#showNasShareByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -551,8 +891,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
 
 <a name="showNasShares"></a>
 # **showNasShares**
@@ -565,33 +910,42 @@ Displays a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    NasShare result = apiInstance.showNasShares(nasShareId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#showNasShares");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      NasShare result = apiInstance.showNasShares(nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#showNasShares");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -611,8 +965,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
 
 <a name="showNasSharesByNasPool"></a>
 # **showNasSharesByNasPool**
@@ -625,34 +984,43 @@ Displays a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-try {
-    NasShare result = apiInstance.showNasSharesByNasPool(nasPoolId, nasShareId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#showNasSharesByNasPool");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    try {
+      NasShare result = apiInstance.showNasSharesByNasPool(nasPoolId, nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#showNasSharesByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -673,8 +1041,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
 
 <a name="testNasShare"></a>
 # **testNasShare**
@@ -687,34 +1060,43 @@ Test an unsaved NAS Share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-NasShare nasShareBody = new NasShare(); // NasShare | 
-try {
-    ActiveJobStatus result = apiInstance.testNasShare(nasId, nasShareBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#testNasShare");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    NasShare nasShareBody = new NasShare(); // NasShare | 
+    try {
+      ActiveJobStatus result = apiInstance.testNasShare(nasId, nasShareBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#testNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -736,7 +1118,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, queued, working, failed
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="testResultNasShare"></a>
 # **testResultNasShare**
@@ -749,34 +1136,43 @@ Check result of a NAS Share test job.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-String jobId = "jobId_example"; // String | ID of active job
-try {
-    ActiveJobStatus result = apiInstance.testResultNasShare(nasId, jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#testResultNasShare");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    String jobId = "jobId_example"; // String | ID of active job
+    try {
+      ActiveJobStatus result = apiInstance.testResultNasShare(nasId, jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#testResultNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -797,8 +1193,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, queued, working, failed
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An active job that may be queued, working, completed or failed. |  -  |
+**202** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="updateNasShare"></a>
 # **updateNasShare**
@@ -811,34 +1213,43 @@ Updates a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-NasShare nasShareBody = new NasShare(); // NasShare | 
-try {
-    NasShare result = apiInstance.updateNasShare(nasShareId, nasShareBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#updateNasShare");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    NasShare nasShareBody = new NasShare(); // NasShare | 
+    try {
+      NasShare result = apiInstance.updateNasShare(nasShareId, nasShareBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#updateNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -862,6 +1273,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="updateNasShareByNas"></a>
 # **updateNasShareByNas**
 > NasShare updateNasShareByNas(nasId, nasShareId, nasShareBody)
@@ -873,35 +1290,44 @@ Updates a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-NasShare nasShareBody = new NasShare(); // NasShare | 
-try {
-    NasShare result = apiInstance.updateNasShareByNas(nasId, nasShareId, nasShareBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#updateNasShareByNas");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    NasShare nasShareBody = new NasShare(); // NasShare | 
+    try {
+      NasShare result = apiInstance.updateNasShareByNas(nasId, nasShareId, nasShareBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#updateNasShareByNas");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -926,6 +1352,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="updateNasShareByNasPool"></a>
 # **updateNasShareByNasPool**
 > NasShare updateNasShareByNasPool(nasPoolId, nasShareId, nasShareBody)
@@ -937,35 +1369,44 @@ Updates a specific NAS share.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.NasSharesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-NasSharesApi apiInstance = new NasSharesApi();
-String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-NasShare nasShareBody = new NasShare(); // NasShare | 
-try {
-    NasShare result = apiInstance.updateNasShareByNasPool(nasPoolId, nasShareId, nasShareBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling NasSharesApi#updateNasShareByNasPool");
-    e.printStackTrace();
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    NasShare nasShareBody = new NasShare(); // NasShare | 
+    try {
+      NasShare result = apiInstance.updateNasShareByNasPool(nasPoolId, nasShareId, nasShareBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#updateNasShareByNasPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -989,4 +1430,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

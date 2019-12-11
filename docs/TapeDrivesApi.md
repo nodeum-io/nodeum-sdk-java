@@ -1,6 +1,6 @@
 # TapeDrivesApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,34 +27,43 @@ Creates a new tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
-try {
-    TapeDrive result = apiInstance.createTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#createTapeDriveByTapeLibrary");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
+    try {
+      TapeDrive result = apiInstance.createTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#createTapeDriveByTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -78,6 +87,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific tape drive. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyTapeDrive"></a>
 # **destroyTapeDrive**
 > destroyTapeDrive(tapeDriveId)
@@ -89,32 +104,41 @@ Destroys a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-try {
-    apiInstance.destroyTapeDrive(tapeDriveId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#destroyTapeDrive");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    try {
+      apiInstance.destroyTapeDrive(tapeDriveId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#destroyTapeDrive");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -134,8 +158,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Tape drive destroyed. |  -  |
 
 <a name="destroyTapeDriveByTapeLibrary"></a>
 # **destroyTapeDriveByTapeLibrary**
@@ -148,33 +177,42 @@ Destroys a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-try {
-    apiInstance.destroyTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#destroyTapeDriveByTapeLibrary");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    try {
+      apiInstance.destroyTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#destroyTapeDriveByTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -195,8 +233,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Tape drive destroyed. |  -  |
 
 <a name="indexTapeDriveDevices"></a>
 # **indexTapeDriveDevices**
@@ -209,34 +252,43 @@ Lists tape drives devices.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-String jobId = "jobId_example"; // String | ID of active job
-try {
-    TapeDriveDeviceCollection result = apiInstance.indexTapeDriveDevices(tapeLibraryId, jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#indexTapeDriveDevices");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    String jobId = "jobId_example"; // String | ID of active job
+    try {
+      TapeDriveDeviceCollection result = apiInstance.indexTapeDriveDevices(tapeLibraryId, jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#indexTapeDriveDevices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -257,8 +309,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, queued, working, failed, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of tape drives devices. |  -  |
+**202** | An active job that may be queued, working, completed or failed. |  -  |
+**500** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="indexTapeDrives"></a>
 # **indexTapeDrives**
@@ -271,60 +330,69 @@ Lists all tape drives.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String tapeLibraryId = "tapeLibraryId_example"; // String | Filter on tape library id
-String name = "name_example"; // String | Filter on name
-String serial = "serial_example"; // String | Filter on serial
-String comment = "comment_example"; // String | Filter on comment
-String scsiAddress = "scsiAddress_example"; // String | Filter on scsi address
-String vendor = "vendor_example"; // String | Filter on vendor
-String product = "product_example"; // String | Filter on product
-String firmware = "firmware_example"; // String | Filter on firmware
-String device = "device_example"; // String | Filter on device
-String sgdevice = "sgdevice_example"; // String | Filter on sgdevice
-String libso = "libso_example"; // String | Filter on libso
-String acs = "acs_example"; // String | Filter on acs
-String lsm = "lsm_example"; // String | Filter on lsm
-String panel = "panel_example"; // String | Filter on panel
-String transport = "transport_example"; // String | Filter on transport
-String status = "status_example"; // String | Filter on status
-String full = "full_example"; // String | Filter on full
-String mountCount = "mountCount_example"; // String | Filter on mount count
-String useTo = "useTo_example"; // String | Filter on use to
-String useBy = "useBy_example"; // String | Filter on use by
-String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
-String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
-String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
-String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
-try {
-    TapeDriveCollection result = apiInstance.indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#indexTapeDrives");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Filter on tape library id
+    String name = "name_example"; // String | Filter on name
+    String serial = "serial_example"; // String | Filter on serial
+    String comment = "comment_example"; // String | Filter on comment
+    String scsiAddress = "scsiAddress_example"; // String | Filter on scsi address
+    String vendor = "vendor_example"; // String | Filter on vendor
+    String product = "product_example"; // String | Filter on product
+    String firmware = "firmware_example"; // String | Filter on firmware
+    String device = "device_example"; // String | Filter on device
+    String sgdevice = "sgdevice_example"; // String | Filter on sgdevice
+    String libso = "libso_example"; // String | Filter on libso
+    String acs = "acs_example"; // String | Filter on acs
+    String lsm = "lsm_example"; // String | Filter on lsm
+    String panel = "panel_example"; // String | Filter on panel
+    String transport = "transport_example"; // String | Filter on transport
+    String status = "status_example"; // String | Filter on status
+    String full = "full_example"; // String | Filter on full
+    String mountCount = "mountCount_example"; // String | Filter on mount count
+    String useTo = "useTo_example"; // String | Filter on use to
+    String useBy = "useBy_example"; // String | Filter on use by
+    String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
+    String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
+    String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
+    String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
+    try {
+      TapeDriveCollection result = apiInstance.indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#indexTapeDrives");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -371,8 +439,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of tape drives. |  -  |
 
 <a name="indexTapeDrivesByTapeLibrary"></a>
 # **indexTapeDrivesByTapeLibrary**
@@ -385,60 +458,69 @@ Lists all tape drives.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String serial = "serial_example"; // String | Filter on serial
-String comment = "comment_example"; // String | Filter on comment
-String scsiAddress = "scsiAddress_example"; // String | Filter on scsi address
-String vendor = "vendor_example"; // String | Filter on vendor
-String product = "product_example"; // String | Filter on product
-String firmware = "firmware_example"; // String | Filter on firmware
-String device = "device_example"; // String | Filter on device
-String sgdevice = "sgdevice_example"; // String | Filter on sgdevice
-String libso = "libso_example"; // String | Filter on libso
-String acs = "acs_example"; // String | Filter on acs
-String lsm = "lsm_example"; // String | Filter on lsm
-String panel = "panel_example"; // String | Filter on panel
-String transport = "transport_example"; // String | Filter on transport
-String status = "status_example"; // String | Filter on status
-String full = "full_example"; // String | Filter on full
-String mountCount = "mountCount_example"; // String | Filter on mount count
-String useTo = "useTo_example"; // String | Filter on use to
-String useBy = "useBy_example"; // String | Filter on use by
-String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
-String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
-String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
-String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
-try {
-    TapeDriveCollection result = apiInstance.indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#indexTapeDrivesByTapeLibrary");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String serial = "serial_example"; // String | Filter on serial
+    String comment = "comment_example"; // String | Filter on comment
+    String scsiAddress = "scsiAddress_example"; // String | Filter on scsi address
+    String vendor = "vendor_example"; // String | Filter on vendor
+    String product = "product_example"; // String | Filter on product
+    String firmware = "firmware_example"; // String | Filter on firmware
+    String device = "device_example"; // String | Filter on device
+    String sgdevice = "sgdevice_example"; // String | Filter on sgdevice
+    String libso = "libso_example"; // String | Filter on libso
+    String acs = "acs_example"; // String | Filter on acs
+    String lsm = "lsm_example"; // String | Filter on lsm
+    String panel = "panel_example"; // String | Filter on panel
+    String transport = "transport_example"; // String | Filter on transport
+    String status = "status_example"; // String | Filter on status
+    String full = "full_example"; // String | Filter on full
+    String mountCount = "mountCount_example"; // String | Filter on mount count
+    String useTo = "useTo_example"; // String | Filter on use to
+    String useBy = "useBy_example"; // String | Filter on use by
+    String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
+    String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
+    String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
+    String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
+    try {
+      TapeDriveCollection result = apiInstance.indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#indexTapeDrivesByTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -485,8 +567,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of tape drives. |  -  |
 
 <a name="showTapeDrive"></a>
 # **showTapeDrive**
@@ -499,33 +586,42 @@ Displays a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-try {
-    TapeDrive result = apiInstance.showTapeDrive(tapeDriveId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#showTapeDrive");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    try {
+      TapeDrive result = apiInstance.showTapeDrive(tapeDriveId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#showTapeDrive");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -545,8 +641,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape drive. |  -  |
 
 <a name="showTapeDriveByTapeLibrary"></a>
 # **showTapeDriveByTapeLibrary**
@@ -559,34 +660,43 @@ Displays a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-try {
-    TapeDrive result = apiInstance.showTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#showTapeDriveByTapeLibrary");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    try {
+      TapeDrive result = apiInstance.showTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#showTapeDriveByTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -607,8 +717,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape drive. |  -  |
 
 <a name="updateTapeDrive"></a>
 # **updateTapeDrive**
@@ -621,34 +736,43 @@ Updates a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
-try {
-    TapeDrive result = apiInstance.updateTapeDrive(tapeDriveId, tapeDriveBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#updateTapeDrive");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
+    try {
+      TapeDrive result = apiInstance.updateTapeDrive(tapeDriveId, tapeDriveBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#updateTapeDrive");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -672,6 +796,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape drive. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="updateTapeDriveByTapeLibrary"></a>
 # **updateTapeDriveByTapeLibrary**
 > TapeDrive updateTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId, tapeDriveBody)
@@ -683,35 +813,44 @@ Updates a specific tape drive.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeDrivesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeDrivesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeDrivesApi apiInstance = new TapeDrivesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
-TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
-try {
-    TapeDrive result = apiInstance.updateTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId, tapeDriveBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeDrivesApi#updateTapeDriveByTapeLibrary");
-    e.printStackTrace();
+    TapeDrivesApi apiInstance = new TapeDrivesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    String tapeDriveId = "tapeDriveId_example"; // String | Numeric ID, serial, or name of tape drive.
+    TapeDrive tapeDriveBody = new TapeDrive(); // TapeDrive | 
+    try {
+      TapeDrive result = apiInstance.updateTapeDriveByTapeLibrary(tapeLibraryId, tapeDriveId, tapeDriveBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeDrivesApi#updateTapeDriveByTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -735,4 +874,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape drive. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 

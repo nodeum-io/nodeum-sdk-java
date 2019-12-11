@@ -1,25 +1,21 @@
 
+
 # TaskOption
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 **value** | **String** |  |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
-FILE_PATH_EXCLUDE_FILTER | &quot;file_path_exclude_filter&quot;
-FILE_PATH_REQUIRE_FILTER | &quot;file_path_require_filter&quot;
-FILE_NAME_EXCLUDE_FILTER | &quot;file_name_exclude_filter&quot;
-FILE_NAME_REQUIRE_FILTER | &quot;file_name_require_filter&quot;
-ABSOLUTE_DATE_FILTER | &quot;absolute_date_filter&quot;
-RELATIVE_DATE_FILTER | &quot;relative_date_filter&quot;
-SIZE_DATE_FILTER | &quot;size_date_filter&quot;
 FILE_CHECKSUM | &quot;file_checksum&quot;
 RESET_FILE_DATE | &quot;reset_file_date&quot;
 RESET_FOLDER_DATE | &quot;reset_folder_date&quot;

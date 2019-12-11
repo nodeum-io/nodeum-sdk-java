@@ -1,23 +1,26 @@
 
+
 # Container
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Integer** |  |  [optional] [readonly]
 **name** | **String** |  |  [optional]
 **comment** | **String** |  |  [optional]
 **quotaTotalSize** | **Integer** |  |  [optional]
 **quotaOnCache** | **Integer** |  |  [optional]
-**statTotalFiles** | **Integer** |  |  [optional]
-**statTotalSize** | **Integer** |  |  [optional]
-**statSizeOnCache** | **Integer** |  |  [optional]
+**statTotalFiles** | **Integer** |  |  [optional] [readonly]
+**statTotalSize** | **Integer** |  |  [optional] [readonly]
+**statSizeOnCache** | **Integer** |  |  [optional] [readonly]
 **guestRight** | [**GuestRightEnum**](#GuestRightEnum) |  |  [optional]
-**lastUpdate** | **String** |  |  [optional]
+**lastUpdate** | **String** |  |  [optional] [readonly]
 
 
-<a name="GuestRightEnum"></a>
+
 ## Enum: GuestRightEnum
+
 Name | Value
 ---- | -----
 NONE | &quot;none&quot;

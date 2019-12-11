@@ -1,7 +1,9 @@
 
+
 # MountInfo
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** |  |  [optional]
@@ -30,8 +32,9 @@ Name | Type | Description | Notes
 **tapeLibrarySerial** | **String** |  |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 CIFS | &quot;cifs&quot;

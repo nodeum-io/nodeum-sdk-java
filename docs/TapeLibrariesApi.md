@@ -1,6 +1,6 @@
 # TapeLibrariesApi
 
-All URIs are relative to *https://localhost/api/v2*
+All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,33 +23,42 @@ Creates a new tape library.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-TapeLibrary tapeLibraryBody = new TapeLibrary(); // TapeLibrary | 
-try {
-    TapeLibrary result = apiInstance.createTapeLibrary(tapeLibraryBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#createTapeLibrary");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    TapeLibrary tapeLibraryBody = new TapeLibrary(); // TapeLibrary | 
+    try {
+      TapeLibrary result = apiInstance.createTapeLibrary(tapeLibraryBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#createTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -72,6 +81,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A specific tape library. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
+
 <a name="destroyTapeLibrary"></a>
 # **destroyTapeLibrary**
 > destroyTapeLibrary(tapeLibraryId)
@@ -83,32 +98,41 @@ Destroys a specific tape library.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-try {
-    apiInstance.destroyTapeLibrary(tapeLibraryId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#destroyTapeLibrary");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    try {
+      apiInstance.destroyTapeLibrary(tapeLibraryId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#destroyTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -128,8 +152,13 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Tape library destroyed. |  -  |
 
 <a name="indexTapeLibraries"></a>
 # **indexTapeLibraries**
@@ -142,52 +171,61 @@ Lists all tape libraries.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-Integer limit = 56; // Integer | The number of items to display for pagination.
-Integer offset = 56; // Integer | The number of items to skip for pagination.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
-String id = "id_example"; // String | Filter on id
-String name = "name_example"; // String | Filter on name
-String serial = "serial_example"; // String | Filter on serial
-String comment = "comment_example"; // String | Filter on comment
-String protocol = "protocol_example"; // String | Filter on protocol
-String vendor = "vendor_example"; // String | Filter on vendor
-String product = "product_example"; // String | Filter on product
-String firmware = "firmware_example"; // String | Filter on firmware
-String device = "device_example"; // String | Filter on device
-String libso = "libso_example"; // String | Filter on libso
-String acs = "acs_example"; // String | Filter on acs
-String status = "status_example"; // String | Filter on status
-String storageSlots = "storageSlots_example"; // String | Filter on storage slots
-String storageSlotsAddress = "storageSlotsAddress_example"; // String | Filter on storage slots address
-String ioSlots = "ioSlots_example"; // String | Filter on io slots
-String ioSlotsAddress = "ioSlotsAddress_example"; // String | Filter on io slots address
-String price = "price_example"; // String | Filter on price
-try {
-    TapeLibraryCollection result = apiInstance.indexTapeLibraries(limit, offset, sortBy, id, name, serial, comment, protocol, vendor, product, firmware, device, libso, acs, status, storageSlots, storageSlotsAddress, ioSlots, ioSlotsAddress, price);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#indexTapeLibraries");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
+    String serial = "serial_example"; // String | Filter on serial
+    String comment = "comment_example"; // String | Filter on comment
+    String protocol = "protocol_example"; // String | Filter on protocol
+    String vendor = "vendor_example"; // String | Filter on vendor
+    String product = "product_example"; // String | Filter on product
+    String firmware = "firmware_example"; // String | Filter on firmware
+    String device = "device_example"; // String | Filter on device
+    String libso = "libso_example"; // String | Filter on libso
+    String acs = "acs_example"; // String | Filter on acs
+    String status = "status_example"; // String | Filter on status
+    String storageSlots = "storageSlots_example"; // String | Filter on storage slots
+    String storageSlotsAddress = "storageSlotsAddress_example"; // String | Filter on storage slots address
+    String ioSlots = "ioSlots_example"; // String | Filter on io slots
+    String ioSlotsAddress = "ioSlotsAddress_example"; // String | Filter on io slots address
+    String price = "price_example"; // String | Filter on price
+    try {
+      TapeLibraryCollection result = apiInstance.indexTapeLibraries(limit, offset, sortBy, id, name, serial, comment, protocol, vendor, product, firmware, device, libso, acs, status, storageSlots, storageSlotsAddress, ioSlots, ioSlotsAddress, price);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#indexTapeLibraries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -226,8 +264,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of tape libraries. |  -  |
 
 <a name="indexTapeLibraryDevices"></a>
 # **indexTapeLibraryDevices**
@@ -240,33 +283,42 @@ Lists tape libraries devices.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-String jobId = "jobId_example"; // String | ID of active job
-try {
-    TapeLibraryDeviceCollection result = apiInstance.indexTapeLibraryDevices(jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#indexTapeLibraryDevices");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    String jobId = "jobId_example"; // String | ID of active job
+    try {
+      TapeLibraryDeviceCollection result = apiInstance.indexTapeLibraryDevices(jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#indexTapeLibraryDevices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -286,8 +338,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, queued, working, failed, 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of tape libraries devices. |  -  |
+**202** | An active job that may be queued, working, completed or failed. |  -  |
+**500** | An active job that may be queued, working, completed or failed. |  -  |
 
 <a name="showTapeLibrary"></a>
 # **showTapeLibrary**
@@ -300,33 +359,42 @@ Displays a specific tape library.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-try {
-    TapeLibrary result = apiInstance.showTapeLibrary(tapeLibraryId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#showTapeLibrary");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    try {
+      TapeLibrary result = apiInstance.showTapeLibrary(tapeLibraryId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#showTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -346,8 +414,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape library. |  -  |
 
 <a name="updateTapeLibrary"></a>
 # **updateTapeLibrary**
@@ -360,34 +433,43 @@ Updates a specific tape library.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.TapeLibrariesApi;
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.TapeLibrariesApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: BasicAuth
-HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-BasicAuth.setUsername("YOUR USERNAME");
-BasicAuth.setPassword("YOUR PASSWORD");
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: BearerAuth
-ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-BearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//BearerAuth.setApiKeyPrefix("Token");
-
-TapeLibrariesApi apiInstance = new TapeLibrariesApi();
-String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
-TapeLibrary tapeLibraryBody = new TapeLibrary(); // TapeLibrary | 
-try {
-    TapeLibrary result = apiInstance.updateTapeLibrary(tapeLibraryId, tapeLibraryBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TapeLibrariesApi#updateTapeLibrary");
-    e.printStackTrace();
+    TapeLibrariesApi apiInstance = new TapeLibrariesApi(defaultClient);
+    String tapeLibraryId = "tapeLibraryId_example"; // String | Numeric ID, serial, or name of tape library.
+    TapeLibrary tapeLibraryBody = new TapeLibrary(); // TapeLibrary | 
+    try {
+      TapeLibrary result = apiInstance.updateTapeLibrary(tapeLibraryId, tapeLibraryBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapeLibrariesApi#updateTapeLibrary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -410,4 +492,10 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific tape library. |  -  |
+**422** | The received resource was not correctly formatted. |  -  |
 
