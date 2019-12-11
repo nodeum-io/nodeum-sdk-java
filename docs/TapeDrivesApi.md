@@ -297,7 +297,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tapeLibraryId** | **String**| Numeric ID, serial, or name of tape library. |
- **jobId** | **String**| ID of active job | [optional]
+ **jobId** | **String**| ID of active job |
 
 ### Return type
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 <a name="indexTapeDrives"></a>
 # **indexTapeDrives**
-> TapeDriveCollection indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth)
+> TapeDriveCollection indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, barcode, taskId, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth)
 
 Lists all tape drives.
 
@@ -378,12 +378,14 @@ public class Example {
     String mountCount = "mountCount_example"; // String | Filter on mount count
     String useTo = "useTo_example"; // String | Filter on use to
     String useBy = "useBy_example"; // String | Filter on use by
+    String barcode = "barcode_example"; // String | Filter on barcode
+    String taskId = "taskId_example"; // String | Filter on task id
     String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
     String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
     String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
     String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
     try {
-      TapeDriveCollection result = apiInstance.indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
+      TapeDriveCollection result = apiInstance.indexTapeDrives(limit, offset, sortBy, id, tapeLibraryId, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, barcode, taskId, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TapeDrivesApi#indexTapeDrives");
@@ -424,6 +426,8 @@ Name | Type | Description  | Notes
  **mountCount** | **String**| Filter on mount count | [optional]
  **useTo** | **String**| Filter on use to | [optional]
  **useBy** | **String**| Filter on use by | [optional]
+ **barcode** | **String**| Filter on barcode | [optional]
+ **taskId** | **String**| Filter on task id | [optional]
  **useFileProcessedSize** | **String**| Filter on use file processed size | [optional]
  **useFileSizeToProcess** | **String**| Filter on use file size to process | [optional]
  **useFileNameProcessed** | **String**| Filter on use file name processed | [optional]
@@ -449,7 +453,7 @@ Name | Type | Description  | Notes
 
 <a name="indexTapeDrivesByTapeLibrary"></a>
 # **indexTapeDrivesByTapeLibrary**
-> TapeDriveCollection indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth)
+> TapeDriveCollection indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, barcode, taskId, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth)
 
 Lists all tape drives.
 
@@ -506,12 +510,14 @@ public class Example {
     String mountCount = "mountCount_example"; // String | Filter on mount count
     String useTo = "useTo_example"; // String | Filter on use to
     String useBy = "useBy_example"; // String | Filter on use by
+    String barcode = "barcode_example"; // String | Filter on barcode
+    String taskId = "taskId_example"; // String | Filter on task id
     String useFileProcessedSize = "useFileProcessedSize_example"; // String | Filter on use file processed size
     String useFileSizeToProcess = "useFileSizeToProcess_example"; // String | Filter on use file size to process
     String useFileNameProcessed = "useFileNameProcessed_example"; // String | Filter on use file name processed
     String bandwidth = "bandwidth_example"; // String | Filter on bandwidth
     try {
-      TapeDriveCollection result = apiInstance.indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
+      TapeDriveCollection result = apiInstance.indexTapeDrivesByTapeLibrary(tapeLibraryId, limit, offset, sortBy, id, name, serial, comment, scsiAddress, vendor, product, firmware, device, sgdevice, libso, acs, lsm, panel, transport, status, full, mountCount, useTo, useBy, barcode, taskId, useFileProcessedSize, useFileSizeToProcess, useFileNameProcessed, bandwidth);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TapeDrivesApi#indexTapeDrivesByTapeLibrary");
@@ -552,6 +558,8 @@ Name | Type | Description  | Notes
  **mountCount** | **String**| Filter on mount count | [optional]
  **useTo** | **String**| Filter on use to | [optional]
  **useBy** | **String**| Filter on use by | [optional]
+ **barcode** | **String**| Filter on barcode | [optional]
+ **taskId** | **String**| Filter on task id | [optional]
  **useFileProcessedSize** | **String**| Filter on use file processed size | [optional]
  **useFileSizeToProcess** | **String**| Filter on use file size to process | [optional]
  **useFileNameProcessed** | **String**| Filter on use file name processed | [optional]

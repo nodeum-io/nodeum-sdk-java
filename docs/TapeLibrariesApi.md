@@ -326,7 +326,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **String**| ID of active job | [optional]
+ **jobId** | **String**| ID of active job |
 
 ### Return type
 

@@ -7,21 +7,21 @@ Method | HTTP request | Description
 [**createNasShareByNas**](NasSharesApi.md#createNasShareByNas) | **POST** /nas/{nas_id}/nas_shares | Creates a new NAS share.
 [**destroyNasShare**](NasSharesApi.md#destroyNasShare) | **DELETE** /nas_shares/{nas_share_id} | Destroys a specific NAS share.
 [**destroyNasShareByNas**](NasSharesApi.md#destroyNasShareByNas) | **DELETE** /nas/{nas_id}/nas_shares/{nas_share_id} | Destroys a specific NAS share.
-[**destroyNasShareByNasPool**](NasSharesApi.md#destroyNasShareByNasPool) | **DELETE** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id} | Destroys a specific NAS share.
+[**destroyNasShareByPool**](NasSharesApi.md#destroyNasShareByPool) | **DELETE** /pools/{pool_id}/nas_shares/{nas_share_id} | Destroys a specific NAS share.
 [**indexNasShares**](NasSharesApi.md#indexNasShares) | **GET** /nas_shares | Lists all NAS shares.
 [**indexNasSharesByNas**](NasSharesApi.md#indexNasSharesByNas) | **GET** /nas/{nas_id}/nas_shares | Lists all NAS shares.
-[**indexNasSharesByNasPool**](NasSharesApi.md#indexNasSharesByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares | Lists all NAS shares.
+[**indexNasSharesByPool**](NasSharesApi.md#indexNasSharesByPool) | **GET** /pools/{pool_id}/nas_shares | Lists all NAS shares from pool.
 [**mountStatusNasShare**](NasSharesApi.md#mountStatusNasShare) | **GET** /nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
 [**mountStatusNasShareByNas**](NasSharesApi.md#mountStatusNasShareByNas) | **GET** /nas/{nas_id}/nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
-[**mountStatusNasShareByNasPool**](NasSharesApi.md#mountStatusNasShareByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
+[**mountStatusNasShareByPool**](NasSharesApi.md#mountStatusNasShareByPool) | **GET** /pools/{pool_id}/nas_shares/{nas_share_id}/mount | Get mount status of NAS Share.
+[**showNasShare**](NasSharesApi.md#showNasShare) | **GET** /nas_shares/{nas_share_id} | Displays a specific NAS share.
 [**showNasShareByNas**](NasSharesApi.md#showNasShareByNas) | **GET** /nas/{nas_id}/nas_shares/{nas_share_id} | Displays a specific NAS share.
-[**showNasShares**](NasSharesApi.md#showNasShares) | **GET** /nas_shares/{nas_share_id} | Displays a specific NAS share.
-[**showNasSharesByNasPool**](NasSharesApi.md#showNasSharesByNasPool) | **GET** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id} | Displays a specific NAS share.
+[**showNasShareByPool**](NasSharesApi.md#showNasShareByPool) | **GET** /pools/{pool_id}/nas_shares/{nas_share_id} | Displays a specific NAS share.
 [**testNasShare**](NasSharesApi.md#testNasShare) | **PUT** /nas/{nas_id}/nas_shares/-/test | Test an unsaved NAS Share.
 [**testResultNasShare**](NasSharesApi.md#testResultNasShare) | **GET** /nas/{nas_id}/nas_shares/-/test | Check result of a NAS Share test job.
 [**updateNasShare**](NasSharesApi.md#updateNasShare) | **PUT** /nas_shares/{nas_share_id} | Updates a specific NAS share.
 [**updateNasShareByNas**](NasSharesApi.md#updateNasShareByNas) | **PUT** /nas/{nas_id}/nas_shares/{nas_share_id} | Updates a specific NAS share.
-[**updateNasShareByNasPool**](NasSharesApi.md#updateNasShareByNasPool) | **PUT** /nas_pools/{nas_pool_id}/nas_shares/{nas_share_id} | Updates a specific NAS share.
+[**updateNasShareByPool**](NasSharesApi.md#updateNasShareByPool) | **PUT** /pools/{pool_id}/nas_shares/{nas_share_id} | Updates a specific NAS share.
 
 
 <a name="createNasShareByNas"></a>
@@ -136,7 +136,7 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
       apiInstance.destroyNasShare(nasShareId);
     } catch (ApiException e) {
@@ -154,7 +154,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -210,7 +210,7 @@ public class Example {
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
     String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
       apiInstance.destroyNasShareByNas(nasId, nasShareId);
     } catch (ApiException e) {
@@ -229,7 +229,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nasId** | **String**| Numeric ID or name of NAS. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -249,9 +249,9 @@ null (empty response body)
 |-------------|-------------|------------------|
 **204** | NAS share destroyed. |  -  |
 
-<a name="destroyNasShareByNasPool"></a>
-# **destroyNasShareByNasPool**
-> destroyNasShareByNasPool(nasPoolId, nasShareId)
+<a name="destroyNasShareByPool"></a>
+# **destroyNasShareByPool**
+> destroyNasShareByPool(poolId, nasShareId)
 
 Destroys a specific NAS share.
 
@@ -284,12 +284,12 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
-      apiInstance.destroyNasShareByNasPool(nasPoolId, nasShareId);
+      apiInstance.destroyNasShareByPool(poolId, nasShareId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#destroyNasShareByNasPool");
+      System.err.println("Exception when calling NasSharesApi#destroyNasShareByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -303,8 +303,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -326,7 +326,7 @@ null (empty response body)
 
 <a name="indexNasShares"></a>
 # **indexNasShares**
-> NasShareCollection indexNasShares(limit, offset, sortBy, id, path, options, username, nasId, nasPoolId)
+> NasShareCollection indexNasShares(limit, offset, sortBy, id, name, path, options, username, nasId, poolId)
 
 Lists all NAS shares.
 
@@ -363,13 +363,14 @@ public class Example {
     Integer offset = 56; // Integer | The number of items to skip for pagination.
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
     String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
     String path = "path_example"; // String | Filter on path
     String options = "options_example"; // String | Filter on options
     String username = "username_example"; // String | Filter on username
     String nasId = "nasId_example"; // String | Filter on NAS id
-    String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     try {
-      NasShareCollection result = apiInstance.indexNasShares(limit, offset, sortBy, id, path, options, username, nasId, nasPoolId);
+      NasShareCollection result = apiInstance.indexNasShares(limit, offset, sortBy, id, name, path, options, username, nasId, poolId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling NasSharesApi#indexNasShares");
@@ -390,11 +391,12 @@ Name | Type | Description  | Notes
  **offset** | **Integer**| The number of items to skip for pagination. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
  **id** | **String**| Filter on id | [optional]
+ **name** | **String**| Filter on name | [optional]
  **path** | **String**| Filter on path | [optional]
  **options** | **String**| Filter on options | [optional]
  **username** | **String**| Filter on username | [optional]
  **nasId** | **String**| Filter on NAS id | [optional]
- **nasPoolId** | **String**| Filter on NAS pool id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
 
 ### Return type
 
@@ -416,7 +418,7 @@ Name | Type | Description  | Notes
 
 <a name="indexNasSharesByNas"></a>
 # **indexNasSharesByNas**
-> NasShareCollection indexNasSharesByNas(nasId, limit, offset, sortBy, id, path, options, username, nasPoolId)
+> NasShareCollection indexNasSharesByNas(nasId, limit, offset, sortBy, id, name, path, options, username, poolId)
 
 Lists all NAS shares.
 
@@ -454,12 +456,13 @@ public class Example {
     Integer offset = 56; // Integer | The number of items to skip for pagination.
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
     String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
     String path = "path_example"; // String | Filter on path
     String options = "options_example"; // String | Filter on options
     String username = "username_example"; // String | Filter on username
-    String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     try {
-      NasShareCollection result = apiInstance.indexNasSharesByNas(nasId, limit, offset, sortBy, id, path, options, username, nasPoolId);
+      NasShareCollection result = apiInstance.indexNasSharesByNas(nasId, limit, offset, sortBy, id, name, path, options, username, poolId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling NasSharesApi#indexNasSharesByNas");
@@ -481,10 +484,11 @@ Name | Type | Description  | Notes
  **offset** | **Integer**| The number of items to skip for pagination. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
  **id** | **String**| Filter on id | [optional]
+ **name** | **String**| Filter on name | [optional]
  **path** | **String**| Filter on path | [optional]
  **options** | **String**| Filter on options | [optional]
  **username** | **String**| Filter on username | [optional]
- **nasPoolId** | **String**| Filter on NAS pool id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
 
 ### Return type
 
@@ -504,11 +508,11 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | List of NAS shares. |  -  |
 
-<a name="indexNasSharesByNasPool"></a>
-# **indexNasSharesByNasPool**
-> NasShareCollection indexNasSharesByNasPool(nasPoolId, limit, offset, sortBy, id, path, options, username, nasId)
+<a name="indexNasSharesByPool"></a>
+# **indexNasSharesByPool**
+> NasShareCollection indexNasSharesByPool(poolId, limit, offset, sortBy, id, name, path, options, username, nasId)
 
-Lists all NAS shares.
+Lists all NAS shares from pool.
 
 **API Key Scope**: nas_shares / index   Optional API Key Explicit Scope: nas_shares / get_password
 
@@ -539,20 +543,21 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
     Integer limit = 56; // Integer | The number of items to display for pagination.
     Integer offset = 56; // Integer | The number of items to skip for pagination.
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
     String id = "id_example"; // String | Filter on id
+    String name = "name_example"; // String | Filter on name
     String path = "path_example"; // String | Filter on path
     String options = "options_example"; // String | Filter on options
     String username = "username_example"; // String | Filter on username
     String nasId = "nasId_example"; // String | Filter on NAS id
     try {
-      NasShareCollection result = apiInstance.indexNasSharesByNasPool(nasPoolId, limit, offset, sortBy, id, path, options, username, nasId);
+      NasShareCollection result = apiInstance.indexNasSharesByPool(poolId, limit, offset, sortBy, id, name, path, options, username, nasId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#indexNasSharesByNasPool");
+      System.err.println("Exception when calling NasSharesApi#indexNasSharesByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -566,11 +571,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
  **limit** | **Integer**| The number of items to display for pagination. | [optional]
  **offset** | **Integer**| The number of items to skip for pagination. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
  **id** | **String**| Filter on id | [optional]
+ **name** | **String**| Filter on name | [optional]
  **path** | **String**| Filter on path | [optional]
  **options** | **String**| Filter on options | [optional]
  **username** | **String**| Filter on username | [optional]
@@ -629,7 +635,7 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
       MountStatus result = apiInstance.mountStatusNasShare(nasShareId);
       System.out.println(result);
@@ -648,7 +654,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -705,7 +711,7 @@ public class Example {
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
     String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
       MountStatus result = apiInstance.mountStatusNasShareByNas(nasId, nasShareId);
       System.out.println(result);
@@ -725,7 +731,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nasId** | **String**| Numeric ID or name of NAS. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -746,9 +752,9 @@ Name | Type | Description  | Notes
 **200** | Mount status of storage. |  -  |
 **404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
-<a name="mountStatusNasShareByNasPool"></a>
-# **mountStatusNasShareByNasPool**
-> MountStatus mountStatusNasShareByNasPool(nasPoolId, nasShareId)
+<a name="mountStatusNasShareByPool"></a>
+# **mountStatusNasShareByPool**
+> MountStatus mountStatusNasShareByPool(poolId, nasShareId)
 
 Get mount status of NAS Share.
 
@@ -781,13 +787,13 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
-      MountStatus result = apiInstance.mountStatusNasShareByNasPool(nasPoolId, nasShareId);
+      MountStatus result = apiInstance.mountStatusNasShareByPool(poolId, nasShareId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#mountStatusNasShareByNasPool");
+      System.err.println("Exception when calling NasSharesApi#mountStatusNasShareByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -801,8 +807,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -822,6 +828,80 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Mount status of storage. |  -  |
 **404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="showNasShare"></a>
+# **showNasShare**
+> NasShare showNasShare(nasShareId)
+
+Displays a specific NAS share.
+
+**API Key Scope**: nas_shares / show   Optional API Key Explicit Scope: nas_shares / get_password
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.NasSharesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
+    try {
+      NasShare result = apiInstance.showNasShare(nasShareId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NasSharesApi#showNasShare");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
+
+### Return type
+
+[**NasShare**](NasShare.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific NAS share. |  -  |
 
 <a name="showNasShareByNas"></a>
 # **showNasShareByNas**
@@ -859,7 +939,7 @@ public class Example {
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
     String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
       NasShare result = apiInstance.showNasShareByNas(nasId, nasShareId);
       System.out.println(result);
@@ -879,7 +959,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nasId** | **String**| Numeric ID or name of NAS. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -899,9 +979,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A specific NAS share. |  -  |
 
-<a name="showNasShares"></a>
-# **showNasShares**
-> NasShare showNasShares(nasShareId)
+<a name="showNasShareByPool"></a>
+# **showNasShareByPool**
+> NasShare showNasShareByPool(poolId, nasShareId)
 
 Displays a specific NAS share.
 
@@ -934,12 +1014,13 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     try {
-      NasShare result = apiInstance.showNasShares(nasShareId);
+      NasShare result = apiInstance.showNasShareByPool(poolId, nasShareId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#showNasShares");
+      System.err.println("Exception when calling NasSharesApi#showNasShareByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -953,83 +1034,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
-
-### Return type
-
-[**NasShare**](NasShare.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | A specific NAS share. |  -  |
-
-<a name="showNasSharesByNasPool"></a>
-# **showNasSharesByNasPool**
-> NasShare showNasSharesByNasPool(nasPoolId, nasShareId)
-
-Displays a specific NAS share.
-
-**API Key Scope**: nas_shares / show   Optional API Key Explicit Scope: nas_shares / get_password
-
-### Example
-```java
-// Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.NasSharesApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api/v2");
-    
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
-
-    // Configure API key authorization: BearerAuth
-    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
-    BearerAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //BearerAuth.setApiKeyPrefix("Token");
-
-    NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
-    try {
-      NasShare result = apiInstance.showNasSharesByNasPool(nasPoolId, nasShareId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#showNasSharesByNasPool");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
 
 ### Return type
 
@@ -1181,7 +1187,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nasId** | **String**| Numeric ID or name of NAS. |
- **jobId** | **String**| ID of active job | [optional]
+ **jobId** | **String**| ID of active job |
 
 ### Return type
 
@@ -1237,7 +1243,7 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     NasShare nasShareBody = new NasShare(); // NasShare | 
     try {
       NasShare result = apiInstance.updateNasShare(nasShareId, nasShareBody);
@@ -1257,7 +1263,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
  **nasShareBody** | [**NasShare**](NasShare.md)|  |
 
 ### Return type
@@ -1315,7 +1321,7 @@ public class Example {
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
     String nasId = "nasId_example"; // String | Numeric ID or name of NAS.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     NasShare nasShareBody = new NasShare(); // NasShare | 
     try {
       NasShare result = apiInstance.updateNasShareByNas(nasId, nasShareId, nasShareBody);
@@ -1336,7 +1342,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nasId** | **String**| Numeric ID or name of NAS. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
  **nasShareBody** | [**NasShare**](NasShare.md)|  |
 
 ### Return type
@@ -1358,9 +1364,9 @@ Name | Type | Description  | Notes
 **200** | A specific NAS share. |  -  |
 **422** | The received resource was not correctly formatted. |  -  |
 
-<a name="updateNasShareByNasPool"></a>
-# **updateNasShareByNasPool**
-> NasShare updateNasShareByNasPool(nasPoolId, nasShareId, nasShareBody)
+<a name="updateNasShareByPool"></a>
+# **updateNasShareByPool**
+> NasShare updateNasShareByPool(poolId, nasShareId, nasShareBody)
 
 Updates a specific NAS share.
 
@@ -1393,14 +1399,14 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     NasSharesApi apiInstance = new NasSharesApi(defaultClient);
-    String nasPoolId = "nasPoolId_example"; // String | Numeric ID or name of NAS pool.
-    Integer nasShareId = 56; // Integer | Numeric ID of NAS share.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
+    String nasShareId = "nasShareId_example"; // String | Numeric ID or name of NAS share.
     NasShare nasShareBody = new NasShare(); // NasShare | 
     try {
-      NasShare result = apiInstance.updateNasShareByNasPool(nasPoolId, nasShareId, nasShareBody);
+      NasShare result = apiInstance.updateNasShareByPool(poolId, nasShareId, nasShareBody);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling NasSharesApi#updateNasShareByNasPool");
+      System.err.println("Exception when calling NasSharesApi#updateNasShareByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1414,8 +1420,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nasPoolId** | **String**| Numeric ID or name of NAS pool. |
- **nasShareId** | **Integer**| Numeric ID of NAS share. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
+ **nasShareId** | **String**| Numeric ID or name of NAS share. |
  **nasShareBody** | [**NasShare**](NasShare.md)|  |
 
 ### Return type

@@ -33,6 +33,7 @@ LEARNING_THRESHOLD | &quot;learning_threshold&quot;
 TAPE_TO_SCRATCH | &quot;tape_to_scratch&quot;
 EJECT_TAPE_AFTER | &quot;eject_tape_after&quot;
 BARCODES | &quot;barcodes&quot;
+OVERWRITE | &quot;overwrite&quot;
 TASK_TEMPLATE | &quot;task_template&quot;
 
 

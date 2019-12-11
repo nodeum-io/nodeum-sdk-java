@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** |  |  [optional] [readonly]
 **tapeLibraryId** | **Integer** |  |  [optional] [readonly]
-**tapePoolId** | **Integer** |  |  [optional] [readonly]
+**poolId** | **Integer** |  |  [optional] [readonly]
 **barcode** | **String** |  |  [optional] [readonly]
 **location** | **String** |  |  [optional] [readonly]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional] [readonly]

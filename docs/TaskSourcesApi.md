@@ -165,7 +165,7 @@ null (empty response body)
 
 <a name="indexTaskSources"></a>
 # **indexTaskSources**
-> TaskSourceCollection indexTaskSources(taskId, limit, offset, sortBy, id, fileId, importFileId, tapeId, tapePoolId, cloudPoolId, nasPoolId)
+> TaskSourceCollection indexTaskSources(taskId, limit, offset, sortBy, id, fileId, importFileId, tapeId, poolId)
 
 Lists all task sources.
 
@@ -206,11 +206,9 @@ public class Example {
     String fileId = "fileId_example"; // String | Filter on file id
     String importFileId = "importFileId_example"; // String | Filter on import file id
     String tapeId = "tapeId_example"; // String | Filter on tape id
-    String tapePoolId = "tapePoolId_example"; // String | Filter on tape pool id
-    String cloudPoolId = "cloudPoolId_example"; // String | Filter on cloud pool id
-    String nasPoolId = "nasPoolId_example"; // String | Filter on NAS pool id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     try {
-      TaskSourceCollection result = apiInstance.indexTaskSources(taskId, limit, offset, sortBy, id, fileId, importFileId, tapeId, tapePoolId, cloudPoolId, nasPoolId);
+      TaskSourceCollection result = apiInstance.indexTaskSources(taskId, limit, offset, sortBy, id, fileId, importFileId, tapeId, poolId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaskSourcesApi#indexTaskSources");
@@ -235,9 +233,7 @@ Name | Type | Description  | Notes
  **fileId** | **String**| Filter on file id | [optional]
  **importFileId** | **String**| Filter on import file id | [optional]
  **tapeId** | **String**| Filter on tape id | [optional]
- **tapePoolId** | **String**| Filter on tape pool id | [optional]
- **cloudPoolId** | **String**| Filter on cloud pool id | [optional]
- **nasPoolId** | **String**| Filter on NAS pool id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
 
 ### Return type
 

@@ -165,11 +165,11 @@ null (empty response body)
 
 <a name="indexTaskDestinations"></a>
 # **indexTaskDestinations**
-> TaskDestinationCollection indexTaskDestinations(taskId)
+> TaskDestinationCollection indexTaskDestinations(taskId, limit, offset, sortBy, id, folderId, tapeId, poolId)
 
 Lists all task destinations.
 
-Filter and pagination parameters are not available for this API.  **API Key Scope**: task_destinations / index
+**API Key Scope**: task_destinations / index
 
 ### Example
 ```java
@@ -199,8 +199,15 @@ public class Example {
 
     TaskDestinationsApi apiInstance = new TaskDestinationsApi(defaultClient);
     String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
+    Integer limit = 56; // Integer | The number of items to display for pagination.
+    Integer offset = 56; // Integer | The number of items to skip for pagination.
+    List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
+    String id = "id_example"; // String | Filter on id
+    String folderId = "folderId_example"; // String | Filter on folder id
+    String tapeId = "tapeId_example"; // String | Filter on tape id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     try {
-      TaskDestinationCollection result = apiInstance.indexTaskDestinations(taskId);
+      TaskDestinationCollection result = apiInstance.indexTaskDestinations(taskId, limit, offset, sortBy, id, folderId, tapeId, poolId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TaskDestinationsApi#indexTaskDestinations");
@@ -218,6 +225,13 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | **String**| Numeric ID or name of task. Task names are not unique, it&#39;s recommanded to use numeric ID. |
+ **limit** | **Integer**| The number of items to display for pagination. | [optional]
+ **offset** | **Integer**| The number of items to skip for pagination. | [optional]
+ **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
+ **id** | **String**| Filter on id | [optional]
+ **folderId** | **String**| Filter on folder id | [optional]
+ **tapeId** | **String**| Filter on tape id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
 
 ### Return type
 

@@ -5,7 +5,7 @@
     <artifactId>nodeum-sdk</artifactId>
     <packaging>jar</packaging>
     <name>nodeum-sdk</name>
-    <version>1.83.0</version>
+    <version>1.84.0</version>
     <url>https://github.com/nodeum-io/nodeum-sdk-java</url>
     <description>Nodeum API Reference</description>
     <scm>

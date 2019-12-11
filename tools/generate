@@ -8,14 +8,14 @@ rm -r -- !("tools"|"LICENSE")
 docker run --rm \
     -v ${PWD}:/project \
     openapitools/openapi-generator-cli generate \
-    -i https://api.swaggerhub.com/apis/Nodeum/nodeum/2.0.0 \
+    -i https://api.swaggerhub.com/apis/Nodeum/nodeum/2.1.0 \
     -p sortParamsByRequiredFlag \
     -p modelPackage=io.nodeum.client.model \
     -p apiPackage=io.nodeum.client.api \
     -p invokerPackage=io.nodeum.client \
     -p groupId=io.nodeum \
     -p artifactId=nodeum-sdk \
-    -p artifactVersion=1.83.0 \
+    -p artifactVersion=1.84.0 \
     -p artifactUrl=https://github.com/nodeum-io/nodeum-sdk-java \
     -p artifactDescription="Nodeum API Reference" \
     -p scmConnection=scm:git:git@github.com:nodeum-io/nodeum-sdk-java \

@@ -6,20 +6,23 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**indexCloudBuckets**](CloudBucketsApi.md#indexCloudBuckets) | **GET** /cloud_buckets | Lists all cloud buckets.
 [**indexCloudBucketsByCloudConnector**](CloudBucketsApi.md#indexCloudBucketsByCloudConnector) | **GET** /cloud_connectors/{cloud_connector_id}/cloud_buckets | Lists all cloud buckets.
-[**indexCloudBucketsByCloudPool**](CloudBucketsApi.md#indexCloudBucketsByCloudPool) | **GET** /cloud_pools/{cloud_pool_id}/cloud_buckets | Lists all cloud buckets.
+[**indexCloudBucketsByPool**](CloudBucketsApi.md#indexCloudBucketsByPool) | **GET** /pools/{pool_id}/cloud_buckets | Lists all cloud buckets from pool.
 [**mountStatusCloudBucket**](CloudBucketsApi.md#mountStatusCloudBucket) | **GET** /cloud_buckets/{cloud_bucket_id}/mount | Get mount status of Cloud bucket.
 [**mountStatusCloudBucketByCloudConnector**](CloudBucketsApi.md#mountStatusCloudBucketByCloudConnector) | **GET** /cloud_connectors/{cloud_connector_id}/cloud_buckets/{cloud_bucket_id}/mount | Get mount status of Cloud bucket.
-[**mountStatusCloudBucketByCloudPool**](CloudBucketsApi.md#mountStatusCloudBucketByCloudPool) | **GET** /cloud_pools/{cloud_pool_id}/cloud_buckets/{cloud_bucket_id}/mount | Get mount status of Cloud bucket.
+[**mountStatusCloudBucketByPool**](CloudBucketsApi.md#mountStatusCloudBucketByPool) | **GET** /pools/{pool_id}/cloud_buckets/{cloud_bucket_id}/mount | Get mount status of Cloud bucket.
 [**showCloudBucket**](CloudBucketsApi.md#showCloudBucket) | **GET** /cloud_buckets/{cloud_bucket_id} | Displays a specific cloud bucket.
 [**showCloudBucketByCloudConnector**](CloudBucketsApi.md#showCloudBucketByCloudConnector) | **GET** /cloud_connectors/{cloud_connector_id}/cloud_buckets/{cloud_bucket_id} | Displays a specific cloud bucket.
-[**showCloudBucketByCloudPool**](CloudBucketsApi.md#showCloudBucketByCloudPool) | **GET** /cloud_pools/{cloud_pool_id}/cloud_buckets/{cloud_bucket_id} | Displays a specific cloud bucket.
+[**showCloudBucketByPool**](CloudBucketsApi.md#showCloudBucketByPool) | **GET** /pools/{pool_id}/cloud_buckets/{cloud_bucket_id} | Displays a specific cloud bucket.
 [**syncCloudBuckets**](CloudBucketsApi.md#syncCloudBuckets) | **PUT** /cloud_connectors/{cloud_connector_id}/cloud_buckets/-/sync | Synchronize internal cloud buckets with their remote equivalent.
 [**syncResultCloudBuckets**](CloudBucketsApi.md#syncResultCloudBuckets) | **GET** /cloud_connectors/{cloud_connector_id}/cloud_buckets/-/sync | Check result of cloud connector sync job.
+[**updateCloudBucket**](CloudBucketsApi.md#updateCloudBucket) | **PUT** /cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
+[**updateCloudBucketByCloudConnector**](CloudBucketsApi.md#updateCloudBucketByCloudConnector) | **PUT** /cloud_connectors/{cloud_connector_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
+[**updateCloudBucketByPool**](CloudBucketsApi.md#updateCloudBucketByPool) | **PUT** /pools/{pool_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
 
 
 <a name="indexCloudBuckets"></a>
 # **indexCloudBuckets**
-> CloudBucketCollection indexCloudBuckets(limit, offset, sortBy, id, cloudConnectorId, cloudPoolId, name, location, price)
+> CloudBucketCollection indexCloudBuckets(limit, offset, sortBy, id, cloudConnectorId, poolId, name, location, price)
 
 Lists all cloud buckets.
 
@@ -57,12 +60,12 @@ public class Example {
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
     String id = "id_example"; // String | Filter on id
     String cloudConnectorId = "cloudConnectorId_example"; // String | Filter on cloud connector id
-    String cloudPoolId = "cloudPoolId_example"; // String | Filter on cloud pool id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     String name = "name_example"; // String | Filter on name
     String location = "location_example"; // String | Filter on location
     String price = "price_example"; // String | Filter on price
     try {
-      CloudBucketCollection result = apiInstance.indexCloudBuckets(limit, offset, sortBy, id, cloudConnectorId, cloudPoolId, name, location, price);
+      CloudBucketCollection result = apiInstance.indexCloudBuckets(limit, offset, sortBy, id, cloudConnectorId, poolId, name, location, price);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CloudBucketsApi#indexCloudBuckets");
@@ -84,7 +87,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
  **id** | **String**| Filter on id | [optional]
  **cloudConnectorId** | **String**| Filter on cloud connector id | [optional]
- **cloudPoolId** | **String**| Filter on cloud pool id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
  **name** | **String**| Filter on name | [optional]
  **location** | **String**| Filter on location | [optional]
  **price** | **String**| Filter on price | [optional]
@@ -109,7 +112,7 @@ Name | Type | Description  | Notes
 
 <a name="indexCloudBucketsByCloudConnector"></a>
 # **indexCloudBucketsByCloudConnector**
-> CloudBucketCollection indexCloudBucketsByCloudConnector(cloudConnectorId, limit, offset, sortBy, id, cloudPoolId, name, location, price)
+> CloudBucketCollection indexCloudBucketsByCloudConnector(cloudConnectorId, limit, offset, sortBy, id, poolId, name, location, price)
 
 Lists all cloud buckets.
 
@@ -147,12 +150,12 @@ public class Example {
     Integer offset = 56; // Integer | The number of items to skip for pagination.
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
     String id = "id_example"; // String | Filter on id
-    String cloudPoolId = "cloudPoolId_example"; // String | Filter on cloud pool id
+    String poolId = "poolId_example"; // String | Filter on a pool id
     String name = "name_example"; // String | Filter on name
     String location = "location_example"; // String | Filter on location
     String price = "price_example"; // String | Filter on price
     try {
-      CloudBucketCollection result = apiInstance.indexCloudBucketsByCloudConnector(cloudConnectorId, limit, offset, sortBy, id, cloudPoolId, name, location, price);
+      CloudBucketCollection result = apiInstance.indexCloudBucketsByCloudConnector(cloudConnectorId, limit, offset, sortBy, id, poolId, name, location, price);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CloudBucketsApi#indexCloudBucketsByCloudConnector");
@@ -174,7 +177,7 @@ Name | Type | Description  | Notes
  **offset** | **Integer**| The number of items to skip for pagination. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
  **id** | **String**| Filter on id | [optional]
- **cloudPoolId** | **String**| Filter on cloud pool id | [optional]
+ **poolId** | **String**| Filter on a pool id | [optional]
  **name** | **String**| Filter on name | [optional]
  **location** | **String**| Filter on location | [optional]
  **price** | **String**| Filter on price | [optional]
@@ -197,11 +200,11 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | List of cloud buckets. |  -  |
 
-<a name="indexCloudBucketsByCloudPool"></a>
-# **indexCloudBucketsByCloudPool**
-> CloudBucketCollection indexCloudBucketsByCloudPool(cloudPoolId, limit, offset, sortBy, id, cloudConnectorId, name, location, price)
+<a name="indexCloudBucketsByPool"></a>
+# **indexCloudBucketsByPool**
+> CloudBucketCollection indexCloudBucketsByPool(poolId, limit, offset, sortBy, id, cloudConnectorId, name, location, price)
 
-Lists all cloud buckets.
+Lists all cloud buckets from pool.
 
 **API Key Scope**: cloud_buckets / index
 
@@ -232,7 +235,7 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
-    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
     Integer limit = 56; // Integer | The number of items to display for pagination.
     Integer offset = 56; // Integer | The number of items to skip for pagination.
     List<String> sortBy = Arrays.asList(); // List<String> | Sort results by attribute.  Can sort on multiple attributes, separated by `|`. Order direction can be suffixing the attribute by either `:asc` (default) or `:desc`.
@@ -242,10 +245,10 @@ public class Example {
     String location = "location_example"; // String | Filter on location
     String price = "price_example"; // String | Filter on price
     try {
-      CloudBucketCollection result = apiInstance.indexCloudBucketsByCloudPool(cloudPoolId, limit, offset, sortBy, id, cloudConnectorId, name, location, price);
+      CloudBucketCollection result = apiInstance.indexCloudBucketsByPool(poolId, limit, offset, sortBy, id, cloudConnectorId, name, location, price);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CloudBucketsApi#indexCloudBucketsByCloudPool");
+      System.err.println("Exception when calling CloudBucketsApi#indexCloudBucketsByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -259,7 +262,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cloudPoolId** | **String**| Numeric ID or name of cloud pool. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
  **limit** | **Integer**| The number of items to display for pagination. | [optional]
  **offset** | **Integer**| The number of items to skip for pagination. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Sort results by attribute.  Can sort on multiple attributes, separated by &#x60;|&#x60;. Order direction can be suffixing the attribute by either &#x60;:asc&#x60; (default) or &#x60;:desc&#x60;. | [optional]
@@ -439,9 +442,9 @@ Name | Type | Description  | Notes
 **200** | Mount status of storage. |  -  |
 **404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
-<a name="mountStatusCloudBucketByCloudPool"></a>
-# **mountStatusCloudBucketByCloudPool**
-> MountStatus mountStatusCloudBucketByCloudPool(cloudPoolId, cloudBucketId)
+<a name="mountStatusCloudBucketByPool"></a>
+# **mountStatusCloudBucketByPool**
+> MountStatus mountStatusCloudBucketByPool(poolId, cloudBucketId)
 
 Get mount status of Cloud bucket.
 
@@ -474,13 +477,13 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
-    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
     String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
     try {
-      MountStatus result = apiInstance.mountStatusCloudBucketByCloudPool(cloudPoolId, cloudBucketId);
+      MountStatus result = apiInstance.mountStatusCloudBucketByPool(poolId, cloudBucketId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CloudBucketsApi#mountStatusCloudBucketByCloudPool");
+      System.err.println("Exception when calling CloudBucketsApi#mountStatusCloudBucketByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -494,7 +497,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cloudPoolId** | **String**| Numeric ID or name of cloud pool. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
  **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
 
 ### Return type
@@ -668,9 +671,9 @@ Name | Type | Description  | Notes
 **200** | A specific cloud bucket. |  -  |
 **404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 
-<a name="showCloudBucketByCloudPool"></a>
-# **showCloudBucketByCloudPool**
-> CloudBucket showCloudBucketByCloudPool(cloudPoolId, cloudBucketId)
+<a name="showCloudBucketByPool"></a>
+# **showCloudBucketByPool**
+> CloudBucket showCloudBucketByPool(poolId, cloudBucketId)
 
 Displays a specific cloud bucket.
 
@@ -703,13 +706,13 @@ public class Example {
     //BearerAuth.setApiKeyPrefix("Token");
 
     CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
-    String cloudPoolId = "cloudPoolId_example"; // String | Numeric ID or name of cloud pool.
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
     String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
     try {
-      CloudBucket result = apiInstance.showCloudBucketByCloudPool(cloudPoolId, cloudBucketId);
+      CloudBucket result = apiInstance.showCloudBucketByPool(poolId, cloudBucketId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CloudBucketsApi#showCloudBucketByCloudPool");
+      System.err.println("Exception when calling CloudBucketsApi#showCloudBucketByPool");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -723,7 +726,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cloudPoolId** | **String**| Numeric ID or name of cloud pool. |
+ **poolId** | **String**| Numeric ID, or name of pool. |
  **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
 
 ### Return type
@@ -875,7 +878,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cloudConnectorId** | **String**| Numeric ID or name of cloud connector. |
- **jobId** | **String**| ID of active job | [optional]
+ **jobId** | **String**| ID of active job |
 
 ### Return type
 
@@ -895,4 +898,239 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Simple list of cloud buckets. |  -  |
 **202** | An active job that may be queued, working, completed or failed. |  -  |
+
+<a name="updateCloudBucket"></a>
+# **updateCloudBucket**
+> CloudBucket updateCloudBucket(cloudBucketId, cloudBucketBody)
+
+Updates a specific cloud bucket.
+
+**API Key Scope**: cloud_buckets / update
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudBucketsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
+    String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
+    CloudBucket cloudBucketBody = new CloudBucket(); // CloudBucket | 
+    try {
+      CloudBucket result = apiInstance.updateCloudBucket(cloudBucketId, cloudBucketBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudBucketsApi#updateCloudBucket");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
+ **cloudBucketBody** | [**CloudBucket**](CloudBucket.md)|  |
+
+### Return type
+
+[**CloudBucket**](CloudBucket.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud bucket. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="updateCloudBucketByCloudConnector"></a>
+# **updateCloudBucketByCloudConnector**
+> CloudBucket updateCloudBucketByCloudConnector(cloudConnectorId, cloudBucketId, cloudBucketBody)
+
+Updates a specific cloud bucket.
+
+**API Key Scope**: cloud_buckets / update
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudBucketsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
+    String cloudConnectorId = "cloudConnectorId_example"; // String | Numeric ID or name of cloud connector.
+    String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
+    CloudBucket cloudBucketBody = new CloudBucket(); // CloudBucket | 
+    try {
+      CloudBucket result = apiInstance.updateCloudBucketByCloudConnector(cloudConnectorId, cloudBucketId, cloudBucketBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudBucketsApi#updateCloudBucketByCloudConnector");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloudConnectorId** | **String**| Numeric ID or name of cloud connector. |
+ **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
+ **cloudBucketBody** | [**CloudBucket**](CloudBucket.md)|  |
+
+### Return type
+
+[**CloudBucket**](CloudBucket.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud bucket. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="updateCloudBucketByPool"></a>
+# **updateCloudBucketByPool**
+> CloudBucket updateCloudBucketByPool(poolId, cloudBucketId, cloudBucketBody)
+
+Updates a specific cloud bucket.
+
+**API Key Scope**: cloud_buckets / update
+
+### Example
+```java
+// Import classes:
+import io.nodeum.client.ApiClient;
+import io.nodeum.client.ApiException;
+import io.nodeum.client.Configuration;
+import io.nodeum.client.auth.*;
+import io.nodeum.client.models.*;
+import io.nodeum.client.api.CloudBucketsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
+    String poolId = "poolId_example"; // String | Numeric ID, or name of pool.
+    String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
+    CloudBucket cloudBucketBody = new CloudBucket(); // CloudBucket | 
+    try {
+      CloudBucket result = apiInstance.updateCloudBucketByPool(poolId, cloudBucketId, cloudBucketBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudBucketsApi#updateCloudBucketByPool");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **poolId** | **String**| Numeric ID, or name of pool. |
+ **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
+ **cloudBucketBody** | [**CloudBucket**](CloudBucket.md)|  |
+
+### Return type
+
+[**CloudBucket**](CloudBucket.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A specific cloud bucket. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 

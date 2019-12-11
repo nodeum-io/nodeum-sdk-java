@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createTaskMetadatum**](TaskMetadataApi.md#createTaskMetadatum) | **POST** /tasks/{task_id}/task_metadata | Creates a new task metadatum.
 [**destroyTaskMetadatum**](TaskMetadataApi.md#destroyTaskMetadatum) | **DELETE** /tasks/{task_id}/task_metadata/{task_metadatum_id} | Destroys a specific task metadatum.
 [**indexTaskMetadata**](TaskMetadataApi.md#indexTaskMetadata) | **GET** /tasks/{task_id}/task_metadata | Lists all task metadata.
-[**showTaskMetadat**](TaskMetadataApi.md#showTaskMetadat) | **GET** /tasks/{task_id}/task_metadata/{task_metadatum_id} | Displays a specific task metadatum.
+[**showTaskMetadatum**](TaskMetadataApi.md#showTaskMetadatum) | **GET** /tasks/{task_id}/task_metadata/{task_metadatum_id} | Displays a specific task metadatum.
 [**updateTaskMetadatum**](TaskMetadataApi.md#updateTaskMetadatum) | **PUT** /tasks/{task_id}/task_metadata/{task_metadatum_id} | Updates a specific task metadatum.
 
 
@@ -249,9 +249,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | List of task metadata. |  -  |
 
-<a name="showTaskMetadat"></a>
-# **showTaskMetadat**
-> TaskMetadatum showTaskMetadat(taskId, taskMetadatumId)
+<a name="showTaskMetadatum"></a>
+# **showTaskMetadatum**
+> TaskMetadatum showTaskMetadatum(taskId, taskMetadatumId)
 
 Displays a specific task metadatum.
 
@@ -287,10 +287,10 @@ public class Example {
     String taskId = "taskId_example"; // String | Numeric ID or name of task. Task names are not unique, it's recommanded to use numeric ID.
     Integer taskMetadatumId = 56; // Integer | Numeric ID of task metadatum.
     try {
-      TaskMetadatum result = apiInstance.showTaskMetadat(taskId, taskMetadatumId);
+      TaskMetadatum result = apiInstance.showTaskMetadatum(taskId, taskMetadatumId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TaskMetadataApi#showTaskMetadat");
+      System.err.println("Exception when calling TaskMetadataApi#showTaskMetadatum");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

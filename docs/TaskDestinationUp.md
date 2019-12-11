@@ -10,12 +10,8 @@ Name | Type | Description | Notes
 **folderPath** | **String** |  |  [optional]
 **tapeId** | **Integer** |  |  [optional]
 **tapeBarcode** | **String** |  |  [optional]
-**tapePoolId** | **Integer** |  |  [optional]
-**tapePoolName** | **String** |  |  [optional]
-**cloudPoolId** | **Integer** |  |  [optional]
-**cloudPoolName** | **String** |  |  [optional]
-**nasPoolId** | **Integer** |  |  [optional]
-**nasPoolName** | **String** |  |  [optional]
+**poolId** | **Integer** |  |  [optional]
+**poolName** | **String** |  |  [optional]
 
 
 

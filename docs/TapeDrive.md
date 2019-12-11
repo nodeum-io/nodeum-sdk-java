@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **mountCount** | **Integer** |  |  [optional] [readonly]
 **useTo** | **String** |  |  [optional] [readonly]
 **useBy** | **String** |  |  [optional] [readonly]
+**barcode** | **String** |  |  [optional] [readonly]
+**taskId** | **Integer** |  |  [optional] [readonly]
 **useFileProcessedSize** | **Integer** |  |  [optional] [readonly]
 **useFileSizeToProcess** | **Integer** |  |  [optional] [readonly]
 **useFileNameProcessed** | **String** |  |  [optional] [readonly]

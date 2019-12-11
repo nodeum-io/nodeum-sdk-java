@@ -1,0 +1,61 @@
+
+
+# TapeStat
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**logTime** | **String** |  |  [optional] [readonly]
+**barcode** | **String** |  |  [optional] [readonly]
+**mounts** | **Integer** |  |  [optional] [readonly]
+**datasetsWritten** | **Integer** |  |  [optional] [readonly]
+**datasetsRead** | **Integer** |  |  [optional] [readonly]
+**recoveredWriteDataErrors** | **Integer** |  |  [optional] [readonly]
+**unrecoveredWriteDataErrors** | **Integer** |  |  [optional] [readonly]
+**writeServoErrors** | **Integer** |  |  [optional] [readonly]
+**unrecoveredWriteServoErrors** | **Integer** |  |  [optional] [readonly]
+**recoveredReadErrors** | **Integer** |  |  [optional] [readonly]
+**unrecoveredReadErrors** | **Integer** |  |  [optional] [readonly]
+**lastMountUnrecoveredWriteErrors** | **Integer** |  |  [optional] [readonly]
+**lastMountUnrecoveredReadErrors** | **Integer** |  |  [optional] [readonly]
+**lastMountMbytesWritten** | **Integer** |  |  [optional] [readonly]
+**lastMountMbytesRead** | **Integer** |  |  [optional] [readonly]
+**lifetimeMbytesWritten** | **Integer** |  |  [optional] [readonly]
+**lifetimeMbytesRead** | **Integer** |  |  [optional] [readonly]
+**lastLoadWriteCompressionRatio** | **Integer** |  |  [optional] [readonly]
+**lastLoadReadCompressionRatio** | **Integer** |  |  [optional] [readonly]
+**mediumMountTime** | **Integer** |  |  [optional] [readonly]
+**mediumReadyTime** | **Integer** |  |  [optional] [readonly]
+**totalNativeCapacity** | **Integer** |  |  [optional] [readonly]
+**totalUsedNativeCapacity** | **Integer** |  |  [optional] [readonly]
+**writeProtect** | **Integer** |  |  [optional] [readonly]
+**worm** | **Integer** |  |  [optional] [readonly]
+**beginningOfMediumPasses** | **Integer** |  |  [optional] [readonly]
+**middleOfTapePasses** | **Integer** |  |  [optional] [readonly]
+**readCompressionRatio** | **Integer** |  |  [optional] [readonly]
+**writeCompressionRatio** | **Integer** |  |  [optional] [readonly]
+**mbytesTransferredToAppClient** | **Integer** |  |  [optional] [readonly]
+**bytesTransferredToAppClient** | **Integer** |  |  [optional] [readonly]
+**mbytesReadFromMedium** | **Integer** |  |  [optional] [readonly]
+**bytesReadFromMedium** | **Integer** |  |  [optional] [readonly]
+**mbytesTransferredFromAppClient** | **Integer** |  |  [optional] [readonly]
+**bytesTransferredFromAppClient** | **Integer** |  |  [optional] [readonly]
+**mbytesWrittenToMedium** | **Integer** |  |  [optional] [readonly]
+**bytesWrittenToMedium** | **Integer** |  |  [optional] [readonly]
+**dataCompressionEnabled** | **Integer** |  |  [optional] [readonly]
+**writeRetries** | **Integer** |  |  [optional] [readonly]
+**writePerms** | **Integer** |  |  [optional] [readonly]
+**suspendedWrites** | **Integer** |  |  [optional] [readonly]
+**fatalSuspendedWrites** | **Integer** |  |  [optional] [readonly]
+**readRetries** | **Integer** |  |  [optional] [readonly]
+**readPerms** | **Integer** |  |  [optional] [readonly]
+**suspendedReads** | **Integer** |  |  [optional] [readonly]
+**fatalSuspendedReads** | **Integer** |  |  [optional] [readonly]
+**partition0RemainingCapacity** | **Integer** |  |  [optional] [readonly]
+**partition1RemainingCapacity** | **Integer** |  |  [optional] [readonly]
+**partition0MaximumCapacity** | **Integer** |  |  [optional] [readonly]
+**partition1MaximumCapacity** | **Integer** |  |  [optional] [readonly]
+
+
+
