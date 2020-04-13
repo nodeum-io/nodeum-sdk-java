@@ -22,12 +22,12 @@ Creates a new task schedule. Only one should be created.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskSchedulesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskSchedulesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -99,12 +99,12 @@ Destroys the task schedule.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskSchedulesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskSchedulesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -172,12 +172,12 @@ Lists all task schedules.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskSchedulesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskSchedulesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -260,12 +260,12 @@ Displays the task schedule.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskSchedulesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskSchedulesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -334,12 +334,12 @@ Updates the existing task schedule.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskSchedulesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskSchedulesApi;
 
 public class Example {
   public static void main(String[] args) {

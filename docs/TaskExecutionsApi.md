@@ -21,12 +21,12 @@ Lists all task executions.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskExecutionsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskExecutionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -141,12 +141,12 @@ Lists all task executions.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskExecutionsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskExecutionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -255,12 +255,12 @@ Displays a specific task execution.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskExecutionsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskExecutionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -330,12 +330,12 @@ Displays a specific task execution.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskExecutionsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskExecutionsApi;
 
 public class Example {
   public static void main(String[] args) {

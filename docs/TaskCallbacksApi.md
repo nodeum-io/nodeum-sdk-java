@@ -22,12 +22,12 @@ Creates a new task callback.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskCallbacksApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskCallbacksApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -99,12 +99,12 @@ Destroys a specific task callback.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskCallbacksApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskCallbacksApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -174,12 +174,12 @@ Lists all task callbacks.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskCallbacksApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskCallbacksApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -260,12 +260,12 @@ Displays a specific task callback.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskCallbacksApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskCallbacksApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -336,12 +336,12 @@ Updates a specific task callback.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TaskCallbacksApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TaskCallbacksApi;
 
 public class Example {
   public static void main(String[] args) {

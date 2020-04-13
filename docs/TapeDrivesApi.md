@@ -27,12 +27,12 @@ Creates a new tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -104,12 +104,12 @@ Destroys a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -177,12 +177,12 @@ Destroys a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -252,12 +252,12 @@ Lists tape drives devices.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -330,12 +330,12 @@ Lists all tape drives.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -462,12 +462,12 @@ Lists all tape drives.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -594,12 +594,12 @@ Displays a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -668,12 +668,12 @@ Displays a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -744,12 +744,12 @@ Updates a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -821,12 +821,12 @@ Updates a specific tape drive.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.TapeDrivesApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapeDrivesApi;
 
 public class Example {
   public static void main(String[] args) {

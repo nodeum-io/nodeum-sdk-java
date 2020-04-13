@@ -1,3 +1,3 @@
-<manifest package="io.nodeum.client" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="io.nodeum.sdk.client" xmlns:android="http://schemas.android.com/apk/res/android">
     <application />
 </manifest>

@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **options** | **String** |  |  [optional]
 **username** | **String** |  |  [optional]
 **password** | **String** |  |  [optional]
+**fileCount** | **Integer** |  |  [optional] [readonly]
+**fileSizeSum** | **Integer** |  |  [optional] [readonly]
 
 
 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **cloudConnectorId** | **Integer** |  |  [optional] [readonly]
 **poolId** | **Integer** |  |  [optional] [readonly]
 **name** | **String** |  |  [optional] [readonly]
-**filesCount** | **Integer** |  |  [optional] [readonly]
-**filesSize** | **Integer** |  |  [optional] [readonly]
+**fileCount** | **Integer** |  |  [optional] [readonly]
+**fileSizeSum** | **Integer** |  |  [optional] [readonly]
 **location** | **String** |  |  [optional] [readonly]
 **price** | **String** |  |  [optional]
 

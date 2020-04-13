@@ -4,9 +4,82 @@ All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**downloadResetVars**](SystemsApi.md#downloadResetVars) | **POST** /systems/reset/generate_vars | Creates a YAML file with selected tables and downloads it
 [**resultDownloadTraces**](SystemsApi.md#resultDownloadTraces) | **GET** /systems/download_traces | Check result of a download traces job.
 [**triggerDownloadTraces**](SystemsApi.md#triggerDownloadTraces) | **PUT** /systems/download_traces | Trigger a download traces request.
 
+
+<a name="downloadResetVars"></a>
+# **downloadResetVars**
+> File downloadResetVars(resetForm)
+
+Creates a YAML file with selected tables and downloads it
+
+### Example
+```java
+// Import classes:
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.SystemsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    SystemsApi apiInstance = new SystemsApi(defaultClient);
+    Reset resetForm = new Reset(); // Reset | 
+    try {
+      File result = apiInstance.downloadResetVars(resetForm);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SystemsApi#downloadResetVars");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resetForm** | [**Reset**](Reset.md)|  |
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/x-yaml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The var file created |  -  |
 
 <a name="resultDownloadTraces"></a>
 # **resultDownloadTraces**
@@ -19,12 +92,12 @@ Check result of a download traces job.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.SystemsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.SystemsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -94,12 +167,12 @@ Trigger a download traces request.
 ### Example
 ```java
 // Import classes:
-import io.nodeum.client.ApiClient;
-import io.nodeum.client.ApiException;
-import io.nodeum.client.Configuration;
-import io.nodeum.client.auth.*;
-import io.nodeum.client.models.*;
-import io.nodeum.client.api.SystemsApi;
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.SystemsApi;
 
 public class Example {
   public static void main(String[] args) {

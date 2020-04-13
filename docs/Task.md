@@ -36,6 +36,7 @@ Name | Value
 ACTIVE_ARCHIVE | &quot;active_archive&quot;
 OFFLINE_ARCHIVE | &quot;offline_archive&quot;
 DATA_EXCHANGE | &quot;data_exchange&quot;
+DATA_MIGRATION | &quot;data_migration&quot;
 MAINTENANCE | &quot;maintenance&quot;
 DATA_ENRICHMENT | &quot;data_enrichment&quot;
 
