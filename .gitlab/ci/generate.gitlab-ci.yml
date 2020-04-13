@@ -1,0 +1,81 @@
+Generate SDK:
+  image: $CI_REGISTRY/nodeum/web/swagger:$SWAGGER_REF
+  stage: build
+  rules:
+    - if: $SWAGGER_REF && $PACKAGE_VERSION
+  script:
+    - >-
+      docker-entrypoint.sh generate
+      -i /swagger/api.yml
+      -p artifactId=$PACKAGE_NAME
+      -p artifactUrl=https://github.com/nodeum-io/nodeum-sdk-java
+      -p artifactVersion=$PACKAGE_VERSION
+      -p artifactDescription="Nodeum API"
+      -p scmConnection=scm:git:git@github.com:nodeum-io/nodeum-sdk-java
+      -p scmDeveloperConnection=scm:git:git@github.com:nodeum-io/nodeum-sdk-java
+      -p scmUrl=https://github.com/nodeum-io/nodeum-sdk-java
+      -p developerName=MT-C
+      -p developerEmail=support@mt-c.com
+      -p developerOrganization=MT-C
+      -p developerOrganizationUrl=https://mt-c.com/
+      -p licenseName="MIT License"
+      -p licenseUrl=https://opensource.org/licenses/MIT
+      -p groupId=io.nodeum.sdk
+      -p invokerPackage=io.nodeum.sdk.client
+      -p apiPackage=io.nodeum.sdk.client.api
+      -p modelPackage=io.nodeum.sdk.client.model
+      -g java
+      -o $CI_PROJECT_DIR
+  artifacts:
+    paths:
+      - .openapi-generator/
+      - docs/
+      - gradle/
+      - src/
+      - .gitignore
+      - .travis.yml
+      - build.*
+      - git_push.sh
+      - gradle*
+      - pom.xml
+      - README.md
+      - settings.gradle
+
+Commit SDK:
+  image: docker:git
+  stage: publish
+  rules:
+    - if: $SWAGGER_REF && $PACKAGE_VERSION
+  needs:
+    - job: Generate SDK
+      artifacts: true
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$GIT_SSH_PRIV_KEY" | ssh-add -
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git config --global user.name "$GITLAB_USER_NAME"
+    - git remote set-url --add --push origin git@$CI_SERVER_HOST:$CI_PROJECT_PATH.git
+    - mkdir -p ~/.ssh
+    - ssh-keyscan $CI_SERVER_HOST >> ~/.ssh/known_hosts
+  script:
+    - git add .
+    - git commit -m "Generate SDK from $SWAGGER_REF for $PACKAGE_VERSION" || true
+    - git push -o ci.skip origin HEAD:$CI_COMMIT_REF_NAME
+
+Publish SDK:
+  image: python:3
+  stage: publish
+  rules:
+    - if: $SWAGGER_REF && $PACKAGE_VERSION
+  needs:
+    - job: Generate SDK
+      artifacts: true
+  before_script:
+    - pip install --user --upgrade twine
+    - >-
+      echo "[pypi]
+        username = __token__
+        password = $PIP_API_TOKEN" >> $HOME/.pypirc
+  script:
+    - python3 setup.py sdist bdist_wheel
+    - python3 -m twine upload dist/*
