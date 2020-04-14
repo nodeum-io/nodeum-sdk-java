@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * TapeDriveDeviceCollection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class TapeDriveDeviceCollection {
   public static final String SERIALIZED_NAME_TAPE_DRIVES = "tape_drives";
   @SerializedName(SERIALIZED_NAME_TAPE_DRIVES)

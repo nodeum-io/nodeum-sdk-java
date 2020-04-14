@@ -2,7 +2,7 @@
 
 Nodeum API
 - API version: 2.1.0
-  - Build date: 2020-04-14T13:35:16.354Z[GMT]
+  - Build date: 2020-04-14T15:55:03.031Z[GMT]
 
 The Nodeum API makes it easy to tap into the digital data mesh that runs across your organisation. Make requests to our API endpoints and we’ll give you everything you need to interconnect your business workflows with your storage.
 
@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.nodeum.sdk</groupId>
   <artifactId>nodeum-sdk</artifactId>
-  <version>1.85.0</version>
+  <version>1.85.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -96,7 +96,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.nodeum.sdk:nodeum-sdk:1.85.0"
+compile "io.nodeum.sdk:nodeum-sdk:1.85.1"
 ```
 
 ### Others
@@ -109,7 +109,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/nodeum-sdk-1.85.0.jar`
+* `target/nodeum-sdk-1.85.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

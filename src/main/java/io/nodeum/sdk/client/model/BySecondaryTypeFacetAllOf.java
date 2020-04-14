@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * BySecondaryTypeFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class BySecondaryTypeFacetAllOf {
   public static final String SERIALIZED_NAME_SECONDARY_NAME = "secondary_name";
   @SerializedName(SERIALIZED_NAME_SECONDARY_NAME)

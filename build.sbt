@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "io.nodeum.sdk",
     name := "nodeum-sdk",
-    version := "1.85.0",
+    version := "1.85.1",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),

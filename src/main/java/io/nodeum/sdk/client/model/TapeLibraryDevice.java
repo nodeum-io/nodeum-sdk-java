@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TapeLibraryDevice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class TapeLibraryDevice {
   public static final String SERIALIZED_NAME_SERIAL = "serial";
   @SerializedName(SERIALIZED_NAME_SERIAL)

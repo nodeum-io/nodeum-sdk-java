@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ActiveJobStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class ActiveJobStatus {
   public static final String SERIALIZED_NAME_JOB_ID = "job_id";
   @SerializedName(SERIALIZED_NAME_JOB_ID)

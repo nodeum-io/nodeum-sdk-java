@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Reset
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class Reset {
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)

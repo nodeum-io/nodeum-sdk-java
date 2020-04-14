@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * MountStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class MountStatus {
   public static final String SERIALIZED_NAME_MOUNTED = "mounted";
   @SerializedName(SERIALIZED_NAME_MOUNTED)

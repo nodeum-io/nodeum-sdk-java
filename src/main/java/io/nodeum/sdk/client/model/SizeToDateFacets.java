@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * SizeToDateFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class SizeToDateFacets {
   public static final String SERIALIZED_NAME_LESS100_KB = "less_100_kb";
   @SerializedName(SERIALIZED_NAME_LESS100_KB)

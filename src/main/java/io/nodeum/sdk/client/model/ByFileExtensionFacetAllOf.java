@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ByFileExtensionFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
 public class ByFileExtensionFacetAllOf {
   public static final String SERIALIZED_NAME_FILE_EXTENSION = "file_extension";
   @SerializedName(SERIALIZED_NAME_FILE_EXTENSION)

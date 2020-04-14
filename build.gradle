@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'io.nodeum.sdk'
-version = '1.85.0'
+version = '1.85.1'
 
 buildscript {
     repositories {
