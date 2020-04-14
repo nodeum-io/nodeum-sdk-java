@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ByPrimaryFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-13T15:00:02.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
 public class ByPrimaryFacetAllOf {
   public static final String SERIALIZED_NAME_PRIMARY_NAME = "primary_name";
   @SerializedName(SERIALIZED_NAME_PRIMARY_NAME)

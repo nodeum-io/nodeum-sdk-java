@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * ByUserOwnerFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-13T15:00:02.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
 public class ByUserOwnerFacet extends FileFacet {
   public static final String SERIALIZED_NAME_USER_OWNER_ID = "user_owner_id";
   @SerializedName(SERIALIZED_NAME_USER_OWNER_ID)

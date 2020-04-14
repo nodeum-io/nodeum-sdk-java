@@ -29,7 +29,7 @@ import java.io.IOException;
  * Attribute can&#39;t be blank
  */
 @ApiModel(description = "Attribute can't be blank")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-13T15:00:02.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
 public class Blank extends AttributeError {
 
   @Override

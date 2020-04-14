@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * ResetSections
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-13T15:00:02.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
 public class ResetSections {
   /**
    * Gets or Sets value

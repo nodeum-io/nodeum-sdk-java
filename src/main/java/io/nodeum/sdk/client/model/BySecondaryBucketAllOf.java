@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * BySecondaryBucketAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-13T15:00:02.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
 public class BySecondaryBucketAllOf {
   public static final String SERIALIZED_NAME_VAL = "val";
   @SerializedName(SERIALIZED_NAME_VAL)
