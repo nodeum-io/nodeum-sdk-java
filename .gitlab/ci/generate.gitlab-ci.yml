@@ -1,12 +1,27 @@
+variables:
+  GITHUB_OWNER: nodeum-io
+  GITHUB_REPOSITORY: nodeum-sdk-java
+
 Generate SDK:
   image: $CI_REGISTRY/nodeum/web/swagger:$SWAGGER_REF
   stage: build
   rules:
     - if: $SWAGGER_REF && $PACKAGE_VERSION
+  before_script:
+    - >-
+      rm -rf
+      pom.xml
+      README.md
+      build.gradle
+      build.sbt
+      settings.gradle
+      gradle.properties
+      src/main/AndroidManifest.xml
   script:
     - >-
       docker-entrypoint.sh generate
       -i /swagger/api.yml
+      -p hideGenerationTimestamp
       -p artifactId=$PACKAGE_NAME
       -p artifactUrl=https://github.com/nodeum-io/nodeum-sdk-java
       -p artifactVersion=$PACKAGE_VERSION
@@ -14,6 +29,9 @@ Generate SDK:
       -p scmConnection=scm:git:git@github.com:nodeum-io/nodeum-sdk-java
       -p scmDeveloperConnection=scm:git:git@github.com:nodeum-io/nodeum-sdk-java
       -p scmUrl=https://github.com/nodeum-io/nodeum-sdk-java
+      -p distributionManagementId=github
+      -p distributionManagementName="GitHub $GITHUB_OWNER Apache Maven Packages"
+      -p distributionManagementUrl=https://maven.pkg.github.com/$GITHUB_OWNER/$GITHUB_REPOSITORY
       -p developerName=MT-C
       -p developerEmail=support@mt-c.com
       -p developerOrganization=MT-C
@@ -25,6 +43,7 @@ Generate SDK:
       -p apiPackage=io.nodeum.sdk.client.api
       -p modelPackage=io.nodeum.sdk.client.model
       -g java
+      -t .openapi-generator/templates/java
       -o $CI_PROJECT_DIR
   artifacts:
     paths:
@@ -61,3 +80,20 @@ Commit SDK:
     - git add .
     - git commit -m "Generate SDK from $SWAGGER_REF for $PACKAGE_VERSION" || true
     - git push -o ci.skip origin HEAD:$CI_COMMIT_REF_NAME
+
+Publish SDK (maven):
+  image: maven:3
+  stage: publish
+  rules:
+    - if: $SWAGGER_REF && $PACKAGE_VERSION
+  needs:
+    - job: Generate SDK
+      artifacts: true
+  before_script:
+    - cp .gitlab/ci/m2_settings.xml $HOME/.m2/settings.xml
+    - sed -i "s/OWNER/$GITHUB_OWNER/g" $HOME/.m2/settings.xml
+    - sed -i "s/REPOSITORY/$GITHUB_REPOSITORY/g" $HOME/.m2/settings.xml
+    - sed -i "s/USERNAME/$GITHUB_USER/g" $HOME/.m2/settings.xml
+    - sed -i "s/TOKEN/$GITHUB_TOKEN/g" $HOME/.m2/settings.xml
+  script:
+    - mvn deploy
