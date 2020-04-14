@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ByGroupOwnerFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
 public class ByGroupOwnerFacetAllOf {
   public static final String SERIALIZED_NAME_GROUP_OWNER_ID = "group_owner_id";
   @SerializedName(SERIALIZED_NAME_GROUP_OWNER_ID)

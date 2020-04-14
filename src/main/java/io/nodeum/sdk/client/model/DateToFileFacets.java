@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * DateToFileFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
 public class DateToFileFacets {
   public static final String SERIALIZED_NAME_IN_CACHE = "in_cache";
   @SerializedName(SERIALIZED_NAME_IN_CACHE)

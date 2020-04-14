@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * BySecondaryBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T10:02:47.642Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T13:35:16.354Z[GMT]")
 public class BySecondaryBucket extends ByDateFacet {
   public static final String SERIALIZED_NAME_VAL = "val";
   @SerializedName(SERIALIZED_NAME_VAL)

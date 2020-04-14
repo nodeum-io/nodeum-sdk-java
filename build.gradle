@@ -2,12 +2,12 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
-group = 'io.nodeum'
-version = '1.84.0'
+group = 'io.nodeum.sdk'
+version = '1.85.0'
 
 buildscript {
     repositories {
-        mavenCentral()
+        maven { url "https://repo1.maven.org/maven2" }
         jcenter()
     }
     dependencies {
@@ -106,7 +106,7 @@ dependencies {
     compile 'io.gsonfire:gson-fire:1.8.3'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     compile 'org.threeten:threetenbp:1.4.0'
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13'
 }
 
 javadoc {
