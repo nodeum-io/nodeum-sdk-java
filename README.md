@@ -2,7 +2,7 @@
 
 Nodeum API
 - API version: 2.1.0
-  - Build date: 2020-04-14T15:55:03.031Z[GMT]
+  - Build date: 2020-05-17T20:02:36.953Z[GMT]
 
 The Nodeum API makes it easy to tap into the digital data mesh that runs across your organisation. Make requests to our API endpoints and we’ll give you everything you need to interconnect your business workflows with your storage.
 
@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.nodeum.sdk</groupId>
   <artifactId>nodeum-sdk</artifactId>
-  <version>1.85.1</version>
+  <version>1.86.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -96,7 +96,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.nodeum.sdk:nodeum-sdk:1.85.1"
+compile "io.nodeum.sdk:nodeum-sdk:1.86.0"
 ```
 
 ### Others
@@ -109,7 +109,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/nodeum-sdk-1.85.1.jar`
+* `target/nodeum-sdk-1.86.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -269,12 +269,23 @@ Class | Method | HTTP request | Description
 *PoolsApi* | [**unmountPool**](docs/PoolsApi.md#unmountPool) | **DELETE** /pools/{pool_id}/mount | Unmount Pool.
 *PoolsApi* | [**updatePool**](docs/PoolsApi.md#updatePool) | **PUT** /pools/{pool_id} | Updates a specific pool.
 *PoolsApi* | [**updatePrimaryScan**](docs/PoolsApi.md#updatePrimaryScan) | **PUT** /pools/{pool_id}/primary_scan | Updates the existing primary pool scan option.
-*StatisticsApi* | [**statisticsByFileExtension**](docs/StatisticsApi.md#statisticsByFileExtension) | **GET** /statistics/by_file_extension | TODO
-*StatisticsApi* | [**statisticsByGroupOwner**](docs/StatisticsApi.md#statisticsByGroupOwner) | **GET** /statistics/by_group_owner | TODO
-*StatisticsApi* | [**statisticsByPrimaryName**](docs/StatisticsApi.md#statisticsByPrimaryName) | **GET** /statistics/by_primary_name | TODO
-*StatisticsApi* | [**statisticsBySecondaryStorage**](docs/StatisticsApi.md#statisticsBySecondaryStorage) | **GET** /statistics/by_secondary_storage | TODO
-*StatisticsApi* | [**statisticsBySize**](docs/StatisticsApi.md#statisticsBySize) | **GET** /statistics/by_size | TODO
-*StatisticsApi* | [**statisticsByUserOwner**](docs/StatisticsApi.md#statisticsByUserOwner) | **GET** /statistics/by_user_owner | TODO
+*StatisticsApi* | [**statisticsByDate**](docs/StatisticsApi.md#statisticsByDate) | **GET** /statistics/by_date | Get statistics about files, grouped by date
+*StatisticsApi* | [**statisticsByFileExtension**](docs/StatisticsApi.md#statisticsByFileExtension) | **GET** /statistics/by_file_extension | Get statistics about files, grouped by file extension
+*StatisticsApi* | [**statisticsByGroupOwner**](docs/StatisticsApi.md#statisticsByGroupOwner) | **GET** /statistics/by_group_owner | Get statistics about files, grouped by owner (group)
+*StatisticsApi* | [**statisticsByPrimaryCloud**](docs/StatisticsApi.md#statisticsByPrimaryCloud) | **GET** /statistics/by_primary_cloud | Get statistics about files, grouped by primary Cloud
+*StatisticsApi* | [**statisticsByPrimaryName**](docs/StatisticsApi.md#statisticsByPrimaryName) | **GET** /statistics/by_primary_name | Get statistics about files, grouped by primary storages
+*StatisticsApi* | [**statisticsByPrimaryNas**](docs/StatisticsApi.md#statisticsByPrimaryNas) | **GET** /statistics/by_primary_nas | Get statistics about files, grouped by primary NAS
+*StatisticsApi* | [**statisticsByPrimaryStorage**](docs/StatisticsApi.md#statisticsByPrimaryStorage) | **GET** /statistics/by_primary_storage | Get statistics about files, grouped by primary storage
+*StatisticsApi* | [**statisticsBySecondaryCloud**](docs/StatisticsApi.md#statisticsBySecondaryCloud) | **GET** /statistics/by_secondary_cloud | Get statistics about files, grouped by secondary Cloud
+*StatisticsApi* | [**statisticsBySecondaryNas**](docs/StatisticsApi.md#statisticsBySecondaryNas) | **GET** /statistics/by_secondary_nas | Get statistics about files, grouped by secondary NAS
+*StatisticsApi* | [**statisticsBySecondaryStorage**](docs/StatisticsApi.md#statisticsBySecondaryStorage) | **GET** /statistics/by_secondary_storage | Get statistics about files, grouped by secondary storage
+*StatisticsApi* | [**statisticsBySecondaryTape**](docs/StatisticsApi.md#statisticsBySecondaryTape) | **GET** /statistics/by_secondary_tape | Get statistics about files, grouped by secondary Tape
+*StatisticsApi* | [**statisticsBySize**](docs/StatisticsApi.md#statisticsBySize) | **GET** /statistics/by_size | Get statistics about files, grouped by size
+*StatisticsApi* | [**statisticsByUserOwner**](docs/StatisticsApi.md#statisticsByUserOwner) | **GET** /statistics/by_user_owner | Get statistics about files, grouped by owner (user)
+*StatisticsApi* | [**statisticsStorage**](docs/StatisticsApi.md#statisticsStorage) | **GET** /statistics/storage | Get statistics about storages, grouped by types
+*StatisticsApi* | [**statisticsTaskByStatus**](docs/StatisticsApi.md#statisticsTaskByStatus) | **GET** /statistics/task_by_status | Get statistics about tasks executions, grouped by status
+*StatisticsApi* | [**statisticsTaskByStorage**](docs/StatisticsApi.md#statisticsTaskByStorage) | **GET** /statistics/task_by_storage | Get statistics about tasks executions, grouped by source and destination
+*StatisticsApi* | [**statisticsTaskByWorkflow**](docs/StatisticsApi.md#statisticsTaskByWorkflow) | **GET** /statistics/task_by_workflow | Get statistics about tasks executions, grouped by workflow
 *SystemsApi* | [**downloadResetVars**](docs/SystemsApi.md#downloadResetVars) | **POST** /systems/reset/generate_vars | Creates a YAML file with selected tables and downloads it
 *SystemsApi* | [**resultDownloadTraces**](docs/SystemsApi.md#resultDownloadTraces) | **GET** /systems/download_traces | Check result of a download traces job.
 *SystemsApi* | [**triggerDownloadTraces**](docs/SystemsApi.md#triggerDownloadTraces) | **PUT** /systems/download_traces | Trigger a download traces request.
@@ -355,12 +366,17 @@ Class | Method | HTTP request | Description
 *TasksApi* | [**stopTaskResult**](docs/TasksApi.md#stopTaskResult) | **GET** /tasks/{task_id}/action/stop | Check result of a task stop request.
 *TasksApi* | [**updateTask**](docs/TasksApi.md#updateTask) | **PUT** /tasks/{task_id} | Updates a specific task.
 *UsersApi* | [**createApiKey**](docs/UsersApi.md#createApiKey) | **POST** /users/me/api_keys | Creates a new API Key for current user.
+*UsersApi* | [**createConfiguration**](docs/UsersApi.md#createConfiguration) | **POST** /users/me/configurations | Creates a new configuration value for current user.
 *UsersApi* | [**destroyApiKey**](docs/UsersApi.md#destroyApiKey) | **DELETE** /users/me/api_keys/{api_key_id} | Destroys a specific API Key.
+*UsersApi* | [**destroyConfiguration**](docs/UsersApi.md#destroyConfiguration) | **DELETE** /users/me/configurations/{configuration_id} | Destroys a specific configuration value.
 *UsersApi* | [**indexApiKeys**](docs/UsersApi.md#indexApiKeys) | **GET** /users/me/api_keys | Lists all API keys of current user.
+*UsersApi* | [**indexConfigurations**](docs/UsersApi.md#indexConfigurations) | **GET** /users/me/configurations | Lists all configurations of current user.
 *UsersApi* | [**indexSystemGroups**](docs/UsersApi.md#indexSystemGroups) | **GET** /groups/-/systems | List all system groups.
 *UsersApi* | [**indexSystemUsers**](docs/UsersApi.md#indexSystemUsers) | **GET** /users/-/systems | List all system users.
 *UsersApi* | [**showApiKey**](docs/UsersApi.md#showApiKey) | **GET** /users/me/api_keys/{api_key_id} | Displays a specific API Key with its scopes.
+*UsersApi* | [**showConfiguration**](docs/UsersApi.md#showConfiguration) | **GET** /users/me/configurations/{configuration_id} | Displays a specific configuration value.
 *UsersApi* | [**updateApiKey**](docs/UsersApi.md#updateApiKey) | **PUT** /users/me/api_keys/{api_key_id} | Updates a specific API Key.
+*UsersApi* | [**updateConfiguration**](docs/UsersApi.md#updateConfiguration) | **PUT** /users/me/configurations/{configuration_id} | Updates a specific configuration value.
 
 
 ## Documentation for Models
@@ -381,15 +397,32 @@ Class | Method | HTTP request | Description
  - [ByFileExtensionFacetAllOf](docs/ByFileExtensionFacetAllOf.md)
  - [ByGroupOwnerFacet](docs/ByGroupOwnerFacet.md)
  - [ByGroupOwnerFacetAllOf](docs/ByGroupOwnerFacetAllOf.md)
+ - [ByPrimaryCloudFacet](docs/ByPrimaryCloudFacet.md)
+ - [ByPrimaryCloudFacetAllOf](docs/ByPrimaryCloudFacetAllOf.md)
  - [ByPrimaryFacet](docs/ByPrimaryFacet.md)
  - [ByPrimaryFacetAllOf](docs/ByPrimaryFacetAllOf.md)
- - [BySecondaryBucket](docs/BySecondaryBucket.md)
- - [BySecondaryBucketAllOf](docs/BySecondaryBucketAllOf.md)
- - [BySecondaryBuckets](docs/BySecondaryBuckets.md)
- - [BySecondaryFacet](docs/BySecondaryFacet.md)
+ - [ByPrimaryNasFacet](docs/ByPrimaryNasFacet.md)
+ - [ByPrimaryNasFacetAllOf](docs/ByPrimaryNasFacetAllOf.md)
+ - [ByPrimaryStorageFacet](docs/ByPrimaryStorageFacet.md)
+ - [ByPrimaryTypeFacet](docs/ByPrimaryTypeFacet.md)
+ - [BySecondaryCloudFacet](docs/BySecondaryCloudFacet.md)
+ - [BySecondaryCloudFacetAllOf](docs/BySecondaryCloudFacetAllOf.md)
+ - [BySecondaryNasFacet](docs/BySecondaryNasFacet.md)
+ - [BySecondaryNasFacetAllOf](docs/BySecondaryNasFacetAllOf.md)
+ - [BySecondaryStorageFacet](docs/BySecondaryStorageFacet.md)
+ - [BySecondaryTapeFacet](docs/BySecondaryTapeFacet.md)
+ - [BySecondaryTapeFacetAllOf](docs/BySecondaryTapeFacetAllOf.md)
  - [BySecondaryTypeFacet](docs/BySecondaryTypeFacet.md)
  - [BySecondaryTypeFacetAllOf](docs/BySecondaryTypeFacetAllOf.md)
  - [BySizeFacet](docs/BySizeFacet.md)
+ - [ByTaskStatusFacet](docs/ByTaskStatusFacet.md)
+ - [ByTaskStatusFacetAllOf](docs/ByTaskStatusFacetAllOf.md)
+ - [ByTaskStorageFacet](docs/ByTaskStorageFacet.md)
+ - [ByTaskStorageFacetAllOf](docs/ByTaskStorageFacetAllOf.md)
+ - [ByTaskWorkflowFacet](docs/ByTaskWorkflowFacet.md)
+ - [ByTaskWorkflowFacetAllOf](docs/ByTaskWorkflowFacetAllOf.md)
+ - [ByTypeFacetBucket](docs/ByTypeFacetBucket.md)
+ - [ByTypeFacetBuckets](docs/ByTypeFacetBuckets.md)
  - [ByUserOwnerFacet](docs/ByUserOwnerFacet.md)
  - [ByUserOwnerFacetAllOf](docs/ByUserOwnerFacetAllOf.md)
  - [CloudBucket](docs/CloudBucket.md)
@@ -402,8 +435,10 @@ Class | Method | HTTP request | Description
  - [ContainerPrivilege](docs/ContainerPrivilege.md)
  - [ContainerPrivilegeCollection](docs/ContainerPrivilegeCollection.md)
  - [DateToFileFacets](docs/DateToFileFacets.md)
+ - [DefaultFacet](docs/DefaultFacet.md)
  - [Error](docs/Error.md)
  - [FileFacet](docs/FileFacet.md)
+ - [FileFacetAllOf](docs/FileFacetAllOf.md)
  - [Frozen](docs/Frozen.md)
  - [GreaterThan](docs/GreaterThan.md)
  - [GreaterThanAllOf](docs/GreaterThanAllOf.md)
@@ -441,6 +476,16 @@ Class | Method | HTTP request | Description
  - [Reset](docs/Reset.md)
  - [ResetSections](docs/ResetSections.md)
  - [SizeToDateFacets](docs/SizeToDateFacets.md)
+ - [StorageByTypeFacets](docs/StorageByTypeFacets.md)
+ - [StorageCloudBucketByTypeFacets](docs/StorageCloudBucketByTypeFacets.md)
+ - [StorageCloudBucketFacets](docs/StorageCloudBucketFacets.md)
+ - [StorageFacet](docs/StorageFacet.md)
+ - [StorageNasShareByTypeFacets](docs/StorageNasShareByTypeFacets.md)
+ - [StorageNasShareFacets](docs/StorageNasShareFacets.md)
+ - [StoragePoolByTypeFacets](docs/StoragePoolByTypeFacets.md)
+ - [StoragePoolFacets](docs/StoragePoolFacets.md)
+ - [StorageTapeByTypeFacets](docs/StorageTapeByTypeFacets.md)
+ - [StorageTapeFacets](docs/StorageTapeFacets.md)
  - [SystemGroup](docs/SystemGroup.md)
  - [SystemGroupCollection](docs/SystemGroupCollection.md)
  - [SystemUser](docs/SystemUser.md)
@@ -462,6 +507,9 @@ Class | Method | HTTP request | Description
  - [TapeStat](docs/TapeStat.md)
  - [TapeStatCollection](docs/TapeStatCollection.md)
  - [Task](docs/Task.md)
+ - [TaskByWorkflowBucket](docs/TaskByWorkflowBucket.md)
+ - [TaskByWorkflowBucketAllOf](docs/TaskByWorkflowBucketAllOf.md)
+ - [TaskByWorkflowBuckets](docs/TaskByWorkflowBuckets.md)
  - [TaskCallback](docs/TaskCallback.md)
  - [TaskCallbackCollection](docs/TaskCallbackCollection.md)
  - [TaskCollection](docs/TaskCollection.md)
@@ -470,6 +518,10 @@ Class | Method | HTTP request | Description
  - [TaskDestinationUp](docs/TaskDestinationUp.md)
  - [TaskExecution](docs/TaskExecution.md)
  - [TaskExecutionCollection](docs/TaskExecutionCollection.md)
+ - [TaskFacet](docs/TaskFacet.md)
+ - [TaskFacetAllOf](docs/TaskFacetAllOf.md)
+ - [TaskFacetBucket](docs/TaskFacetBucket.md)
+ - [TaskFacetBuckets](docs/TaskFacetBuckets.md)
  - [TaskMetadatum](docs/TaskMetadatum.md)
  - [TaskMetadatumCollection](docs/TaskMetadatumCollection.md)
  - [TaskOption](docs/TaskOption.md)
@@ -483,7 +535,10 @@ Class | Method | HTTP request | Description
  - [TooLongAllOf](docs/TooLongAllOf.md)
  - [TooShort](docs/TooShort.md)
  - [TooShortAllOf](docs/TooShortAllOf.md)
+ - [TypeToPrimaryFacets](docs/TypeToPrimaryFacets.md)
  - [TypeToSecondaryFacets](docs/TypeToSecondaryFacets.md)
+ - [UserConfiguration](docs/UserConfiguration.md)
+ - [UserConfigurationCollection](docs/UserConfigurationCollection.md)
 
 
 ## Documentation for Authorization

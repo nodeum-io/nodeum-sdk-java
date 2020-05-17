@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Container
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class Container {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -53,6 +53,10 @@ public class Container {
   @SerializedName(SERIALIZED_NAME_STAT_TOTAL_FILES)
   private Integer statTotalFiles;
 
+  public static final String SERIALIZED_NAME_ONLY_ON_CACHE_FILE_COUNT = "only_on_cache_file_count";
+  @SerializedName(SERIALIZED_NAME_ONLY_ON_CACHE_FILE_COUNT)
+  private Integer onlyOnCacheFileCount;
+
   public static final String SERIALIZED_NAME_STAT_TOTAL_SIZE = "stat_total_size";
   @SerializedName(SERIALIZED_NAME_STAT_TOTAL_SIZE)
   private Integer statTotalSize;
@@ -60,6 +64,10 @@ public class Container {
   public static final String SERIALIZED_NAME_STAT_SIZE_ON_CACHE = "stat_size_on_cache";
   @SerializedName(SERIALIZED_NAME_STAT_SIZE_ON_CACHE)
   private Integer statSizeOnCache;
+
+  public static final String SERIALIZED_NAME_ONLY_ON_CACHE_FILE_SIZE_SUM = "only_on_cache_file_size_sum";
+  @SerializedName(SERIALIZED_NAME_ONLY_ON_CACHE_FILE_SIZE_SUM)
+  private Integer onlyOnCacheFileSizeSum;
 
   /**
    * Gets or Sets guestRight
@@ -240,6 +248,20 @@ public class Container {
 
 
    /**
+   * Get onlyOnCacheFileCount
+   * @return onlyOnCacheFileCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "19123", value = "")
+
+  public Integer getOnlyOnCacheFileCount() {
+    return onlyOnCacheFileCount;
+  }
+
+
+
+
+   /**
    * Get statTotalSize
    * @return statTotalSize
   **/
@@ -262,6 +284,20 @@ public class Container {
 
   public Integer getStatSizeOnCache() {
     return statSizeOnCache;
+  }
+
+
+
+
+   /**
+   * Get onlyOnCacheFileSizeSum
+   * @return onlyOnCacheFileSizeSum
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3294517012", value = "")
+
+  public Integer getOnlyOnCacheFileSizeSum() {
+    return onlyOnCacheFileSizeSum;
   }
 
 
@@ -319,15 +355,17 @@ public class Container {
         Objects.equals(this.quotaTotalSize, container.quotaTotalSize) &&
         Objects.equals(this.quotaOnCache, container.quotaOnCache) &&
         Objects.equals(this.statTotalFiles, container.statTotalFiles) &&
+        Objects.equals(this.onlyOnCacheFileCount, container.onlyOnCacheFileCount) &&
         Objects.equals(this.statTotalSize, container.statTotalSize) &&
         Objects.equals(this.statSizeOnCache, container.statSizeOnCache) &&
+        Objects.equals(this.onlyOnCacheFileSizeSum, container.onlyOnCacheFileSizeSum) &&
         Objects.equals(this.guestRight, container.guestRight) &&
         Objects.equals(this.lastUpdate, container.lastUpdate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, quotaTotalSize, quotaOnCache, statTotalFiles, statTotalSize, statSizeOnCache, guestRight, lastUpdate);
+    return Objects.hash(id, name, comment, quotaTotalSize, quotaOnCache, statTotalFiles, onlyOnCacheFileCount, statTotalSize, statSizeOnCache, onlyOnCacheFileSizeSum, guestRight, lastUpdate);
   }
 
 
@@ -341,8 +379,10 @@ public class Container {
     sb.append("    quotaTotalSize: ").append(toIndentedString(quotaTotalSize)).append("\n");
     sb.append("    quotaOnCache: ").append(toIndentedString(quotaOnCache)).append("\n");
     sb.append("    statTotalFiles: ").append(toIndentedString(statTotalFiles)).append("\n");
+    sb.append("    onlyOnCacheFileCount: ").append(toIndentedString(onlyOnCacheFileCount)).append("\n");
     sb.append("    statTotalSize: ").append(toIndentedString(statTotalSize)).append("\n");
     sb.append("    statSizeOnCache: ").append(toIndentedString(statSizeOnCache)).append("\n");
+    sb.append("    onlyOnCacheFileSizeSum: ").append(toIndentedString(onlyOnCacheFileSizeSum)).append("\n");
     sb.append("    guestRight: ").append(toIndentedString(guestRight)).append("\n");
     sb.append("    lastUpdate: ").append(toIndentedString(lastUpdate)).append("\n");
     sb.append("}");

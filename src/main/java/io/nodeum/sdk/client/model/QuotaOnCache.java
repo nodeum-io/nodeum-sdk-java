@@ -29,7 +29,7 @@ import java.io.IOException;
  * Quota on cache can&#39;t be above 100% (total)
  */
 @ApiModel(description = "Quota on cache can't be above 100% (total)")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class QuotaOnCache extends AttributeError {
 
   @Override

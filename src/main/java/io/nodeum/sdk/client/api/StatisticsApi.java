@@ -27,12 +27,23 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.nodeum.sdk.client.model.ByDateFacet;
 import io.nodeum.sdk.client.model.ByFileExtensionFacet;
 import io.nodeum.sdk.client.model.ByGroupOwnerFacet;
+import io.nodeum.sdk.client.model.ByPrimaryCloudFacet;
 import io.nodeum.sdk.client.model.ByPrimaryFacet;
-import io.nodeum.sdk.client.model.BySecondaryFacet;
+import io.nodeum.sdk.client.model.ByPrimaryNasFacet;
+import io.nodeum.sdk.client.model.ByPrimaryStorageFacet;
+import io.nodeum.sdk.client.model.BySecondaryCloudFacet;
+import io.nodeum.sdk.client.model.BySecondaryNasFacet;
+import io.nodeum.sdk.client.model.BySecondaryStorageFacet;
+import io.nodeum.sdk.client.model.BySecondaryTapeFacet;
 import io.nodeum.sdk.client.model.BySizeFacet;
+import io.nodeum.sdk.client.model.ByTaskStatusFacet;
+import io.nodeum.sdk.client.model.ByTaskStorageFacet;
+import io.nodeum.sdk.client.model.ByTaskWorkflowFacet;
 import io.nodeum.sdk.client.model.ByUserOwnerFacet;
+import io.nodeum.sdk.client.model.StorageFacet;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -60,8 +71,9 @@ public class StatisticsApi {
     }
 
     /**
-     * Build call for statisticsByFileExtension
+     * Build call for statisticsByDate
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -72,7 +84,134 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByFileExtensionCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsByDateCall(String q, List<String> fq, String dateAttr, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_date";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsByDateValidateBeforeCall(String q, List<String> fq, String dateAttr, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsByDateCall(q, fq, dateAttr, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by date
+     * **API Key Scope**: statistics / by_date
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @return ByDateFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByDateFacet statisticsByDate(String q, List<String> fq, String dateAttr) throws ApiException {
+        ApiResponse<ByDateFacet> localVarResp = statisticsByDateWithHttpInfo(q, fq, dateAttr);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by date
+     * **API Key Scope**: statistics / by_date
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @return ApiResponse&lt;ByDateFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByDateFacet> statisticsByDateWithHttpInfo(String q, List<String> fq, String dateAttr) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByDateValidateBeforeCall(q, fq, dateAttr, null);
+        Type localVarReturnType = new TypeToken<ByDateFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by date (asynchronously)
+     * **API Key Scope**: statistics / by_date
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByDateAsync(String q, List<String> fq, String dateAttr, final ApiCallback<ByDateFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsByDateValidateBeforeCall(q, fq, dateAttr, _callback);
+        Type localVarReturnType = new TypeToken<ByDateFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsByFileExtension
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByFileExtensionCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -84,8 +223,20 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -110,19 +261,22 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsByFileExtensionValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsByFileExtensionValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsByFileExtensionCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByFileExtensionCall(q, fq, dateAttr, sort, limit, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by file extension
      * **API Key Scope**: statistics / by_file_extension
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ByFileExtensionFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -131,16 +285,19 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ByFileExtensionFacet statisticsByFileExtension(String q, String dateAttr) throws ApiException {
-        ApiResponse<ByFileExtensionFacet> localVarResp = statisticsByFileExtensionWithHttpInfo(q, dateAttr);
+    public ByFileExtensionFacet statisticsByFileExtension(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByFileExtensionFacet> localVarResp = statisticsByFileExtensionWithHttpInfo(q, fq, dateAttr, sort, limit);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by file extension
      * **API Key Scope**: statistics / by_file_extension
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ApiResponse&lt;ByFileExtensionFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -149,17 +306,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ByFileExtensionFacet> statisticsByFileExtensionWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsByFileExtensionValidateBeforeCall(q, dateAttr, null);
+    public ApiResponse<ByFileExtensionFacet> statisticsByFileExtensionWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByFileExtensionValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
         Type localVarReturnType = new TypeToken<ByFileExtensionFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by file extension (asynchronously)
      * **API Key Scope**: statistics / by_file_extension
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -169,9 +329,9 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByFileExtensionAsync(String q, String dateAttr, final ApiCallback<ByFileExtensionFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsByFileExtensionAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByFileExtensionFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsByFileExtensionValidateBeforeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByFileExtensionValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
         Type localVarReturnType = new TypeToken<ByFileExtensionFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -179,7 +339,10 @@ public class StatisticsApi {
     /**
      * Build call for statisticsByGroupOwner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -189,7 +352,7 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByGroupOwnerCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsByGroupOwnerCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -201,8 +364,20 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -227,19 +402,22 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsByGroupOwnerValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsByGroupOwnerValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsByGroupOwnerCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByGroupOwnerCall(q, fq, dateAttr, sort, limit, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by owner (group)
      * **API Key Scope**: statistics / by_group_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ByGroupOwnerFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -248,16 +426,19 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ByGroupOwnerFacet statisticsByGroupOwner(String q, String dateAttr) throws ApiException {
-        ApiResponse<ByGroupOwnerFacet> localVarResp = statisticsByGroupOwnerWithHttpInfo(q, dateAttr);
+    public ByGroupOwnerFacet statisticsByGroupOwner(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByGroupOwnerFacet> localVarResp = statisticsByGroupOwnerWithHttpInfo(q, fq, dateAttr, sort, limit);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by owner (group)
      * **API Key Scope**: statistics / by_group_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ApiResponse&lt;ByGroupOwnerFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -266,17 +447,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ByGroupOwnerFacet> statisticsByGroupOwnerWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsByGroupOwnerValidateBeforeCall(q, dateAttr, null);
+    public ApiResponse<ByGroupOwnerFacet> statisticsByGroupOwnerWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByGroupOwnerValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
         Type localVarReturnType = new TypeToken<ByGroupOwnerFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by owner (group) (asynchronously)
      * **API Key Scope**: statistics / by_group_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -286,17 +470,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByGroupOwnerAsync(String q, String dateAttr, final ApiCallback<ByGroupOwnerFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsByGroupOwnerAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByGroupOwnerFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsByGroupOwnerValidateBeforeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByGroupOwnerValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
         Type localVarReturnType = new TypeToken<ByGroupOwnerFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for statisticsByPrimaryName
+     * Build call for statisticsByPrimaryCloud
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -306,7 +493,148 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByPrimaryNameCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsByPrimaryCloudCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_primary_cloud";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsByPrimaryCloudValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsByPrimaryCloudCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by primary Cloud
+     * **API Key Scope**: statistics / by_primary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ByPrimaryCloudFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByPrimaryCloudFacet statisticsByPrimaryCloud(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByPrimaryCloudFacet> localVarResp = statisticsByPrimaryCloudWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by primary Cloud
+     * **API Key Scope**: statistics / by_primary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;ByPrimaryCloudFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByPrimaryCloudFacet> statisticsByPrimaryCloudWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByPrimaryCloudValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<ByPrimaryCloudFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by primary Cloud (asynchronously)
+     * **API Key Scope**: statistics / by_primary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByPrimaryCloudAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByPrimaryCloudFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsByPrimaryCloudValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<ByPrimaryCloudFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsByPrimaryName
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByPrimaryNameCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -318,8 +646,20 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -344,19 +684,22 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsByPrimaryNameValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsByPrimaryNameValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsByPrimaryNameCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByPrimaryNameCall(q, fq, dateAttr, sort, limit, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by primary storages
      * **API Key Scope**: statistics / by_primary_name
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ByPrimaryFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -365,16 +708,19 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ByPrimaryFacet statisticsByPrimaryName(String q, String dateAttr) throws ApiException {
-        ApiResponse<ByPrimaryFacet> localVarResp = statisticsByPrimaryNameWithHttpInfo(q, dateAttr);
+    public ByPrimaryFacet statisticsByPrimaryName(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByPrimaryFacet> localVarResp = statisticsByPrimaryNameWithHttpInfo(q, fq, dateAttr, sort, limit);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by primary storages
      * **API Key Scope**: statistics / by_primary_name
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ApiResponse&lt;ByPrimaryFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -383,17 +729,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ByPrimaryFacet> statisticsByPrimaryNameWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsByPrimaryNameValidateBeforeCall(q, dateAttr, null);
+    public ApiResponse<ByPrimaryFacet> statisticsByPrimaryNameWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByPrimaryNameValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
         Type localVarReturnType = new TypeToken<ByPrimaryFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by primary storages (asynchronously)
      * **API Key Scope**: statistics / by_primary_name
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -403,17 +752,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByPrimaryNameAsync(String q, String dateAttr, final ApiCallback<ByPrimaryFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsByPrimaryNameAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByPrimaryFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsByPrimaryNameValidateBeforeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByPrimaryNameValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
         Type localVarReturnType = new TypeToken<ByPrimaryFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for statisticsBySecondaryStorage
+     * Build call for statisticsByPrimaryNas
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -423,7 +775,571 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsBySecondaryStorageCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsByPrimaryNasCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_primary_nas";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsByPrimaryNasValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsByPrimaryNasCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by primary NAS
+     * **API Key Scope**: statistics / by_primary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ByPrimaryNasFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByPrimaryNasFacet statisticsByPrimaryNas(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByPrimaryNasFacet> localVarResp = statisticsByPrimaryNasWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by primary NAS
+     * **API Key Scope**: statistics / by_primary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;ByPrimaryNasFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByPrimaryNasFacet> statisticsByPrimaryNasWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByPrimaryNasValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<ByPrimaryNasFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by primary NAS (asynchronously)
+     * **API Key Scope**: statistics / by_primary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByPrimaryNasAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByPrimaryNasFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsByPrimaryNasValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<ByPrimaryNasFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsByPrimaryStorage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByPrimaryStorageCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_primary_storage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsByPrimaryStorageValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsByPrimaryStorageCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by primary storage
+     * **API Key Scope**: statistics / by_primary_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ByPrimaryStorageFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByPrimaryStorageFacet statisticsByPrimaryStorage(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByPrimaryStorageFacet> localVarResp = statisticsByPrimaryStorageWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by primary storage
+     * **API Key Scope**: statistics / by_primary_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;ByPrimaryStorageFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByPrimaryStorageFacet> statisticsByPrimaryStorageWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByPrimaryStorageValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<ByPrimaryStorageFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by primary storage (asynchronously)
+     * **API Key Scope**: statistics / by_primary_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByPrimaryStorageAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByPrimaryStorageFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsByPrimaryStorageValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<ByPrimaryStorageFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsBySecondaryCloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryCloudCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_secondary_cloud";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsBySecondaryCloudValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsBySecondaryCloudCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Cloud
+     * **API Key Scope**: statistics / by_secondary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return BySecondaryCloudFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public BySecondaryCloudFacet statisticsBySecondaryCloud(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<BySecondaryCloudFacet> localVarResp = statisticsBySecondaryCloudWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Cloud
+     * **API Key Scope**: statistics / by_secondary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;BySecondaryCloudFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BySecondaryCloudFacet> statisticsBySecondaryCloudWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsBySecondaryCloudValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<BySecondaryCloudFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Cloud (asynchronously)
+     * **API Key Scope**: statistics / by_secondary_cloud
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryCloudAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<BySecondaryCloudFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsBySecondaryCloudValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<BySecondaryCloudFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsBySecondaryNas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryNasCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_secondary_nas";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsBySecondaryNasValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsBySecondaryNasCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary NAS
+     * **API Key Scope**: statistics / by_secondary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return BySecondaryNasFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public BySecondaryNasFacet statisticsBySecondaryNas(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<BySecondaryNasFacet> localVarResp = statisticsBySecondaryNasWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary NAS
+     * **API Key Scope**: statistics / by_secondary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;BySecondaryNasFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BySecondaryNasFacet> statisticsBySecondaryNasWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsBySecondaryNasValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<BySecondaryNasFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary NAS (asynchronously)
+     * **API Key Scope**: statistics / by_secondary_nas
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryNasAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<BySecondaryNasFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsBySecondaryNasValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<BySecondaryNasFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsBySecondaryStorage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryStorageCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -435,8 +1351,20 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -461,20 +1389,23 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsBySecondaryStorageValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsBySecondaryStorageValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsBySecondaryStorageCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsBySecondaryStorageCall(q, fq, dateAttr, sort, limit, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by secondary storage
      * **API Key Scope**: statistics / by_secondary_storage
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
-     * @return BySecondaryFacet
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return BySecondaryStorageFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -482,17 +1413,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public BySecondaryFacet statisticsBySecondaryStorage(String q, String dateAttr) throws ApiException {
-        ApiResponse<BySecondaryFacet> localVarResp = statisticsBySecondaryStorageWithHttpInfo(q, dateAttr);
+    public BySecondaryStorageFacet statisticsBySecondaryStorage(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<BySecondaryStorageFacet> localVarResp = statisticsBySecondaryStorageWithHttpInfo(q, fq, dateAttr, sort, limit);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by secondary storage
      * **API Key Scope**: statistics / by_secondary_storage
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
-     * @return ApiResponse&lt;BySecondaryFacet&gt;
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;BySecondaryStorageFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -500,17 +1434,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BySecondaryFacet> statisticsBySecondaryStorageWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsBySecondaryStorageValidateBeforeCall(q, dateAttr, null);
-        Type localVarReturnType = new TypeToken<BySecondaryFacet>(){}.getType();
+    public ApiResponse<BySecondaryStorageFacet> statisticsBySecondaryStorageWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsBySecondaryStorageValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<BySecondaryStorageFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by secondary storage (asynchronously)
      * **API Key Scope**: statistics / by_secondary_storage
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -520,16 +1457,158 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsBySecondaryStorageAsync(String q, String dateAttr, final ApiCallback<BySecondaryFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsBySecondaryStorageAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<BySecondaryStorageFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsBySecondaryStorageValidateBeforeCall(q, dateAttr, _callback);
-        Type localVarReturnType = new TypeToken<BySecondaryFacet>(){}.getType();
+        okhttp3.Call localVarCall = statisticsBySecondaryStorageValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<BySecondaryStorageFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsBySecondaryTape
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryTapeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_secondary_tape";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsBySecondaryTapeValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsBySecondaryTapeCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Tape
+     * **API Key Scope**: statistics / by_secondary_tape
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return BySecondaryTapeFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public BySecondaryTapeFacet statisticsBySecondaryTape(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<BySecondaryTapeFacet> localVarResp = statisticsBySecondaryTapeWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Tape
+     * **API Key Scope**: statistics / by_secondary_tape
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;BySecondaryTapeFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BySecondaryTapeFacet> statisticsBySecondaryTapeWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsBySecondaryTapeValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<BySecondaryTapeFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by secondary Tape (asynchronously)
+     * **API Key Scope**: statistics / by_secondary_tape
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsBySecondaryTapeAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<BySecondaryTapeFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsBySecondaryTapeValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<BySecondaryTapeFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for statisticsBySize
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -540,7 +1619,7 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsBySizeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsBySizeCall(String q, List<String> fq, String dateAttr, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -552,6 +1631,10 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
         }
@@ -578,18 +1661,19 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsBySizeValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsBySizeValidateBeforeCall(String q, List<String> fq, String dateAttr, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsBySizeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsBySizeCall(q, fq, dateAttr, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by size
      * **API Key Scope**: statistics / by_size
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
      * @return BySizeFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -599,15 +1683,16 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public BySizeFacet statisticsBySize(String q, String dateAttr) throws ApiException {
-        ApiResponse<BySizeFacet> localVarResp = statisticsBySizeWithHttpInfo(q, dateAttr);
+    public BySizeFacet statisticsBySize(String q, List<String> fq, String dateAttr) throws ApiException {
+        ApiResponse<BySizeFacet> localVarResp = statisticsBySizeWithHttpInfo(q, fq, dateAttr);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by size
      * **API Key Scope**: statistics / by_size
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
      * @return ApiResponse&lt;BySizeFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -617,16 +1702,17 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BySizeFacet> statisticsBySizeWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsBySizeValidateBeforeCall(q, dateAttr, null);
+    public ApiResponse<BySizeFacet> statisticsBySizeWithHttpInfo(String q, List<String> fq, String dateAttr) throws ApiException {
+        okhttp3.Call localVarCall = statisticsBySizeValidateBeforeCall(q, fq, dateAttr, null);
         Type localVarReturnType = new TypeToken<BySizeFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by size (asynchronously)
      * **API Key Scope**: statistics / by_size
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -637,9 +1723,9 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsBySizeAsync(String q, String dateAttr, final ApiCallback<BySizeFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsBySizeAsync(String q, List<String> fq, String dateAttr, final ApiCallback<BySizeFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsBySizeValidateBeforeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsBySizeValidateBeforeCall(q, fq, dateAttr, _callback);
         Type localVarReturnType = new TypeToken<BySizeFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -647,7 +1733,10 @@ public class StatisticsApi {
     /**
      * Build call for statisticsByUserOwner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -657,7 +1746,7 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByUserOwnerCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statisticsByUserOwnerCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -669,8 +1758,20 @@ public class StatisticsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
         if (dateAttr != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -695,19 +1796,22 @@ public class StatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statisticsByUserOwnerValidateBeforeCall(String q, String dateAttr, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statisticsByUserOwnerValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statisticsByUserOwnerCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByUserOwnerCall(q, fq, dateAttr, sort, limit, _callback);
         return localVarCall;
 
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by owner (user)
      * **API Key Scope**: statistics / by_user_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ByUserOwnerFacet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -716,16 +1820,19 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ByUserOwnerFacet statisticsByUserOwner(String q, String dateAttr) throws ApiException {
-        ApiResponse<ByUserOwnerFacet> localVarResp = statisticsByUserOwnerWithHttpInfo(q, dateAttr);
+    public ByUserOwnerFacet statisticsByUserOwner(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByUserOwnerFacet> localVarResp = statisticsByUserOwnerWithHttpInfo(q, fq, dateAttr, sort, limit);
         return localVarResp.getData();
     }
 
     /**
-     * TODO
+     * Get statistics about files, grouped by owner (user)
      * **API Key Scope**: statistics / by_user_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @return ApiResponse&lt;ByUserOwnerFacet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -734,17 +1841,20 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ByUserOwnerFacet> statisticsByUserOwnerWithHttpInfo(String q, String dateAttr) throws ApiException {
-        okhttp3.Call localVarCall = statisticsByUserOwnerValidateBeforeCall(q, dateAttr, null);
+    public ApiResponse<ByUserOwnerFacet> statisticsByUserOwnerWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByUserOwnerValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
         Type localVarReturnType = new TypeToken<ByUserOwnerFacet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * TODO (asynchronously)
+     * Get statistics about files, grouped by owner (user) (asynchronously)
      * **API Key Scope**: statistics / by_user_owner
      * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
      * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -754,10 +1864,478 @@ public class StatisticsApi {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statisticsByUserOwnerAsync(String q, String dateAttr, final ApiCallback<ByUserOwnerFacet> _callback) throws ApiException {
+    public okhttp3.Call statisticsByUserOwnerAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByUserOwnerFacet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statisticsByUserOwnerValidateBeforeCall(q, dateAttr, _callback);
+        okhttp3.Call localVarCall = statisticsByUserOwnerValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
         Type localVarReturnType = new TypeToken<ByUserOwnerFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsStorage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsStorageCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/storage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsStorageValidateBeforeCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsStorageCall(q, fq, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about storages, grouped by types
+     * **API Key Scope**: statistics / storages
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return StorageFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public StorageFacet statisticsStorage(String q, List<String> fq) throws ApiException {
+        ApiResponse<StorageFacet> localVarResp = statisticsStorageWithHttpInfo(q, fq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about storages, grouped by types
+     * **API Key Scope**: statistics / storages
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ApiResponse&lt;StorageFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<StorageFacet> statisticsStorageWithHttpInfo(String q, List<String> fq) throws ApiException {
+        okhttp3.Call localVarCall = statisticsStorageValidateBeforeCall(q, fq, null);
+        Type localVarReturnType = new TypeToken<StorageFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about storages, grouped by types (asynchronously)
+     * **API Key Scope**: statistics / storages
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsStorageAsync(String q, List<String> fq, final ApiCallback<StorageFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsStorageValidateBeforeCall(q, fq, _callback);
+        Type localVarReturnType = new TypeToken<StorageFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsTaskByStatus
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByStatusCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/task_by_status";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsTaskByStatusValidateBeforeCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsTaskByStatusCall(q, fq, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by status
+     * **API Key Scope**: statistics / task_by_status
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ByTaskStatusFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByTaskStatusFacet statisticsTaskByStatus(String q, List<String> fq) throws ApiException {
+        ApiResponse<ByTaskStatusFacet> localVarResp = statisticsTaskByStatusWithHttpInfo(q, fq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by status
+     * **API Key Scope**: statistics / task_by_status
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ApiResponse&lt;ByTaskStatusFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByTaskStatusFacet> statisticsTaskByStatusWithHttpInfo(String q, List<String> fq) throws ApiException {
+        okhttp3.Call localVarCall = statisticsTaskByStatusValidateBeforeCall(q, fq, null);
+        Type localVarReturnType = new TypeToken<ByTaskStatusFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by status (asynchronously)
+     * **API Key Scope**: statistics / task_by_status
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByStatusAsync(String q, List<String> fq, final ApiCallback<ByTaskStatusFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsTaskByStatusValidateBeforeCall(q, fq, _callback);
+        Type localVarReturnType = new TypeToken<ByTaskStatusFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsTaskByStorage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByStorageCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/task_by_storage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsTaskByStorageValidateBeforeCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsTaskByStorageCall(q, fq, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by source and destination
+     * **API Key Scope**: statistics / task_by_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ByTaskStorageFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByTaskStorageFacet statisticsTaskByStorage(String q, List<String> fq) throws ApiException {
+        ApiResponse<ByTaskStorageFacet> localVarResp = statisticsTaskByStorageWithHttpInfo(q, fq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by source and destination
+     * **API Key Scope**: statistics / task_by_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ApiResponse&lt;ByTaskStorageFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByTaskStorageFacet> statisticsTaskByStorageWithHttpInfo(String q, List<String> fq) throws ApiException {
+        okhttp3.Call localVarCall = statisticsTaskByStorageValidateBeforeCall(q, fq, null);
+        Type localVarReturnType = new TypeToken<ByTaskStorageFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by source and destination (asynchronously)
+     * **API Key Scope**: statistics / task_by_storage
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByStorageAsync(String q, List<String> fq, final ApiCallback<ByTaskStorageFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsTaskByStorageValidateBeforeCall(q, fq, _callback);
+        Type localVarReturnType = new TypeToken<ByTaskStorageFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsTaskByWorkflow
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByWorkflowCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/task_by_workflow";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsTaskByWorkflowValidateBeforeCall(String q, List<String> fq, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsTaskByWorkflowCall(q, fq, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by workflow
+     * **API Key Scope**: statistics / task_by_workflow
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ByTaskWorkflowFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByTaskWorkflowFacet statisticsTaskByWorkflow(String q, List<String> fq) throws ApiException {
+        ApiResponse<ByTaskWorkflowFacet> localVarResp = statisticsTaskByWorkflowWithHttpInfo(q, fq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by workflow
+     * **API Key Scope**: statistics / task_by_workflow
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @return ApiResponse&lt;ByTaskWorkflowFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByTaskWorkflowFacet> statisticsTaskByWorkflowWithHttpInfo(String q, List<String> fq) throws ApiException {
+        okhttp3.Call localVarCall = statisticsTaskByWorkflowValidateBeforeCall(q, fq, null);
+        Type localVarReturnType = new TypeToken<ByTaskWorkflowFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by workflow (asynchronously)
+     * **API Key Scope**: statistics / task_by_workflow
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByWorkflowAsync(String q, List<String> fq, final ApiCallback<ByTaskWorkflowFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsTaskByWorkflowValidateBeforeCall(q, fq, _callback);
+        Type localVarReturnType = new TypeToken<ByTaskWorkflowFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -26,19 +26,28 @@ import io.nodeum.sdk.client.model.SizeToDateFacets;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * BySizeFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class BySizeFacet {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   private Integer count;
 
+  public static final String SERIALIZED_NAME_FILES_COUNT = "files_count";
+  @SerializedName(SERIALIZED_NAME_FILES_COUNT)
+  private Integer filesCount;
+
   public static final String SERIALIZED_NAME_FILE_SIZE_SUM = "file_size_sum";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE_SUM)
   private Integer fileSizeSum;
+
+  public static final String SERIALIZED_NAME_COST = "cost";
+  @SerializedName(SERIALIZED_NAME_COST)
+  private BigDecimal cost;
 
   public static final String SERIALIZED_NAME_LESS100_KB = "less_100_kb";
   @SerializedName(SERIALIZED_NAME_LESS100_KB)
@@ -96,6 +105,29 @@ public class BySizeFacet {
   }
 
 
+  public BySizeFacet filesCount(Integer filesCount) {
+    
+    this.filesCount = filesCount;
+    return this;
+  }
+
+   /**
+   * Get filesCount
+   * @return filesCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getFilesCount() {
+    return filesCount;
+  }
+
+
+  public void setFilesCount(Integer filesCount) {
+    this.filesCount = filesCount;
+  }
+
+
   public BySizeFacet fileSizeSum(Integer fileSizeSum) {
     
     this.fileSizeSum = fileSizeSum;
@@ -116,6 +148,29 @@ public class BySizeFacet {
 
   public void setFileSizeSum(Integer fileSizeSum) {
     this.fileSizeSum = fileSizeSum;
+  }
+
+
+  public BySizeFacet cost(BigDecimal cost) {
+    
+    this.cost = cost;
+    return this;
+  }
+
+   /**
+   * Get cost
+   * @return cost
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getCost() {
+    return cost;
+  }
+
+
+  public void setCost(BigDecimal cost) {
+    this.cost = cost;
   }
 
 
@@ -313,7 +368,9 @@ public class BySizeFacet {
     }
     BySizeFacet bySizeFacet = (BySizeFacet) o;
     return Objects.equals(this.count, bySizeFacet.count) &&
+        Objects.equals(this.filesCount, bySizeFacet.filesCount) &&
         Objects.equals(this.fileSizeSum, bySizeFacet.fileSizeSum) &&
+        Objects.equals(this.cost, bySizeFacet.cost) &&
         Objects.equals(this.less100Kb, bySizeFacet.less100Kb) &&
         Objects.equals(this.less1Mb, bySizeFacet.less1Mb) &&
         Objects.equals(this.less10Mb, bySizeFacet.less10Mb) &&
@@ -326,7 +383,7 @@ public class BySizeFacet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, fileSizeSum, less100Kb, less1Mb, less10Mb, less100Mb, less1Gb, less10Gb, less100Gb, more100Gb);
+    return Objects.hash(count, filesCount, fileSizeSum, cost, less100Kb, less1Mb, less10Mb, less100Mb, less1Gb, less10Gb, less100Gb, more100Gb);
   }
 
 
@@ -335,7 +392,9 @@ public class BySizeFacet {
     StringBuilder sb = new StringBuilder();
     sb.append("class BySizeFacet {\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    filesCount: ").append(toIndentedString(filesCount)).append("\n");
     sb.append("    fileSizeSum: ").append(toIndentedString(fileSizeSum)).append("\n");
+    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
     sb.append("    less100Kb: ").append(toIndentedString(less100Kb)).append("\n");
     sb.append("    less1Mb: ").append(toIndentedString(less1Mb)).append("\n");
     sb.append("    less10Mb: ").append(toIndentedString(less10Mb)).append("\n");

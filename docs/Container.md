@@ -12,8 +12,10 @@ Name | Type | Description | Notes
 **quotaTotalSize** | **Integer** |  |  [optional]
 **quotaOnCache** | **Integer** |  |  [optional]
 **statTotalFiles** | **Integer** |  |  [optional] [readonly]
+**onlyOnCacheFileCount** | **Integer** |  |  [optional] [readonly]
 **statTotalSize** | **Integer** |  |  [optional] [readonly]
 **statSizeOnCache** | **Integer** |  |  [optional] [readonly]
+**onlyOnCacheFileSizeSum** | **Integer** |  |  [optional] [readonly]
 **guestRight** | [**GuestRightEnum**](#GuestRightEnum) |  |  [optional]
 **lastUpdate** | **String** |  |  [optional] [readonly]
 

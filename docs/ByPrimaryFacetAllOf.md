@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**primaryName** | [**ByDateFacetBuckets**](ByDateFacetBuckets.md) |  |  [optional]
+**primNameS** | [**ByDateFacetBuckets**](ByDateFacetBuckets.md) |  |  [optional]
 
 
 

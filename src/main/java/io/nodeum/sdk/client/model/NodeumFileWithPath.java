@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * NodeumFileWithPath
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class NodeumFileWithPath extends NodeumFile {
   public static final String SERIALIZED_NAME_FILE_PATH = "file_path";
   @SerializedName(SERIALIZED_NAME_FILE_PATH)

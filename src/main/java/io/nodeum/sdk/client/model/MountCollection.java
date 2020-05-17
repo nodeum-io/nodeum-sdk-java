@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * MountCollection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class MountCollection {
   public static final String SERIALIZED_NAME_MOUNTS = "mounts";
   @SerializedName(SERIALIZED_NAME_MOUNTS)

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userOwnerId** | [**ByDateFacetBuckets**](ByDateFacetBuckets.md) |  |  [optional]
+**userOwnerIdL** | [**ByDateFacetBuckets**](ByDateFacetBuckets.md) |  |  [optional]
 
 
 

@@ -26,37 +26,38 @@ import io.nodeum.sdk.client.model.FileFacet;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * ByGroupOwnerFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByGroupOwnerFacet extends FileFacet {
-  public static final String SERIALIZED_NAME_GROUP_OWNER_ID = "group_owner_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_OWNER_ID)
-  private ByDateFacetBuckets groupOwnerId;
+  public static final String SERIALIZED_NAME_GROUP_OWNER_ID_L = "group_owner_id_l";
+  @SerializedName(SERIALIZED_NAME_GROUP_OWNER_ID_L)
+  private ByDateFacetBuckets groupOwnerIdL;
 
 
-  public ByGroupOwnerFacet groupOwnerId(ByDateFacetBuckets groupOwnerId) {
+  public ByGroupOwnerFacet groupOwnerIdL(ByDateFacetBuckets groupOwnerIdL) {
     
-    this.groupOwnerId = groupOwnerId;
+    this.groupOwnerIdL = groupOwnerIdL;
     return this;
   }
 
    /**
-   * Get groupOwnerId
-   * @return groupOwnerId
+   * Get groupOwnerIdL
+   * @return groupOwnerIdL
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getGroupOwnerId() {
-    return groupOwnerId;
+  public ByDateFacetBuckets getGroupOwnerIdL() {
+    return groupOwnerIdL;
   }
 
 
-  public void setGroupOwnerId(ByDateFacetBuckets groupOwnerId) {
-    this.groupOwnerId = groupOwnerId;
+  public void setGroupOwnerIdL(ByDateFacetBuckets groupOwnerIdL) {
+    this.groupOwnerIdL = groupOwnerIdL;
   }
 
 
@@ -69,13 +70,13 @@ public class ByGroupOwnerFacet extends FileFacet {
       return false;
     }
     ByGroupOwnerFacet byGroupOwnerFacet = (ByGroupOwnerFacet) o;
-    return Objects.equals(this.groupOwnerId, byGroupOwnerFacet.groupOwnerId) &&
+    return Objects.equals(this.groupOwnerIdL, byGroupOwnerFacet.groupOwnerIdL) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupOwnerId, super.hashCode());
+    return Objects.hash(groupOwnerIdL, super.hashCode());
   }
 
 
@@ -84,7 +85,7 @@ public class ByGroupOwnerFacet extends FileFacet {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByGroupOwnerFacet {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    groupOwnerId: ").append(toIndentedString(groupOwnerId)).append("\n");
+    sb.append("    groupOwnerIdL: ").append(toIndentedString(groupOwnerIdL)).append("\n");
     sb.append("}");
     return sb.toString();
   }

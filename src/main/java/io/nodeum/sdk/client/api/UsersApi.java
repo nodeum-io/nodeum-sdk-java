@@ -31,6 +31,8 @@ import io.nodeum.sdk.client.model.ApiKeyCollection;
 import io.nodeum.sdk.client.model.ApiKeyFull;
 import io.nodeum.sdk.client.model.SystemGroupCollection;
 import io.nodeum.sdk.client.model.SystemUserCollection;
+import io.nodeum.sdk.client.model.UserConfiguration;
+import io.nodeum.sdk.client.model.UserConfigurationCollection;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -168,6 +170,116 @@ public class UsersApi {
         return localVarCall;
     }
     /**
+     * Build call for createConfiguration
+     * @param configurationBody  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConfigurationCall(UserConfiguration configurationBody, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = configurationBody;
+
+        // create path and map variables
+        String localVarPath = "/users/me/configurations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createConfigurationValidateBeforeCall(UserConfiguration configurationBody, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'configurationBody' is set
+        if (configurationBody == null) {
+            throw new ApiException("Missing the required parameter 'configurationBody' when calling createConfiguration(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createConfigurationCall(configurationBody, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Creates a new configuration value for current user.
+     * **API Key Scope**: configurations / create
+     * @param configurationBody  (required)
+     * @return UserConfiguration
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserConfiguration createConfiguration(UserConfiguration configurationBody) throws ApiException {
+        ApiResponse<UserConfiguration> localVarResp = createConfigurationWithHttpInfo(configurationBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a new configuration value for current user.
+     * **API Key Scope**: configurations / create
+     * @param configurationBody  (required)
+     * @return ApiResponse&lt;UserConfiguration&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserConfiguration> createConfigurationWithHttpInfo(UserConfiguration configurationBody) throws ApiException {
+        okhttp3.Call localVarCall = createConfigurationValidateBeforeCall(configurationBody, null);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a new configuration value for current user. (asynchronously)
+     * **API Key Scope**: configurations / create
+     * @param configurationBody  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createConfigurationAsync(UserConfiguration configurationBody, final ApiCallback<UserConfiguration> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createConfigurationValidateBeforeCall(configurationBody, _callback);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for destroyApiKey
      * @param apiKeyId Numeric ID of API Key. (required)
      * @param _callback Callback for upload/download progress
@@ -271,6 +383,113 @@ public class UsersApi {
     public okhttp3.Call destroyApiKeyAsync(Integer apiKeyId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = destroyApiKeyValidateBeforeCall(apiKeyId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for destroyConfiguration
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Configuration destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroyConfigurationCall(String configurationId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/me/configurations/{configuration_id}"
+            .replaceAll("\\{" + "configuration_id" + "\\}", localVarApiClient.escapeString(configurationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call destroyConfigurationValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException("Missing the required parameter 'configurationId' when calling destroyConfiguration(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = destroyConfigurationCall(configurationId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Destroys a specific configuration value.
+     * **API Key Scope**: configurations / destroy
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Configuration destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public void destroyConfiguration(String configurationId) throws ApiException {
+        destroyConfigurationWithHttpInfo(configurationId);
+    }
+
+    /**
+     * Destroys a specific configuration value.
+     * **API Key Scope**: configurations / destroy
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Configuration destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> destroyConfigurationWithHttpInfo(String configurationId) throws ApiException {
+        okhttp3.Call localVarCall = destroyConfigurationValidateBeforeCall(configurationId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Destroys a specific configuration value. (asynchronously)
+     * **API Key Scope**: configurations / destroy
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Configuration destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroyConfigurationAsync(String configurationId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = destroyConfigurationValidateBeforeCall(configurationId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -388,6 +607,123 @@ public class UsersApi {
 
         okhttp3.Call localVarCall = indexApiKeysValidateBeforeCall(limit, offset, _callback);
         Type localVarReturnType = new TypeToken<ApiKeyCollection>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for indexConfigurations
+     * @param limit The number of items to display for pagination. (optional)
+     * @param offset The number of items to skip for pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of configurations. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call indexConfigurationsCall(Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/me/configurations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call indexConfigurationsValidateBeforeCall(Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = indexConfigurationsCall(limit, offset, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Lists all configurations of current user.
+     * **API Key Scope**: configurations / index
+     * @param limit The number of items to display for pagination. (optional)
+     * @param offset The number of items to skip for pagination. (optional)
+     * @return UserConfigurationCollection
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of configurations. </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserConfigurationCollection indexConfigurations(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<UserConfigurationCollection> localVarResp = indexConfigurationsWithHttpInfo(limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists all configurations of current user.
+     * **API Key Scope**: configurations / index
+     * @param limit The number of items to display for pagination. (optional)
+     * @param offset The number of items to skip for pagination. (optional)
+     * @return ApiResponse&lt;UserConfigurationCollection&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of configurations. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserConfigurationCollection> indexConfigurationsWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = indexConfigurationsValidateBeforeCall(limit, offset, null);
+        Type localVarReturnType = new TypeToken<UserConfigurationCollection>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists all configurations of current user. (asynchronously)
+     * **API Key Scope**: configurations / index
+     * @param limit The number of items to display for pagination. (optional)
+     * @param offset The number of items to skip for pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of configurations. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call indexConfigurationsAsync(Integer limit, Integer offset, final ApiCallback<UserConfigurationCollection> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = indexConfigurationsValidateBeforeCall(limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<UserConfigurationCollection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -705,6 +1041,117 @@ public class UsersApi {
         return localVarCall;
     }
     /**
+     * Build call for showConfiguration
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call showConfigurationCall(String configurationId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/me/configurations/{configuration_id}"
+            .replaceAll("\\{" + "configuration_id" + "\\}", localVarApiClient.escapeString(configurationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call showConfigurationValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException("Missing the required parameter 'configurationId' when calling showConfiguration(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = showConfigurationCall(configurationId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Displays a specific configuration value.
+     * **API Key Scope**: configurations / show
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @return UserConfiguration
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserConfiguration showConfiguration(String configurationId) throws ApiException {
+        ApiResponse<UserConfiguration> localVarResp = showConfigurationWithHttpInfo(configurationId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Displays a specific configuration value.
+     * **API Key Scope**: configurations / show
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @return ApiResponse&lt;UserConfiguration&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserConfiguration> showConfigurationWithHttpInfo(String configurationId) throws ApiException {
+        okhttp3.Call localVarCall = showConfigurationValidateBeforeCall(configurationId, null);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Displays a specific configuration value. (asynchronously)
+     * **API Key Scope**: configurations / show
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call showConfigurationAsync(String configurationId, final ApiCallback<UserConfiguration> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = showConfigurationValidateBeforeCall(configurationId, _callback);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for updateApiKey
      * @param apiKeyId Numeric ID of API Key. (required)
      * @param apiKeyBody  (required)
@@ -821,6 +1268,126 @@ public class UsersApi {
 
         okhttp3.Call localVarCall = updateApiKeyValidateBeforeCall(apiKeyId, apiKeyBody, _callback);
         Type localVarReturnType = new TypeToken<ApiKeyFull>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateConfiguration
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param configurationBody  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateConfigurationCall(String configurationId, UserConfiguration configurationBody, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = configurationBody;
+
+        // create path and map variables
+        String localVarPath = "/users/me/configurations/{configuration_id}"
+            .replaceAll("\\{" + "configuration_id" + "\\}", localVarApiClient.escapeString(configurationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateConfigurationValidateBeforeCall(String configurationId, UserConfiguration configurationBody, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException("Missing the required parameter 'configurationId' when calling updateConfiguration(Async)");
+        }
+        
+        // verify the required parameter 'configurationBody' is set
+        if (configurationBody == null) {
+            throw new ApiException("Missing the required parameter 'configurationBody' when calling updateConfiguration(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateConfigurationCall(configurationId, configurationBody, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Updates a specific configuration value.
+     * **API Key Scope**: configurations / update
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param configurationBody  (required)
+     * @return UserConfiguration
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserConfiguration updateConfiguration(String configurationId, UserConfiguration configurationBody) throws ApiException {
+        ApiResponse<UserConfiguration> localVarResp = updateConfigurationWithHttpInfo(configurationId, configurationBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Updates a specific configuration value.
+     * **API Key Scope**: configurations / update
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param configurationBody  (required)
+     * @return ApiResponse&lt;UserConfiguration&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserConfiguration> updateConfigurationWithHttpInfo(String configurationId, UserConfiguration configurationBody) throws ApiException {
+        okhttp3.Call localVarCall = updateConfigurationValidateBeforeCall(configurationId, configurationBody, null);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Updates a specific configuration value. (asynchronously)
+     * **API Key Scope**: configurations / update
+     * @param configurationId Numeric ID, or key of configuration. (required)
+     * @param configurationBody  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A specific file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateConfigurationAsync(String configurationId, UserConfiguration configurationBody, final ApiCallback<UserConfiguration> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateConfigurationValidateBeforeCall(configurationId, configurationBody, _callback);
+        Type localVarReturnType = new TypeToken<UserConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

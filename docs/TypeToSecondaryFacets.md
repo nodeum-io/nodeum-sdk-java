@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **onSecondaryPublicCloud** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 **onSecondaryObjectCloud** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 **onSecondaryTape** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
+**onAnySecondary** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 **onNoSecondary** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 
 

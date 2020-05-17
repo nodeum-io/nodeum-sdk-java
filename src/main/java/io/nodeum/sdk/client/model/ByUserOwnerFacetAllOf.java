@@ -28,33 +28,33 @@ import java.io.IOException;
 /**
  * ByUserOwnerFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByUserOwnerFacetAllOf {
-  public static final String SERIALIZED_NAME_USER_OWNER_ID = "user_owner_id";
-  @SerializedName(SERIALIZED_NAME_USER_OWNER_ID)
-  private ByDateFacetBuckets userOwnerId;
+  public static final String SERIALIZED_NAME_USER_OWNER_ID_L = "user_owner_id_l";
+  @SerializedName(SERIALIZED_NAME_USER_OWNER_ID_L)
+  private ByDateFacetBuckets userOwnerIdL;
 
 
-  public ByUserOwnerFacetAllOf userOwnerId(ByDateFacetBuckets userOwnerId) {
+  public ByUserOwnerFacetAllOf userOwnerIdL(ByDateFacetBuckets userOwnerIdL) {
     
-    this.userOwnerId = userOwnerId;
+    this.userOwnerIdL = userOwnerIdL;
     return this;
   }
 
    /**
-   * Get userOwnerId
-   * @return userOwnerId
+   * Get userOwnerIdL
+   * @return userOwnerIdL
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getUserOwnerId() {
-    return userOwnerId;
+  public ByDateFacetBuckets getUserOwnerIdL() {
+    return userOwnerIdL;
   }
 
 
-  public void setUserOwnerId(ByDateFacetBuckets userOwnerId) {
-    this.userOwnerId = userOwnerId;
+  public void setUserOwnerIdL(ByDateFacetBuckets userOwnerIdL) {
+    this.userOwnerIdL = userOwnerIdL;
   }
 
 
@@ -67,12 +67,12 @@ public class ByUserOwnerFacetAllOf {
       return false;
     }
     ByUserOwnerFacetAllOf byUserOwnerFacetAllOf = (ByUserOwnerFacetAllOf) o;
-    return Objects.equals(this.userOwnerId, byUserOwnerFacetAllOf.userOwnerId);
+    return Objects.equals(this.userOwnerIdL, byUserOwnerFacetAllOf.userOwnerIdL);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userOwnerId);
+    return Objects.hash(userOwnerIdL);
   }
 
 
@@ -80,7 +80,7 @@ public class ByUserOwnerFacetAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByUserOwnerFacetAllOf {\n");
-    sb.append("    userOwnerId: ").append(toIndentedString(userOwnerId)).append("\n");
+    sb.append("    userOwnerIdL: ").append(toIndentedString(userOwnerIdL)).append("\n");
     sb.append("}");
     return sb.toString();
   }

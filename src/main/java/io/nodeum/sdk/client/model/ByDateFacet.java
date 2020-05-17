@@ -25,51 +25,60 @@ import io.nodeum.sdk.client.model.FileFacet;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * ByDateFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByDateFacet {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   private Integer count;
 
+  public static final String SERIALIZED_NAME_FILES_COUNT = "files_count";
+  @SerializedName(SERIALIZED_NAME_FILES_COUNT)
+  private Integer filesCount;
+
   public static final String SERIALIZED_NAME_FILE_SIZE_SUM = "file_size_sum";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE_SUM)
   private Integer fileSizeSum;
 
+  public static final String SERIALIZED_NAME_COST = "cost";
+  @SerializedName(SERIALIZED_NAME_COST)
+  private BigDecimal cost;
+
   public static final String SERIALIZED_NAME_IN_CACHE = "in_cache";
   @SerializedName(SERIALIZED_NAME_IN_CACHE)
-  private FileFacet inCache;
+  private FileFacet inCache = null;
 
   public static final String SERIALIZED_NAME_LESS1_WEEK = "less_1_week";
   @SerializedName(SERIALIZED_NAME_LESS1_WEEK)
-  private FileFacet less1Week;
+  private FileFacet less1Week = null;
 
   public static final String SERIALIZED_NAME_LESS1_MONTH = "less_1_month";
   @SerializedName(SERIALIZED_NAME_LESS1_MONTH)
-  private FileFacet less1Month;
+  private FileFacet less1Month = null;
 
   public static final String SERIALIZED_NAME_LESS3_MONTHS = "less_3_months";
   @SerializedName(SERIALIZED_NAME_LESS3_MONTHS)
-  private FileFacet less3Months;
+  private FileFacet less3Months = null;
 
   public static final String SERIALIZED_NAME_LESS6_MONTHS = "less_6_months";
   @SerializedName(SERIALIZED_NAME_LESS6_MONTHS)
-  private FileFacet less6Months;
+  private FileFacet less6Months = null;
 
   public static final String SERIALIZED_NAME_LESS1_YEAR = "less_1_year";
   @SerializedName(SERIALIZED_NAME_LESS1_YEAR)
-  private FileFacet less1Year;
+  private FileFacet less1Year = null;
 
   public static final String SERIALIZED_NAME_LESS2_YEARS = "less_2_years";
   @SerializedName(SERIALIZED_NAME_LESS2_YEARS)
-  private FileFacet less2Years;
+  private FileFacet less2Years = null;
 
   public static final String SERIALIZED_NAME_MORE2_YEARS = "more_2_years";
   @SerializedName(SERIALIZED_NAME_MORE2_YEARS)
-  private FileFacet more2Years;
+  private FileFacet more2Years = null;
 
 
   public ByDateFacet count(Integer count) {
@@ -95,6 +104,29 @@ public class ByDateFacet {
   }
 
 
+  public ByDateFacet filesCount(Integer filesCount) {
+    
+    this.filesCount = filesCount;
+    return this;
+  }
+
+   /**
+   * Get filesCount
+   * @return filesCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getFilesCount() {
+    return filesCount;
+  }
+
+
+  public void setFilesCount(Integer filesCount) {
+    this.filesCount = filesCount;
+  }
+
+
   public ByDateFacet fileSizeSum(Integer fileSizeSum) {
     
     this.fileSizeSum = fileSizeSum;
@@ -115,6 +147,29 @@ public class ByDateFacet {
 
   public void setFileSizeSum(Integer fileSizeSum) {
     this.fileSizeSum = fileSizeSum;
+  }
+
+
+  public ByDateFacet cost(BigDecimal cost) {
+    
+    this.cost = cost;
+    return this;
+  }
+
+   /**
+   * Get cost
+   * @return cost
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getCost() {
+    return cost;
+  }
+
+
+  public void setCost(BigDecimal cost) {
+    this.cost = cost;
   }
 
 
@@ -312,7 +367,9 @@ public class ByDateFacet {
     }
     ByDateFacet byDateFacet = (ByDateFacet) o;
     return Objects.equals(this.count, byDateFacet.count) &&
+        Objects.equals(this.filesCount, byDateFacet.filesCount) &&
         Objects.equals(this.fileSizeSum, byDateFacet.fileSizeSum) &&
+        Objects.equals(this.cost, byDateFacet.cost) &&
         Objects.equals(this.inCache, byDateFacet.inCache) &&
         Objects.equals(this.less1Week, byDateFacet.less1Week) &&
         Objects.equals(this.less1Month, byDateFacet.less1Month) &&
@@ -325,7 +382,7 @@ public class ByDateFacet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, fileSizeSum, inCache, less1Week, less1Month, less3Months, less6Months, less1Year, less2Years, more2Years);
+    return Objects.hash(count, filesCount, fileSizeSum, cost, inCache, less1Week, less1Month, less3Months, less6Months, less1Year, less2Years, more2Years);
   }
 
 
@@ -334,7 +391,9 @@ public class ByDateFacet {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByDateFacet {\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    filesCount: ").append(toIndentedString(filesCount)).append("\n");
     sb.append("    fileSizeSum: ").append(toIndentedString(fileSizeSum)).append("\n");
+    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
     sb.append("    inCache: ").append(toIndentedString(inCache)).append("\n");
     sb.append("    less1Week: ").append(toIndentedString(less1Week)).append("\n");
     sb.append("    less1Month: ").append(toIndentedString(less1Month)).append("\n");

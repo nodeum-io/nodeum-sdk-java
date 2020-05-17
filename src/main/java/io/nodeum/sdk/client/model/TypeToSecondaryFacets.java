@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * TypeToSecondaryFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class TypeToSecondaryFacets {
   public static final String SERIALIZED_NAME_ON_SECONDARY_NAS = "on_secondary_nas";
   @SerializedName(SERIALIZED_NAME_ON_SECONDARY_NAS)
@@ -45,6 +45,10 @@ public class TypeToSecondaryFacets {
   public static final String SERIALIZED_NAME_ON_SECONDARY_TAPE = "on_secondary_tape";
   @SerializedName(SERIALIZED_NAME_ON_SECONDARY_TAPE)
   private BySecondaryTypeFacet onSecondaryTape = null;
+
+  public static final String SERIALIZED_NAME_ON_ANY_SECONDARY = "on_any_secondary";
+  @SerializedName(SERIALIZED_NAME_ON_ANY_SECONDARY)
+  private BySecondaryTypeFacet onAnySecondary = null;
 
   public static final String SERIALIZED_NAME_ON_NO_SECONDARY = "on_no_secondary";
   @SerializedName(SERIALIZED_NAME_ON_NO_SECONDARY)
@@ -143,6 +147,29 @@ public class TypeToSecondaryFacets {
   }
 
 
+  public TypeToSecondaryFacets onAnySecondary(BySecondaryTypeFacet onAnySecondary) {
+    
+    this.onAnySecondary = onAnySecondary;
+    return this;
+  }
+
+   /**
+   * Get onAnySecondary
+   * @return onAnySecondary
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BySecondaryTypeFacet getOnAnySecondary() {
+    return onAnySecondary;
+  }
+
+
+  public void setOnAnySecondary(BySecondaryTypeFacet onAnySecondary) {
+    this.onAnySecondary = onAnySecondary;
+  }
+
+
   public TypeToSecondaryFacets onNoSecondary(BySecondaryTypeFacet onNoSecondary) {
     
     this.onNoSecondary = onNoSecondary;
@@ -179,12 +206,13 @@ public class TypeToSecondaryFacets {
         Objects.equals(this.onSecondaryPublicCloud, typeToSecondaryFacets.onSecondaryPublicCloud) &&
         Objects.equals(this.onSecondaryObjectCloud, typeToSecondaryFacets.onSecondaryObjectCloud) &&
         Objects.equals(this.onSecondaryTape, typeToSecondaryFacets.onSecondaryTape) &&
+        Objects.equals(this.onAnySecondary, typeToSecondaryFacets.onAnySecondary) &&
         Objects.equals(this.onNoSecondary, typeToSecondaryFacets.onNoSecondary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(onSecondaryNas, onSecondaryPublicCloud, onSecondaryObjectCloud, onSecondaryTape, onNoSecondary);
+    return Objects.hash(onSecondaryNas, onSecondaryPublicCloud, onSecondaryObjectCloud, onSecondaryTape, onAnySecondary, onNoSecondary);
   }
 
 
@@ -196,6 +224,7 @@ public class TypeToSecondaryFacets {
     sb.append("    onSecondaryPublicCloud: ").append(toIndentedString(onSecondaryPublicCloud)).append("\n");
     sb.append("    onSecondaryObjectCloud: ").append(toIndentedString(onSecondaryObjectCloud)).append("\n");
     sb.append("    onSecondaryTape: ").append(toIndentedString(onSecondaryTape)).append("\n");
+    sb.append("    onAnySecondary: ").append(toIndentedString(onAnySecondary)).append("\n");
     sb.append("    onNoSecondary: ").append(toIndentedString(onNoSecondary)).append("\n");
     sb.append("}");
     return sb.toString();

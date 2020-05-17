@@ -13,7 +13,7 @@
 
 package io.nodeum.sdk.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

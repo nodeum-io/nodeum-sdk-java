@@ -26,37 +26,38 @@ import io.nodeum.sdk.client.model.FileFacet;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * ByPrimaryFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByPrimaryFacet extends FileFacet {
-  public static final String SERIALIZED_NAME_PRIMARY_NAME = "primary_name";
-  @SerializedName(SERIALIZED_NAME_PRIMARY_NAME)
-  private ByDateFacetBuckets primaryName;
+  public static final String SERIALIZED_NAME_PRIM_NAME_S = "prim_name_s";
+  @SerializedName(SERIALIZED_NAME_PRIM_NAME_S)
+  private ByDateFacetBuckets primNameS;
 
 
-  public ByPrimaryFacet primaryName(ByDateFacetBuckets primaryName) {
+  public ByPrimaryFacet primNameS(ByDateFacetBuckets primNameS) {
     
-    this.primaryName = primaryName;
+    this.primNameS = primNameS;
     return this;
   }
 
    /**
-   * Get primaryName
-   * @return primaryName
+   * Get primNameS
+   * @return primNameS
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getPrimaryName() {
-    return primaryName;
+  public ByDateFacetBuckets getPrimNameS() {
+    return primNameS;
   }
 
 
-  public void setPrimaryName(ByDateFacetBuckets primaryName) {
-    this.primaryName = primaryName;
+  public void setPrimNameS(ByDateFacetBuckets primNameS) {
+    this.primNameS = primNameS;
   }
 
 
@@ -69,13 +70,13 @@ public class ByPrimaryFacet extends FileFacet {
       return false;
     }
     ByPrimaryFacet byPrimaryFacet = (ByPrimaryFacet) o;
-    return Objects.equals(this.primaryName, byPrimaryFacet.primaryName) &&
+    return Objects.equals(this.primNameS, byPrimaryFacet.primNameS) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(primaryName, super.hashCode());
+    return Objects.hash(primNameS, super.hashCode());
   }
 
 
@@ -84,7 +85,7 @@ public class ByPrimaryFacet extends FileFacet {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByPrimaryFacet {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    primaryName: ").append(toIndentedString(primaryName)).append("\n");
+    sb.append("    primNameS: ").append(toIndentedString(primNameS)).append("\n");
     sb.append("}");
     return sb.toString();
   }

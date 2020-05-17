@@ -28,33 +28,33 @@ import java.io.IOException;
 /**
  * ByFileExtensionFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByFileExtensionFacetAllOf {
-  public static final String SERIALIZED_NAME_FILE_EXTENSION = "file_extension";
-  @SerializedName(SERIALIZED_NAME_FILE_EXTENSION)
-  private ByDateFacetBuckets fileExtension;
+  public static final String SERIALIZED_NAME_FILE_EXTENSION_S = "file_extension_s";
+  @SerializedName(SERIALIZED_NAME_FILE_EXTENSION_S)
+  private ByDateFacetBuckets fileExtensionS;
 
 
-  public ByFileExtensionFacetAllOf fileExtension(ByDateFacetBuckets fileExtension) {
+  public ByFileExtensionFacetAllOf fileExtensionS(ByDateFacetBuckets fileExtensionS) {
     
-    this.fileExtension = fileExtension;
+    this.fileExtensionS = fileExtensionS;
     return this;
   }
 
    /**
-   * Get fileExtension
-   * @return fileExtension
+   * Get fileExtensionS
+   * @return fileExtensionS
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getFileExtension() {
-    return fileExtension;
+  public ByDateFacetBuckets getFileExtensionS() {
+    return fileExtensionS;
   }
 
 
-  public void setFileExtension(ByDateFacetBuckets fileExtension) {
-    this.fileExtension = fileExtension;
+  public void setFileExtensionS(ByDateFacetBuckets fileExtensionS) {
+    this.fileExtensionS = fileExtensionS;
   }
 
 
@@ -67,12 +67,12 @@ public class ByFileExtensionFacetAllOf {
       return false;
     }
     ByFileExtensionFacetAllOf byFileExtensionFacetAllOf = (ByFileExtensionFacetAllOf) o;
-    return Objects.equals(this.fileExtension, byFileExtensionFacetAllOf.fileExtension);
+    return Objects.equals(this.fileExtensionS, byFileExtensionFacetAllOf.fileExtensionS);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileExtension);
+    return Objects.hash(fileExtensionS);
   }
 
 
@@ -80,7 +80,7 @@ public class ByFileExtensionFacetAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByFileExtensionFacetAllOf {\n");
-    sb.append("    fileExtension: ").append(toIndentedString(fileExtension)).append("\n");
+    sb.append("    fileExtensionS: ").append(toIndentedString(fileExtensionS)).append("\n");
     sb.append("}");
     return sb.toString();
   }

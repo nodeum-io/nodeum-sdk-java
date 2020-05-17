@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**secondaryName** | [**BySecondaryBuckets**](BySecondaryBuckets.md) |  |  [optional]
+**secPoolNameS** | [**ByDateFacetBuckets**](ByDateFacetBuckets.md) |  |  [optional]
 
 
 

@@ -26,37 +26,38 @@ import io.nodeum.sdk.client.model.FileFacet;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * ByFileExtensionFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByFileExtensionFacet extends FileFacet {
-  public static final String SERIALIZED_NAME_FILE_EXTENSION = "file_extension";
-  @SerializedName(SERIALIZED_NAME_FILE_EXTENSION)
-  private ByDateFacetBuckets fileExtension;
+  public static final String SERIALIZED_NAME_FILE_EXTENSION_S = "file_extension_s";
+  @SerializedName(SERIALIZED_NAME_FILE_EXTENSION_S)
+  private ByDateFacetBuckets fileExtensionS;
 
 
-  public ByFileExtensionFacet fileExtension(ByDateFacetBuckets fileExtension) {
+  public ByFileExtensionFacet fileExtensionS(ByDateFacetBuckets fileExtensionS) {
     
-    this.fileExtension = fileExtension;
+    this.fileExtensionS = fileExtensionS;
     return this;
   }
 
    /**
-   * Get fileExtension
-   * @return fileExtension
+   * Get fileExtensionS
+   * @return fileExtensionS
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getFileExtension() {
-    return fileExtension;
+  public ByDateFacetBuckets getFileExtensionS() {
+    return fileExtensionS;
   }
 
 
-  public void setFileExtension(ByDateFacetBuckets fileExtension) {
-    this.fileExtension = fileExtension;
+  public void setFileExtensionS(ByDateFacetBuckets fileExtensionS) {
+    this.fileExtensionS = fileExtensionS;
   }
 
 
@@ -69,13 +70,13 @@ public class ByFileExtensionFacet extends FileFacet {
       return false;
     }
     ByFileExtensionFacet byFileExtensionFacet = (ByFileExtensionFacet) o;
-    return Objects.equals(this.fileExtension, byFileExtensionFacet.fileExtension) &&
+    return Objects.equals(this.fileExtensionS, byFileExtensionFacet.fileExtensionS) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileExtension, super.hashCode());
+    return Objects.hash(fileExtensionS, super.hashCode());
   }
 
 
@@ -84,7 +85,7 @@ public class ByFileExtensionFacet extends FileFacet {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByFileExtensionFacet {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    fileExtension: ").append(toIndentedString(fileExtension)).append("\n");
+    sb.append("    fileExtensionS: ").append(toIndentedString(fileExtensionS)).append("\n");
     sb.append("}");
     return sb.toString();
   }

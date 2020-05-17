@@ -28,33 +28,33 @@ import java.io.IOException;
 /**
  * ByPrimaryFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class ByPrimaryFacetAllOf {
-  public static final String SERIALIZED_NAME_PRIMARY_NAME = "primary_name";
-  @SerializedName(SERIALIZED_NAME_PRIMARY_NAME)
-  private ByDateFacetBuckets primaryName;
+  public static final String SERIALIZED_NAME_PRIM_NAME_S = "prim_name_s";
+  @SerializedName(SERIALIZED_NAME_PRIM_NAME_S)
+  private ByDateFacetBuckets primNameS;
 
 
-  public ByPrimaryFacetAllOf primaryName(ByDateFacetBuckets primaryName) {
+  public ByPrimaryFacetAllOf primNameS(ByDateFacetBuckets primNameS) {
     
-    this.primaryName = primaryName;
+    this.primNameS = primNameS;
     return this;
   }
 
    /**
-   * Get primaryName
-   * @return primaryName
+   * Get primNameS
+   * @return primNameS
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ByDateFacetBuckets getPrimaryName() {
-    return primaryName;
+  public ByDateFacetBuckets getPrimNameS() {
+    return primNameS;
   }
 
 
-  public void setPrimaryName(ByDateFacetBuckets primaryName) {
-    this.primaryName = primaryName;
+  public void setPrimNameS(ByDateFacetBuckets primNameS) {
+    this.primNameS = primNameS;
   }
 
 
@@ -67,12 +67,12 @@ public class ByPrimaryFacetAllOf {
       return false;
     }
     ByPrimaryFacetAllOf byPrimaryFacetAllOf = (ByPrimaryFacetAllOf) o;
-    return Objects.equals(this.primaryName, byPrimaryFacetAllOf.primaryName);
+    return Objects.equals(this.primNameS, byPrimaryFacetAllOf.primNameS);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(primaryName);
+    return Objects.hash(primNameS);
   }
 
 
@@ -80,7 +80,7 @@ public class ByPrimaryFacetAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ByPrimaryFacetAllOf {\n");
-    sb.append("    primaryName: ").append(toIndentedString(primaryName)).append("\n");
+    sb.append("    primNameS: ").append(toIndentedString(primNameS)).append("\n");
     sb.append("}");
     return sb.toString();
   }

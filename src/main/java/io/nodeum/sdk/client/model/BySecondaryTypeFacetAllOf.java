@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.nodeum.sdk.client.model.BySecondaryBuckets;
+import io.nodeum.sdk.client.model.ByDateFacetBuckets;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,33 +28,33 @@ import java.io.IOException;
 /**
  * BySecondaryTypeFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-14T15:55:03.031Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
 public class BySecondaryTypeFacetAllOf {
-  public static final String SERIALIZED_NAME_SECONDARY_NAME = "secondary_name";
-  @SerializedName(SERIALIZED_NAME_SECONDARY_NAME)
-  private BySecondaryBuckets secondaryName;
+  public static final String SERIALIZED_NAME_SEC_POOL_NAME_S = "sec_pool_name_s";
+  @SerializedName(SERIALIZED_NAME_SEC_POOL_NAME_S)
+  private ByDateFacetBuckets secPoolNameS;
 
 
-  public BySecondaryTypeFacetAllOf secondaryName(BySecondaryBuckets secondaryName) {
+  public BySecondaryTypeFacetAllOf secPoolNameS(ByDateFacetBuckets secPoolNameS) {
     
-    this.secondaryName = secondaryName;
+    this.secPoolNameS = secPoolNameS;
     return this;
   }
 
    /**
-   * Get secondaryName
-   * @return secondaryName
+   * Get secPoolNameS
+   * @return secPoolNameS
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BySecondaryBuckets getSecondaryName() {
-    return secondaryName;
+  public ByDateFacetBuckets getSecPoolNameS() {
+    return secPoolNameS;
   }
 
 
-  public void setSecondaryName(BySecondaryBuckets secondaryName) {
-    this.secondaryName = secondaryName;
+  public void setSecPoolNameS(ByDateFacetBuckets secPoolNameS) {
+    this.secPoolNameS = secPoolNameS;
   }
 
 
@@ -67,12 +67,12 @@ public class BySecondaryTypeFacetAllOf {
       return false;
     }
     BySecondaryTypeFacetAllOf bySecondaryTypeFacetAllOf = (BySecondaryTypeFacetAllOf) o;
-    return Objects.equals(this.secondaryName, bySecondaryTypeFacetAllOf.secondaryName);
+    return Objects.equals(this.secPoolNameS, bySecondaryTypeFacetAllOf.secPoolNameS);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(secondaryName);
+    return Objects.hash(secPoolNameS);
   }
 
 
@@ -80,7 +80,7 @@ public class BySecondaryTypeFacetAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BySecondaryTypeFacetAllOf {\n");
-    sb.append("    secondaryName: ").append(toIndentedString(secondaryName)).append("\n");
+    sb.append("    secPoolNameS: ").append(toIndentedString(secPoolNameS)).append("\n");
     sb.append("}");
     return sb.toString();
   }
