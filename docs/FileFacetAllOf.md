@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filesCount** | **Integer** |  |  [optional]
-**fileSizeSum** | **Integer** |  |  [optional]
-**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**filesCount** | **Integer** |  |  [optional] [readonly]
+**fileSizeSum** | **Integer** |  |  [optional] [readonly]
+**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional] [readonly]
 
 
 

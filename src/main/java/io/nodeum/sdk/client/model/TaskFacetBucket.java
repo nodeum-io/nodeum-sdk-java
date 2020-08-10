@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * TaskFacetBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class TaskFacetBucket {
   public static final String SERIALIZED_NAME_VAL = "val";
   @SerializedName(SERIALIZED_NAME_VAL)
@@ -63,6 +63,14 @@ public class TaskFacetBucket {
   @SerializedName(SERIALIZED_NAME_BANDWIDTH_AVG)
   private Integer bandwidthAvg;
 
+  public static final String SERIALIZED_NAME_BANDWIDTH_COUNT = "bandwidth_count";
+  @SerializedName(SERIALIZED_NAME_BANDWIDTH_COUNT)
+  private Integer bandwidthCount;
+
+  public static final String SERIALIZED_NAME_TASKS_COUNT = "tasks_count";
+  @SerializedName(SERIALIZED_NAME_TASKS_COUNT)
+  private Integer tasksCount;
+
 
   public TaskFacetBucket val(Object val) {
     
@@ -87,12 +95,6 @@ public class TaskFacetBucket {
   }
 
 
-  public TaskFacetBucket count(Integer count) {
-    
-    this.count = count;
-    return this;
-  }
-
    /**
    * Get count
    * @return count
@@ -105,16 +107,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
-
-  public TaskFacetBucket toProcessSizeSum(Integer toProcessSizeSum) {
-    
-    this.toProcessSizeSum = toProcessSizeSum;
-    return this;
-  }
 
    /**
    * Get toProcessSizeSum
@@ -128,16 +121,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setToProcessSizeSum(Integer toProcessSizeSum) {
-    this.toProcessSizeSum = toProcessSizeSum;
-  }
 
-
-  public TaskFacetBucket processedSizeSum(Integer processedSizeSum) {
-    
-    this.processedSizeSum = processedSizeSum;
-    return this;
-  }
 
    /**
    * Get processedSizeSum
@@ -151,16 +135,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setProcessedSizeSum(Integer processedSizeSum) {
-    this.processedSizeSum = processedSizeSum;
-  }
 
-
-  public TaskFacetBucket toProcessFilesSum(Integer toProcessFilesSum) {
-    
-    this.toProcessFilesSum = toProcessFilesSum;
-    return this;
-  }
 
    /**
    * Get toProcessFilesSum
@@ -174,16 +149,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setToProcessFilesSum(Integer toProcessFilesSum) {
-    this.toProcessFilesSum = toProcessFilesSum;
-  }
 
-
-  public TaskFacetBucket processedFilesSum(Integer processedFilesSum) {
-    
-    this.processedFilesSum = processedFilesSum;
-    return this;
-  }
 
    /**
    * Get processedFilesSum
@@ -197,16 +163,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setProcessedFilesSum(Integer processedFilesSum) {
-    this.processedFilesSum = processedFilesSum;
-  }
 
-
-  public TaskFacetBucket finalizedFilesSum(Integer finalizedFilesSum) {
-    
-    this.finalizedFilesSum = finalizedFilesSum;
-    return this;
-  }
 
    /**
    * Get finalizedFilesSum
@@ -220,16 +177,7 @@ public class TaskFacetBucket {
   }
 
 
-  public void setFinalizedFilesSum(Integer finalizedFilesSum) {
-    this.finalizedFilesSum = finalizedFilesSum;
-  }
 
-
-  public TaskFacetBucket bandwidthAvg(Integer bandwidthAvg) {
-    
-    this.bandwidthAvg = bandwidthAvg;
-    return this;
-  }
 
    /**
    * Get bandwidthAvg
@@ -243,9 +191,34 @@ public class TaskFacetBucket {
   }
 
 
-  public void setBandwidthAvg(Integer bandwidthAvg) {
-    this.bandwidthAvg = bandwidthAvg;
+
+
+   /**
+   * Get bandwidthCount
+   * @return bandwidthCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getBandwidthCount() {
+    return bandwidthCount;
   }
+
+
+
+
+   /**
+   * Get tasksCount
+   * @return tasksCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getTasksCount() {
+    return tasksCount;
+  }
+
+
 
 
   @Override
@@ -264,12 +237,14 @@ public class TaskFacetBucket {
         Objects.equals(this.toProcessFilesSum, taskFacetBucket.toProcessFilesSum) &&
         Objects.equals(this.processedFilesSum, taskFacetBucket.processedFilesSum) &&
         Objects.equals(this.finalizedFilesSum, taskFacetBucket.finalizedFilesSum) &&
-        Objects.equals(this.bandwidthAvg, taskFacetBucket.bandwidthAvg);
+        Objects.equals(this.bandwidthAvg, taskFacetBucket.bandwidthAvg) &&
+        Objects.equals(this.bandwidthCount, taskFacetBucket.bandwidthCount) &&
+        Objects.equals(this.tasksCount, taskFacetBucket.tasksCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(val, count, toProcessSizeSum, processedSizeSum, toProcessFilesSum, processedFilesSum, finalizedFilesSum, bandwidthAvg);
+    return Objects.hash(val, count, toProcessSizeSum, processedSizeSum, toProcessFilesSum, processedFilesSum, finalizedFilesSum, bandwidthAvg, bandwidthCount, tasksCount);
   }
 
 
@@ -285,6 +260,8 @@ public class TaskFacetBucket {
     sb.append("    processedFilesSum: ").append(toIndentedString(processedFilesSum)).append("\n");
     sb.append("    finalizedFilesSum: ").append(toIndentedString(finalizedFilesSum)).append("\n");
     sb.append("    bandwidthAvg: ").append(toIndentedString(bandwidthAvg)).append("\n");
+    sb.append("    bandwidthCount: ").append(toIndentedString(bandwidthCount)).append("\n");
+    sb.append("    tasksCount: ").append(toIndentedString(tasksCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

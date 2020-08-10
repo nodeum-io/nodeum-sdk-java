@@ -6,12 +6,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**toProcessSizeSum** | **Integer** |  |  [optional]
-**processedSizeSum** | **Integer** |  |  [optional]
-**toProcessFilesSum** | **Integer** |  |  [optional]
-**processedFilesSum** | **Integer** |  |  [optional]
-**finalizedFilesSum** | **Integer** |  |  [optional]
-**bandwidthAvg** | **Integer** |  |  [optional]
+**toProcessSizeSum** | **Integer** |  |  [optional] [readonly]
+**processedSizeSum** | **Integer** |  |  [optional] [readonly]
+**toProcessFilesSum** | **Integer** |  |  [optional] [readonly]
+**processedFilesSum** | **Integer** |  |  [optional] [readonly]
+**finalizedFilesSum** | **Integer** |  |  [optional] [readonly]
+**bandwidthAvg** | **Integer** |  |  [optional] [readonly]
+**bandwidthCount** | **Integer** |  |  [optional] [readonly]
+**tasksCount** | **Integer** |  |  [optional] [readonly]
 
 
 

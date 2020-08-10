@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**updateCloudBucket**](CloudBucketsApi.md#updateCloudBucket) | **PUT** /cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
 [**updateCloudBucketByCloudConnector**](CloudBucketsApi.md#updateCloudBucketByCloudConnector) | **PUT** /cloud_connectors/{cloud_connector_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
 [**updateCloudBucketByPool**](CloudBucketsApi.md#updateCloudBucketByPool) | **PUT** /pools/{pool_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
+[**updateConfigFileCloudBucket**](CloudBucketsApi.md#updateConfigFileCloudBucket) | **PUT** /cloud_buckets/{cloud_bucket_id}/config_file | Updates a specific cloud bucket.
 
 
 <a name="indexCloudBuckets"></a>
@@ -1132,5 +1133,82 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A specific cloud bucket. |  -  |
+**404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
+
+<a name="updateConfigFileCloudBucket"></a>
+# **updateConfigFileCloudBucket**
+> String updateConfigFileCloudBucket(cloudBucketId, configFile)
+
+Updates a specific cloud bucket.
+
+**API Key Scope**: cloud_buckets / update_config_file
+
+### Example
+```java
+// Import classes:
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.CloudBucketsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    CloudBucketsApi apiInstance = new CloudBucketsApi(defaultClient);
+    String cloudBucketId = "cloudBucketId_example"; // String | Numeric ID or name of cloud bucket.
+    File configFile = new File("/path/to/file"); // File | Config file to upload.
+    try {
+      String result = apiInstance.updateConfigFileCloudBucket(cloudBucketId, configFile);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudBucketsApi#updateConfigFileCloudBucket");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloudBucketId** | **String**| Numeric ID or name of cloud bucket. |
+ **configFile** | **File**| Config file to upload. |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Remote URI |  -  |
 **404** | The requested resource was not found. The detailed error will be of type &#x60;not_found&#x60;. |  -  |
 

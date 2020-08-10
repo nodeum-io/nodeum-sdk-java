@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CloudBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class CloudBucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -60,6 +60,10 @@ public class CloudBucket {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   private String price;
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private String options;
 
 
    /**
@@ -183,6 +187,29 @@ public class CloudBucket {
   }
 
 
+  public CloudBucket options(String options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * S3FS mounting options, separated by comma
+   * @return options
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "S3FS mounting options, separated by comma")
+
+  public String getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(String options) {
+    this.options = options;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -199,12 +226,13 @@ public class CloudBucket {
         Objects.equals(this.fileCount, cloudBucket.fileCount) &&
         Objects.equals(this.fileSizeSum, cloudBucket.fileSizeSum) &&
         Objects.equals(this.location, cloudBucket.location) &&
-        Objects.equals(this.price, cloudBucket.price);
+        Objects.equals(this.price, cloudBucket.price) &&
+        Objects.equals(this.options, cloudBucket.options);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cloudConnectorId, poolId, name, fileCount, fileSizeSum, location, price);
+    return Objects.hash(id, cloudConnectorId, poolId, name, fileCount, fileSizeSum, location, price, options);
   }
 
 
@@ -220,6 +248,7 @@ public class CloudBucket {
     sb.append("    fileSizeSum: ").append(toIndentedString(fileSizeSum)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

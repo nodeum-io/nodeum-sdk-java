@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **region** | **String** |  |  [optional]
 **accessKey** | **String** |  |  [optional]
 **secretKey** | **String** |  |  [optional]
+**options** | **String** | S3FS mounting options, separated by comma |  [optional]
 
 
 
@@ -29,6 +30,7 @@ DELL_EMC_ECS | &quot;dell_emc_ecs&quot;
 AZURE | &quot;azure&quot;
 GOOGLE_CLOUD_STORAGE | &quot;google_cloud_storage&quot;
 OPENSTACK_SWIFT | &quot;openstack_swift&quot;
+WASABI | &quot;wasabi&quot;
 
 
 

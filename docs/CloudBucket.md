@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **fileSizeSum** | **Integer** |  |  [optional] [readonly]
 **location** | **String** |  |  [optional] [readonly]
 **price** | **String** |  |  [optional]
+**options** | **String** | S3FS mounting options, separated by comma |  [optional]
 
 
 

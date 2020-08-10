@@ -29,7 +29,7 @@ import java.io.IOException;
  * Attribute can&#39;t be updated
  */
 @ApiModel(description = "Attribute can't be updated")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class Frozen extends AttributeError {
 
   @Override

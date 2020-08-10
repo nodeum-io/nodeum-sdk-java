@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * StorageTapeFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class StorageTapeFacets {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
@@ -49,12 +49,6 @@ public class StorageTapeFacets {
   private ByTypeFacetBuckets poolTypeI;
 
 
-  public StorageTapeFacets count(Integer count) {
-    
-    this.count = count;
-    return this;
-  }
-
    /**
    * Get count
    * @return count
@@ -67,9 +61,6 @@ public class StorageTapeFacets {
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
 
   public StorageTapeFacets tapeTypeI(ByTypeFacetBuckets tapeTypeI) {

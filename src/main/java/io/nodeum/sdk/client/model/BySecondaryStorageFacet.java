@@ -31,7 +31,7 @@ import java.math.BigDecimal;
 /**
  * BySecondaryStorageFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class BySecondaryStorageFacet {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
@@ -74,12 +74,6 @@ public class BySecondaryStorageFacet {
   private BySecondaryTypeFacet onNoSecondary = null;
 
 
-  public BySecondaryStorageFacet count(Integer count) {
-    
-    this.count = count;
-    return this;
-  }
-
    /**
    * Get count
    * @return count
@@ -92,16 +86,7 @@ public class BySecondaryStorageFacet {
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
-
-  public BySecondaryStorageFacet filesCount(Integer filesCount) {
-    
-    this.filesCount = filesCount;
-    return this;
-  }
 
    /**
    * Get filesCount
@@ -115,16 +100,7 @@ public class BySecondaryStorageFacet {
   }
 
 
-  public void setFilesCount(Integer filesCount) {
-    this.filesCount = filesCount;
-  }
 
-
-  public BySecondaryStorageFacet fileSizeSum(Integer fileSizeSum) {
-    
-    this.fileSizeSum = fileSizeSum;
-    return this;
-  }
 
    /**
    * Get fileSizeSum
@@ -138,16 +114,7 @@ public class BySecondaryStorageFacet {
   }
 
 
-  public void setFileSizeSum(Integer fileSizeSum) {
-    this.fileSizeSum = fileSizeSum;
-  }
 
-
-  public BySecondaryStorageFacet cost(BigDecimal cost) {
-    
-    this.cost = cost;
-    return this;
-  }
 
    /**
    * Get cost
@@ -161,9 +128,6 @@ public class BySecondaryStorageFacet {
   }
 
 
-  public void setCost(BigDecimal cost) {
-    this.cost = cost;
-  }
 
 
   public BySecondaryStorageFacet onSecondaryNas(BySecondaryTypeFacet onSecondaryNas) {

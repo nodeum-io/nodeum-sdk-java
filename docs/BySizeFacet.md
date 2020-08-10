@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **Integer** |  |  [optional]
-**filesCount** | **Integer** |  |  [optional]
-**fileSizeSum** | **Integer** |  |  [optional]
-**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**count** | **Integer** |  |  [optional] [readonly]
+**filesCount** | **Integer** |  |  [optional] [readonly]
+**fileSizeSum** | **Integer** |  |  [optional] [readonly]
+**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional] [readonly]
 **less100Kb** | [**ByDateFacet**](ByDateFacet.md) |  |  [optional]
 **less1Mb** | [**ByDateFacet**](ByDateFacet.md) |  |  [optional]
 **less10Mb** | [**ByDateFacet**](ByDateFacet.md) |  |  [optional]

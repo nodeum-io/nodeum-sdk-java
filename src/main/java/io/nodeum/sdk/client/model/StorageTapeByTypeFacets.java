@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * StorageTapeByTypeFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class StorageTapeByTypeFacets {
   public static final String SERIALIZED_NAME_TAPE_TYPE_I = "tape_type_i";
   @SerializedName(SERIALIZED_NAME_TAPE_TYPE_I)

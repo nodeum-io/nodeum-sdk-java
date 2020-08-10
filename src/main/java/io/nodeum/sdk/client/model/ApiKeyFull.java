@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * ApiKeyFull
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class ApiKeyFull extends ApiKey {
   public static final String SERIALIZED_NAME_API_KEY_SCOPES = "api_key_scopes";
   @SerializedName(SERIALIZED_NAME_API_KEY_SCOPES)

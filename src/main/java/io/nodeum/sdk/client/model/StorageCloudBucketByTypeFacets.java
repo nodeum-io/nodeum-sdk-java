@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * StorageCloudBucketByTypeFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class StorageCloudBucketByTypeFacets {
   public static final String SERIALIZED_NAME_CLOUD_CONNECTOR_TYPE_I = "cloud_connector_type_i";
   @SerializedName(SERIALIZED_NAME_CLOUD_CONNECTOR_TYPE_I)

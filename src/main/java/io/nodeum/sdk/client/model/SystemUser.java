@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * SystemUser
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class SystemUser {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -46,12 +46,6 @@ public class SystemUser {
   private String info;
 
 
-  public SystemUser name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
    /**
    * Get name
    * @return name
@@ -64,16 +58,7 @@ public class SystemUser {
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
 
-
-  public SystemUser uid(Integer uid) {
-    
-    this.uid = uid;
-    return this;
-  }
 
    /**
    * Get uid
@@ -87,16 +72,7 @@ public class SystemUser {
   }
 
 
-  public void setUid(Integer uid) {
-    this.uid = uid;
-  }
 
-
-  public SystemUser gid(Integer gid) {
-    
-    this.gid = gid;
-    return this;
-  }
 
    /**
    * Get gid
@@ -110,16 +86,7 @@ public class SystemUser {
   }
 
 
-  public void setGid(Integer gid) {
-    this.gid = gid;
-  }
 
-
-  public SystemUser info(String info) {
-    
-    this.info = info;
-    return this;
-  }
 
    /**
    * Get info
@@ -133,9 +100,6 @@ public class SystemUser {
   }
 
 
-  public void setInfo(String info) {
-    this.info = info;
-  }
 
 
   @Override

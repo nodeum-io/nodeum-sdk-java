@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CloudConnector
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class CloudConnector {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,7 +64,9 @@ public class CloudConnector {
     
     GOOGLE_CLOUD_STORAGE("google_cloud_storage"),
     
-    OPENSTACK_SWIFT("openstack_swift");
+    OPENSTACK_SWIFT("openstack_swift"),
+    
+    WASABI("wasabi");
 
     private String value;
 
@@ -119,6 +121,10 @@ public class CloudConnector {
   public static final String SERIALIZED_NAME_SECRET_KEY = "secret_key";
   @SerializedName(SERIALIZED_NAME_SECRET_KEY)
   private String secretKey;
+
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private String options;
 
 
    /**
@@ -296,6 +302,29 @@ public class CloudConnector {
   }
 
 
+  public CloudConnector options(String options) {
+    
+    this.options = options;
+    return this;
+  }
+
+   /**
+   * S3FS mounting options, separated by comma
+   * @return options
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "S3FS mounting options, separated by comma")
+
+  public String getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(String options) {
+    this.options = options;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -312,12 +341,13 @@ public class CloudConnector {
         Objects.equals(this.provider, cloudConnector.provider) &&
         Objects.equals(this.region, cloudConnector.region) &&
         Objects.equals(this.accessKey, cloudConnector.accessKey) &&
-        Objects.equals(this.secretKey, cloudConnector.secretKey);
+        Objects.equals(this.secretKey, cloudConnector.secretKey) &&
+        Objects.equals(this.options, cloudConnector.options);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, url, urlProxy, provider, region, accessKey, secretKey);
+    return Objects.hash(id, name, url, urlProxy, provider, region, accessKey, secretKey, options);
   }
 
 
@@ -333,6 +363,7 @@ public class CloudConnector {
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

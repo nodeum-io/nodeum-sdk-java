@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **Integer** |  |  [optional]
+**count** | **Integer** |  |  [optional] [readonly]
 **container** | [**DefaultFacet**](DefaultFacet.md) |  |  [optional]
 **nasShare** | [**StorageNasShareFacets**](StorageNasShareFacets.md) |  |  [optional]
 **cloudBucket** | [**StorageCloudBucketFacets**](StorageCloudBucketFacets.md) |  |  [optional]

@@ -2,7 +2,7 @@
 
 Nodeum API
 - API version: 2.1.0
-  - Build date: 2020-05-17T20:02:36.953Z[GMT]
+  - Build date: 2020-08-10T06:37:58.200Z[GMT]
 
 The Nodeum API makes it easy to tap into the digital data mesh that runs across your organisation. Make requests to our API endpoints and we’ll give you everything you need to interconnect your business workflows with your storage.
 
@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.nodeum.sdk</groupId>
   <artifactId>nodeum-sdk</artifactId>
-  <version>1.86.0</version>
+  <version>1.87.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -96,7 +96,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.nodeum.sdk:nodeum-sdk:1.86.0"
+compile "io.nodeum.sdk:nodeum-sdk:1.87.0"
 ```
 
 ### Others
@@ -109,7 +109,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/nodeum-sdk-1.86.0.jar`
+* `target/nodeum-sdk-1.87.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
 *CloudBucketsApi* | [**updateCloudBucket**](docs/CloudBucketsApi.md#updateCloudBucket) | **PUT** /cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
 *CloudBucketsApi* | [**updateCloudBucketByCloudConnector**](docs/CloudBucketsApi.md#updateCloudBucketByCloudConnector) | **PUT** /cloud_connectors/{cloud_connector_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
 *CloudBucketsApi* | [**updateCloudBucketByPool**](docs/CloudBucketsApi.md#updateCloudBucketByPool) | **PUT** /pools/{pool_id}/cloud_buckets/{cloud_bucket_id} | Updates a specific cloud bucket.
+*CloudBucketsApi* | [**updateConfigFileCloudBucket**](docs/CloudBucketsApi.md#updateConfigFileCloudBucket) | **PUT** /cloud_buckets/{cloud_bucket_id}/config_file | Updates a specific cloud bucket.
 *CloudConnectorsApi* | [**createCloudConnector**](docs/CloudConnectorsApi.md#createCloudConnector) | **POST** /cloud_connectors | Creates a new cloud connector.
 *CloudConnectorsApi* | [**destroyCloudConnector**](docs/CloudConnectorsApi.md#destroyCloudConnector) | **DELETE** /cloud_connectors/{cloud_connector_id} | Destroys a specific cloud connector.
 *CloudConnectorsApi* | [**indexCloudConnectors**](docs/CloudConnectorsApi.md#indexCloudConnectors) | **GET** /cloud_connectors | Lists all cloud connectors.
@@ -232,6 +233,10 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**showFileByTaskExecutionByTask**](docs/FilesApi.md#showFileByTaskExecutionByTask) | **GET** /tasks/{task_id}/task_executions/{task_execution_id}/files/{file_id} | Displays a specific file.
 *FilesApi* | [**showImportFileByPool**](docs/FilesApi.md#showImportFileByPool) | **GET** /pools/{pool_id}/import_files/{file_id} | Displays a specific file on tape of pools, specific for Data Exchange.
 *FilesApi* | [**showOnTapeFileByPool**](docs/FilesApi.md#showOnTapeFileByPool) | **GET** /pools/{pool_id}/on_tapes_files/{file_id} | Displays a specific file on tape of pools, specific for Active and Offline.
+*MetadataApi* | [**indexFileMetadataDefinitions**](docs/MetadataApi.md#indexFileMetadataDefinitions) | **GET** /file_metadata_definitions | List file metadata definitions
+*MetadataApi* | [**indexTaskMetadataDefinitions**](docs/MetadataApi.md#indexTaskMetadataDefinitions) | **GET** /task_metadata_definitions | List task metadata definitions
+*MetadataApi* | [**showFileMetadataDefinition**](docs/MetadataApi.md#showFileMetadataDefinition) | **GET** /file_metadata_definitions/{metadata_definition_id} | Displays a specific task metadata definition.
+*MetadataApi* | [**showTaskMetadataDefinition**](docs/MetadataApi.md#showTaskMetadataDefinition) | **GET** /task_metadata_definitions/{metadata_definition_id} | Displays a specific task metadata definition.
 *MountsApi* | [**indexMounts**](docs/MountsApi.md#indexMounts) | **GET** /mounts | List all mounted storages.
 *NasApi* | [**createNas**](docs/NasApi.md#createNas) | **POST** /nas | Creates a new NAS.
 *NasApi* | [**destroyNas**](docs/NasApi.md#destroyNas) | **DELETE** /nas/{nas_id} | Destroys a specific NAS.
@@ -272,6 +277,7 @@ Class | Method | HTTP request | Description
 *StatisticsApi* | [**statisticsByDate**](docs/StatisticsApi.md#statisticsByDate) | **GET** /statistics/by_date | Get statistics about files, grouped by date
 *StatisticsApi* | [**statisticsByFileExtension**](docs/StatisticsApi.md#statisticsByFileExtension) | **GET** /statistics/by_file_extension | Get statistics about files, grouped by file extension
 *StatisticsApi* | [**statisticsByGroupOwner**](docs/StatisticsApi.md#statisticsByGroupOwner) | **GET** /statistics/by_group_owner | Get statistics about files, grouped by owner (group)
+*StatisticsApi* | [**statisticsByMetadata**](docs/StatisticsApi.md#statisticsByMetadata) | **GET** /statistics/by_metadata | Get statistics about files, grouped by metadata
 *StatisticsApi* | [**statisticsByPrimaryCloud**](docs/StatisticsApi.md#statisticsByPrimaryCloud) | **GET** /statistics/by_primary_cloud | Get statistics about files, grouped by primary Cloud
 *StatisticsApi* | [**statisticsByPrimaryName**](docs/StatisticsApi.md#statisticsByPrimaryName) | **GET** /statistics/by_primary_name | Get statistics about files, grouped by primary storages
 *StatisticsApi* | [**statisticsByPrimaryNas**](docs/StatisticsApi.md#statisticsByPrimaryNas) | **GET** /statistics/by_primary_nas | Get statistics about files, grouped by primary NAS
@@ -283,6 +289,7 @@ Class | Method | HTTP request | Description
 *StatisticsApi* | [**statisticsBySize**](docs/StatisticsApi.md#statisticsBySize) | **GET** /statistics/by_size | Get statistics about files, grouped by size
 *StatisticsApi* | [**statisticsByUserOwner**](docs/StatisticsApi.md#statisticsByUserOwner) | **GET** /statistics/by_user_owner | Get statistics about files, grouped by owner (user)
 *StatisticsApi* | [**statisticsStorage**](docs/StatisticsApi.md#statisticsStorage) | **GET** /statistics/storage | Get statistics about storages, grouped by types
+*StatisticsApi* | [**statisticsTaskByMetadata**](docs/StatisticsApi.md#statisticsTaskByMetadata) | **GET** /statistics/task_by_metadata | Get statistics about tasks executions, grouped by metadata
 *StatisticsApi* | [**statisticsTaskByStatus**](docs/StatisticsApi.md#statisticsTaskByStatus) | **GET** /statistics/task_by_status | Get statistics about tasks executions, grouped by status
 *StatisticsApi* | [**statisticsTaskByStorage**](docs/StatisticsApi.md#statisticsTaskByStorage) | **GET** /statistics/task_by_storage | Get statistics about tasks executions, grouped by source and destination
 *StatisticsApi* | [**statisticsTaskByWorkflow**](docs/StatisticsApi.md#statisticsTaskByWorkflow) | **GET** /statistics/task_by_workflow | Get statistics about tasks executions, grouped by workflow
@@ -397,6 +404,14 @@ Class | Method | HTTP request | Description
  - [ByFileExtensionFacetAllOf](docs/ByFileExtensionFacetAllOf.md)
  - [ByGroupOwnerFacet](docs/ByGroupOwnerFacet.md)
  - [ByGroupOwnerFacetAllOf](docs/ByGroupOwnerFacetAllOf.md)
+ - [ByMetadataBucket](docs/ByMetadataBucket.md)
+ - [ByMetadataBucketAllOf](docs/ByMetadataBucketAllOf.md)
+ - [ByMetadataFacet](docs/ByMetadataFacet.md)
+ - [ByMetadataFacetAllOf](docs/ByMetadataFacetAllOf.md)
+ - [ByMetadataKeyBucket](docs/ByMetadataKeyBucket.md)
+ - [ByMetadataKeyBucketAllOf](docs/ByMetadataKeyBucketAllOf.md)
+ - [ByMetadataKeyBuckets](docs/ByMetadataKeyBuckets.md)
+ - [ByMetadataValueBuckets](docs/ByMetadataValueBuckets.md)
  - [ByPrimaryCloudFacet](docs/ByPrimaryCloudFacet.md)
  - [ByPrimaryCloudFacetAllOf](docs/ByPrimaryCloudFacetAllOf.md)
  - [ByPrimaryFacet](docs/ByPrimaryFacet.md)
@@ -415,6 +430,8 @@ Class | Method | HTTP request | Description
  - [BySecondaryTypeFacet](docs/BySecondaryTypeFacet.md)
  - [BySecondaryTypeFacetAllOf](docs/BySecondaryTypeFacetAllOf.md)
  - [BySizeFacet](docs/BySizeFacet.md)
+ - [ByTaskMetadataFacet](docs/ByTaskMetadataFacet.md)
+ - [ByTaskMetadataFacetAllOf](docs/ByTaskMetadataFacetAllOf.md)
  - [ByTaskStatusFacet](docs/ByTaskStatusFacet.md)
  - [ByTaskStatusFacetAllOf](docs/ByTaskStatusFacetAllOf.md)
  - [ByTaskStorageFacet](docs/ByTaskStorageFacet.md)
@@ -439,6 +456,8 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [FileFacet](docs/FileFacet.md)
  - [FileFacetAllOf](docs/FileFacetAllOf.md)
+ - [FileMetadataDefinition](docs/FileMetadataDefinition.md)
+ - [FileMetadataDefinitionCollection](docs/FileMetadataDefinitionCollection.md)
  - [Frozen](docs/Frozen.md)
  - [GreaterThan](docs/GreaterThan.md)
  - [GreaterThanAllOf](docs/GreaterThanAllOf.md)
@@ -450,6 +469,7 @@ Class | Method | HTTP request | Description
  - [LessThan](docs/LessThan.md)
  - [LessThanAllOf](docs/LessThanAllOf.md)
  - [LessThanOrEqualTo](docs/LessThanOrEqualTo.md)
+ - [MetadataDefinition](docs/MetadataDefinition.md)
  - [MountCollection](docs/MountCollection.md)
  - [MountInfo](docs/MountInfo.md)
  - [MountNotification](docs/MountNotification.md)
@@ -522,6 +542,14 @@ Class | Method | HTTP request | Description
  - [TaskFacetAllOf](docs/TaskFacetAllOf.md)
  - [TaskFacetBucket](docs/TaskFacetBucket.md)
  - [TaskFacetBuckets](docs/TaskFacetBuckets.md)
+ - [TaskFacetMetadataBucket](docs/TaskFacetMetadataBucket.md)
+ - [TaskFacetMetadataKeyBucket](docs/TaskFacetMetadataKeyBucket.md)
+ - [TaskFacetMetadataKeyBucketAllOf](docs/TaskFacetMetadataKeyBucketAllOf.md)
+ - [TaskFacetMetadataKeyBuckets](docs/TaskFacetMetadataKeyBuckets.md)
+ - [TaskFacetMetadataValueBuckets](docs/TaskFacetMetadataValueBuckets.md)
+ - [TaskMetadataDefinition](docs/TaskMetadataDefinition.md)
+ - [TaskMetadataDefinitionAllOf](docs/TaskMetadataDefinitionAllOf.md)
+ - [TaskMetadataDefinitionCollection](docs/TaskMetadataDefinitionCollection.md)
  - [TaskMetadatum](docs/TaskMetadatum.md)
  - [TaskMetadatumCollection](docs/TaskMetadatumCollection.md)
  - [TaskOption](docs/TaskOption.md)

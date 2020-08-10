@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * ByTypeFacetBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class ByTypeFacetBucket {
   public static final String SERIALIZED_NAME_VAL = "val";
   @SerializedName(SERIALIZED_NAME_VAL)
@@ -63,12 +63,6 @@ public class ByTypeFacetBucket {
   }
 
 
-  public ByTypeFacetBucket count(Integer count) {
-    
-    this.count = count;
-    return this;
-  }
-
    /**
    * Get count
    * @return count
@@ -81,9 +75,6 @@ public class ByTypeFacetBucket {
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
 
   @Override

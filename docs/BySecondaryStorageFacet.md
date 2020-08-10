@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **Integer** |  |  [optional]
-**filesCount** | **Integer** |  |  [optional]
-**fileSizeSum** | **Integer** |  |  [optional]
-**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**count** | **Integer** |  |  [optional] [readonly]
+**filesCount** | **Integer** |  |  [optional] [readonly]
+**fileSizeSum** | **Integer** |  |  [optional] [readonly]
+**cost** | [**BigDecimal**](BigDecimal.md) |  |  [optional] [readonly]
 **onSecondaryNas** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 **onSecondaryPublicCloud** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]
 **onSecondaryObjectCloud** | [**BySecondaryTypeFacet**](BySecondaryTypeFacet.md) |  |  [optional]

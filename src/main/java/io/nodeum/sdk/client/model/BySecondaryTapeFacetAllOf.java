@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * BySecondaryTapeFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class BySecondaryTapeFacetAllOf {
   public static final String SERIALIZED_NAME_SEC_TAPE_LIBRARY_NAME_S = "sec_tape_library_name_s";
   @SerializedName(SERIALIZED_NAME_SEC_TAPE_LIBRARY_NAME_S)

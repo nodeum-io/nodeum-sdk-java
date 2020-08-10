@@ -31,7 +31,7 @@ import java.math.BigDecimal;
 /**
  * ByUserOwnerFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class ByUserOwnerFacet extends FileFacet {
   public static final String SERIALIZED_NAME_USER_OWNER_ID_L = "user_owner_id_l";
   @SerializedName(SERIALIZED_NAME_USER_OWNER_ID_L)

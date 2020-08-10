@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TaskFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class TaskFacetAllOf {
   public static final String SERIALIZED_NAME_TO_PROCESS_SIZE_SUM = "to_process_size_sum";
   @SerializedName(SERIALIZED_NAME_TO_PROCESS_SIZE_SUM)
@@ -53,12 +53,14 @@ public class TaskFacetAllOf {
   @SerializedName(SERIALIZED_NAME_BANDWIDTH_AVG)
   private Integer bandwidthAvg;
 
+  public static final String SERIALIZED_NAME_BANDWIDTH_COUNT = "bandwidth_count";
+  @SerializedName(SERIALIZED_NAME_BANDWIDTH_COUNT)
+  private Integer bandwidthCount;
 
-  public TaskFacetAllOf toProcessSizeSum(Integer toProcessSizeSum) {
-    
-    this.toProcessSizeSum = toProcessSizeSum;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_TASKS_COUNT = "tasks_count";
+  @SerializedName(SERIALIZED_NAME_TASKS_COUNT)
+  private Integer tasksCount;
+
 
    /**
    * Get toProcessSizeSum
@@ -72,16 +74,7 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setToProcessSizeSum(Integer toProcessSizeSum) {
-    this.toProcessSizeSum = toProcessSizeSum;
-  }
 
-
-  public TaskFacetAllOf processedSizeSum(Integer processedSizeSum) {
-    
-    this.processedSizeSum = processedSizeSum;
-    return this;
-  }
 
    /**
    * Get processedSizeSum
@@ -95,16 +88,7 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setProcessedSizeSum(Integer processedSizeSum) {
-    this.processedSizeSum = processedSizeSum;
-  }
 
-
-  public TaskFacetAllOf toProcessFilesSum(Integer toProcessFilesSum) {
-    
-    this.toProcessFilesSum = toProcessFilesSum;
-    return this;
-  }
 
    /**
    * Get toProcessFilesSum
@@ -118,16 +102,7 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setToProcessFilesSum(Integer toProcessFilesSum) {
-    this.toProcessFilesSum = toProcessFilesSum;
-  }
 
-
-  public TaskFacetAllOf processedFilesSum(Integer processedFilesSum) {
-    
-    this.processedFilesSum = processedFilesSum;
-    return this;
-  }
 
    /**
    * Get processedFilesSum
@@ -141,16 +116,7 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setProcessedFilesSum(Integer processedFilesSum) {
-    this.processedFilesSum = processedFilesSum;
-  }
 
-
-  public TaskFacetAllOf finalizedFilesSum(Integer finalizedFilesSum) {
-    
-    this.finalizedFilesSum = finalizedFilesSum;
-    return this;
-  }
 
    /**
    * Get finalizedFilesSum
@@ -164,16 +130,7 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setFinalizedFilesSum(Integer finalizedFilesSum) {
-    this.finalizedFilesSum = finalizedFilesSum;
-  }
 
-
-  public TaskFacetAllOf bandwidthAvg(Integer bandwidthAvg) {
-    
-    this.bandwidthAvg = bandwidthAvg;
-    return this;
-  }
 
    /**
    * Get bandwidthAvg
@@ -187,9 +144,34 @@ public class TaskFacetAllOf {
   }
 
 
-  public void setBandwidthAvg(Integer bandwidthAvg) {
-    this.bandwidthAvg = bandwidthAvg;
+
+
+   /**
+   * Get bandwidthCount
+   * @return bandwidthCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getBandwidthCount() {
+    return bandwidthCount;
   }
+
+
+
+
+   /**
+   * Get tasksCount
+   * @return tasksCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getTasksCount() {
+    return tasksCount;
+  }
+
+
 
 
   @Override
@@ -206,12 +188,14 @@ public class TaskFacetAllOf {
         Objects.equals(this.toProcessFilesSum, taskFacetAllOf.toProcessFilesSum) &&
         Objects.equals(this.processedFilesSum, taskFacetAllOf.processedFilesSum) &&
         Objects.equals(this.finalizedFilesSum, taskFacetAllOf.finalizedFilesSum) &&
-        Objects.equals(this.bandwidthAvg, taskFacetAllOf.bandwidthAvg);
+        Objects.equals(this.bandwidthAvg, taskFacetAllOf.bandwidthAvg) &&
+        Objects.equals(this.bandwidthCount, taskFacetAllOf.bandwidthCount) &&
+        Objects.equals(this.tasksCount, taskFacetAllOf.tasksCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(toProcessSizeSum, processedSizeSum, toProcessFilesSum, processedFilesSum, finalizedFilesSum, bandwidthAvg);
+    return Objects.hash(toProcessSizeSum, processedSizeSum, toProcessFilesSum, processedFilesSum, finalizedFilesSum, bandwidthAvg, bandwidthCount, tasksCount);
   }
 
 
@@ -225,6 +209,8 @@ public class TaskFacetAllOf {
     sb.append("    processedFilesSum: ").append(toIndentedString(processedFilesSum)).append("\n");
     sb.append("    finalizedFilesSum: ").append(toIndentedString(finalizedFilesSum)).append("\n");
     sb.append("    bandwidthAvg: ").append(toIndentedString(bandwidthAvg)).append("\n");
+    sb.append("    bandwidthCount: ").append(toIndentedString(bandwidthCount)).append("\n");
+    sb.append("    tasksCount: ").append(toIndentedString(tasksCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

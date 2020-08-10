@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ByPrimaryNasFacetAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class ByPrimaryNasFacetAllOf {
   public static final String SERIALIZED_NAME_PRIM_NAS_NAME_S = "prim_nas_name_s";
   @SerializedName(SERIALIZED_NAME_PRIM_NAS_NAME_S)

@@ -30,7 +30,7 @@ import java.io.IOException;
  * Attribute must be greater than or equal to %{count}
  */
 @ApiModel(description = "Attribute must be greater than or equal to %{count}")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class GreaterThanOrEqualTo extends AttributeError {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)

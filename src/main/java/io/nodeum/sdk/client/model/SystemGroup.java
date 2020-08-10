@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * SystemGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class SystemGroup {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -44,12 +44,6 @@ public class SystemGroup {
   private List<String> users = null;
 
 
-  public SystemGroup name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
    /**
    * Get name
    * @return name
@@ -62,16 +56,7 @@ public class SystemGroup {
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
 
-
-  public SystemGroup gid(Integer gid) {
-    
-    this.gid = gid;
-    return this;
-  }
 
    /**
    * Get gid
@@ -85,24 +70,7 @@ public class SystemGroup {
   }
 
 
-  public void setGid(Integer gid) {
-    this.gid = gid;
-  }
 
-
-  public SystemGroup users(List<String> users) {
-    
-    this.users = users;
-    return this;
-  }
-
-  public SystemGroup addUsersItem(String usersItem) {
-    if (this.users == null) {
-      this.users = new ArrayList<String>();
-    }
-    this.users.add(usersItem);
-    return this;
-  }
 
    /**
    * Get users
@@ -116,9 +84,6 @@ public class SystemGroup {
   }
 
 
-  public void setUsers(List<String> users) {
-    this.users = users;
-  }
 
 
   @Override

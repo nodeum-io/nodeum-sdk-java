@@ -30,6 +30,7 @@ import java.io.IOException;
 import io.nodeum.sdk.client.model.ByDateFacet;
 import io.nodeum.sdk.client.model.ByFileExtensionFacet;
 import io.nodeum.sdk.client.model.ByGroupOwnerFacet;
+import io.nodeum.sdk.client.model.ByMetadataFacet;
 import io.nodeum.sdk.client.model.ByPrimaryCloudFacet;
 import io.nodeum.sdk.client.model.ByPrimaryFacet;
 import io.nodeum.sdk.client.model.ByPrimaryNasFacet;
@@ -39,6 +40,7 @@ import io.nodeum.sdk.client.model.BySecondaryNasFacet;
 import io.nodeum.sdk.client.model.BySecondaryStorageFacet;
 import io.nodeum.sdk.client.model.BySecondaryTapeFacet;
 import io.nodeum.sdk.client.model.BySizeFacet;
+import io.nodeum.sdk.client.model.ByTaskMetadataFacet;
 import io.nodeum.sdk.client.model.ByTaskStatusFacet;
 import io.nodeum.sdk.client.model.ByTaskStorageFacet;
 import io.nodeum.sdk.client.model.ByTaskWorkflowFacet;
@@ -474,6 +476,147 @@ public class StatisticsApi {
 
         okhttp3.Call localVarCall = statisticsByGroupOwnerValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
         Type localVarReturnType = new TypeToken<ByGroupOwnerFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsByMetadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByMetadataCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/by_metadata";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (dateAttr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_attr", dateAttr));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsByMetadataValidateBeforeCall(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsByMetadataCall(q, fq, dateAttr, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about files, grouped by metadata
+     * **API Key Scope**: statistics / by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ByMetadataFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByMetadataFacet statisticsByMetadata(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByMetadataFacet> localVarResp = statisticsByMetadataWithHttpInfo(q, fq, dateAttr, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about files, grouped by metadata
+     * **API Key Scope**: statistics / by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;ByMetadataFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByMetadataFacet> statisticsByMetadataWithHttpInfo(String q, List<String> fq, String dateAttr, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsByMetadataValidateBeforeCall(q, fq, dateAttr, sort, limit, null);
+        Type localVarReturnType = new TypeToken<ByMetadataFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about files, grouped by metadata (asynchronously)
+     * **API Key Scope**: statistics / by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param dateAttr Type of date to facet on (optional)
+     * @param sort Sort results of facet (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsByMetadataAsync(String q, List<String> fq, String dateAttr, String sort, Integer limit, final ApiCallback<ByMetadataFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsByMetadataValidateBeforeCall(q, fq, dateAttr, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<ByMetadataFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1985,6 +2128,139 @@ public class StatisticsApi {
 
         okhttp3.Call localVarCall = statisticsStorageValidateBeforeCall(q, fq, _callback);
         Type localVarReturnType = new TypeToken<StorageFacet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statisticsTaskByMetadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param sort Sort results of facet on task (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByMetadataCall(String q, List<String> fq, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/statistics/task_by_metadata";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (fq != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("pipe", "fq", fq));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statisticsTaskByMetadataValidateBeforeCall(String q, List<String> fq, String sort, Integer limit, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statisticsTaskByMetadataCall(q, fq, sort, limit, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by metadata
+     * **API Key Scope**: statistics / task_by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param sort Sort results of facet on task (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ByTaskMetadataFacet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ByTaskMetadataFacet statisticsTaskByMetadata(String q, List<String> fq, String sort, Integer limit) throws ApiException {
+        ApiResponse<ByTaskMetadataFacet> localVarResp = statisticsTaskByMetadataWithHttpInfo(q, fq, sort, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by metadata
+     * **API Key Scope**: statistics / task_by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param sort Sort results of facet on task (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @return ApiResponse&lt;ByTaskMetadataFacet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ByTaskMetadataFacet> statisticsTaskByMetadataWithHttpInfo(String q, List<String> fq, String sort, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = statisticsTaskByMetadataValidateBeforeCall(q, fq, sort, limit, null);
+        Type localVarReturnType = new TypeToken<ByTaskMetadataFacet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get statistics about tasks executions, grouped by metadata (asynchronously)
+     * **API Key Scope**: statistics / task_by_metadata
+     * @param q Solr query (optional)
+     * @param fq Solr filter query  Multiple query can be separated by &#x60;|&#x60;. (optional)
+     * @param sort Sort results of facet on task (optional, default to count)
+     * @param limit Limit results of facet (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statisticsTaskByMetadataAsync(String q, List<String> fq, String sort, Integer limit, final ApiCallback<ByTaskMetadataFacet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statisticsTaskByMetadataValidateBeforeCall(q, fq, sort, limit, _callback);
+        Type localVarReturnType = new TypeToken<ByTaskMetadataFacet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

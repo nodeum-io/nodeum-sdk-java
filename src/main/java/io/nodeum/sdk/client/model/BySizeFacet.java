@@ -31,7 +31,7 @@ import java.math.BigDecimal;
 /**
  * BySizeFacet
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-17T20:02:36.953Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
 public class BySizeFacet {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
@@ -82,12 +82,6 @@ public class BySizeFacet {
   private ByDateFacet more100Gb = null;
 
 
-  public BySizeFacet count(Integer count) {
-    
-    this.count = count;
-    return this;
-  }
-
    /**
    * Get count
    * @return count
@@ -100,16 +94,7 @@ public class BySizeFacet {
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
-
-  public BySizeFacet filesCount(Integer filesCount) {
-    
-    this.filesCount = filesCount;
-    return this;
-  }
 
    /**
    * Get filesCount
@@ -123,16 +108,7 @@ public class BySizeFacet {
   }
 
 
-  public void setFilesCount(Integer filesCount) {
-    this.filesCount = filesCount;
-  }
 
-
-  public BySizeFacet fileSizeSum(Integer fileSizeSum) {
-    
-    this.fileSizeSum = fileSizeSum;
-    return this;
-  }
 
    /**
    * Get fileSizeSum
@@ -146,16 +122,7 @@ public class BySizeFacet {
   }
 
 
-  public void setFileSizeSum(Integer fileSizeSum) {
-    this.fileSizeSum = fileSizeSum;
-  }
 
-
-  public BySizeFacet cost(BigDecimal cost) {
-    
-    this.cost = cost;
-    return this;
-  }
 
    /**
    * Get cost
@@ -169,9 +136,6 @@ public class BySizeFacet {
   }
 
 
-  public void setCost(BigDecimal cost) {
-    this.cost = cost;
-  }
 
 
   public BySizeFacet less100Kb(ByDateFacet less100Kb) {
