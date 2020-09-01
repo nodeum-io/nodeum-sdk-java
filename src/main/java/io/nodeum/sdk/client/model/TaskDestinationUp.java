@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TaskDestinationUp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class TaskDestinationUp {
   public static final String SERIALIZED_NAME_FOLDER_ID = "folder_id";
   @SerializedName(SERIALIZED_NAME_FOLDER_ID)

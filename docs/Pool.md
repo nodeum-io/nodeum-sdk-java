@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 **content** | [**ContentEnum**](#ContentEnum) |  |  [optional]
 **primaryId** | **Integer** |  |  [optional] [readonly]
+**storageId** | **Integer** | For pool of tapes, used to link to a tape library id |  [optional]
 
 
 

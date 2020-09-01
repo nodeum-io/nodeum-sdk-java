@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Pool
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class Pool {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -157,6 +157,10 @@ public class Pool {
   @SerializedName(SERIALIZED_NAME_PRIMARY_ID)
   private Integer primaryId;
 
+  public static final String SERIALIZED_NAME_STORAGE_ID = "storage_id";
+  @SerializedName(SERIALIZED_NAME_STORAGE_ID)
+  private Integer storageId;
+
 
    /**
    * Get id
@@ -278,6 +282,29 @@ public class Pool {
 
 
 
+  public Pool storageId(Integer storageId) {
+    
+    this.storageId = storageId;
+    return this;
+  }
+
+   /**
+   * For pool of tapes, used to link to a tape library id
+   * @return storageId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "For pool of tapes, used to link to a tape library id")
+
+  public Integer getStorageId() {
+    return storageId;
+  }
+
+
+  public void setStorageId(Integer storageId) {
+    this.storageId = storageId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -292,12 +319,13 @@ public class Pool {
         Objects.equals(this.comment, pool.comment) &&
         Objects.equals(this.type, pool.type) &&
         Objects.equals(this.content, pool.content) &&
-        Objects.equals(this.primaryId, pool.primaryId);
+        Objects.equals(this.primaryId, pool.primaryId) &&
+        Objects.equals(this.storageId, pool.storageId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, type, content, primaryId);
+    return Objects.hash(id, name, comment, type, content, primaryId, storageId);
   }
 
 
@@ -311,6 +339,7 @@ public class Pool {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    primaryId: ").append(toIndentedString(primaryId)).append("\n");
+    sb.append("    storageId: ").append(toIndentedString(storageId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

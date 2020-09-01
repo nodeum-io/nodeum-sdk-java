@@ -32,7 +32,7 @@ import java.math.BigDecimal;
 /**
  * ByMetadataKeyBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class ByMetadataKeyBucket extends ByMetadataBucket {
   public static final String SERIALIZED_NAME_META_VALUE_T = "meta_value_t";
   @SerializedName(SERIALIZED_NAME_META_VALUE_T)

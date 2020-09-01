@@ -2,7 +2,7 @@
 
 Nodeum API
 - API version: 2.1.0
-  - Build date: 2020-08-10T06:37:58.200Z[GMT]
+  - Build date: 2020-09-01T09:57:32.172Z[GMT]
 
 The Nodeum API makes it easy to tap into the digital data mesh that runs across your organisation. Make requests to our API endpoints and we’ll give you everything you need to interconnect your business workflows with your storage.
 
@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.nodeum.sdk</groupId>
   <artifactId>nodeum-sdk</artifactId>
-  <version>1.87.0</version>
+  <version>1.88.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -96,7 +96,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.nodeum.sdk:nodeum-sdk:1.87.0"
+compile "io.nodeum.sdk:nodeum-sdk:1.88.0"
 ```
 
 ### Others
@@ -109,7 +109,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/nodeum-sdk-1.87.0.jar`
+* `target/nodeum-sdk-1.88.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -312,6 +312,7 @@ Class | Method | HTTP request | Description
 *TapeLibrariesApi* | [**indexTapeLibraryDevices**](docs/TapeLibrariesApi.md#indexTapeLibraryDevices) | **GET** /tape_libraries/-/devices | Lists tape libraries devices.
 *TapeLibrariesApi* | [**showTapeLibrary**](docs/TapeLibrariesApi.md#showTapeLibrary) | **GET** /tape_libraries/{tape_library_id} | Displays a specific tape library.
 *TapeLibrariesApi* | [**updateTapeLibrary**](docs/TapeLibrariesApi.md#updateTapeLibrary) | **PUT** /tape_libraries/{tape_library_id} | Updates a specific tape library.
+*TapesApi* | [**destroyTape**](docs/TapesApi.md#destroyTape) | **DELETE** /tapes/{tape_id} | Destroys a specific tape. Only when it&#39;s an orphan.
 *TapesApi* | [**indexTapeStats**](docs/TapesApi.md#indexTapeStats) | **GET** /tape_stats | List all tape statistics.
 *TapesApi* | [**indexTapes**](docs/TapesApi.md#indexTapes) | **GET** /tapes | Lists all tapes.
 *TapesApi* | [**indexTapesByPool**](docs/TapesApi.md#indexTapesByPool) | **GET** /pools/{pool_id}/tapes | Lists all tapes.

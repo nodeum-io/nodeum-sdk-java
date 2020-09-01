@@ -46,6 +46,7 @@ Name | Value
 ---- | -----
 COPY | &quot;copy&quot;
 MOVE | &quot;move&quot;
+ERASE | &quot;erase&quot;
 SCAN | &quot;scan&quot;
 REHYDRATATION | &quot;rehydratation&quot;
 FORMAT | &quot;format&quot;

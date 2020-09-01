@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **accessDate** | **String** |  |  [optional] [readonly]
 **uid** | **Integer** |  |  [optional] [readonly]
 **gid** | **Integer** |  |  [optional] [readonly]
+**inCache** | **Integer** |  |  [optional] [readonly]
+**offline** | **Integer** |  |  [optional] [readonly]
+**extern** | **Integer** |  |  [optional] [readonly]
 
 
 

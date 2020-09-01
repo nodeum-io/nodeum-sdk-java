@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**destroyTape**](TapesApi.md#destroyTape) | **DELETE** /tapes/{tape_id} | Destroys a specific tape. Only when it&#39;s an orphan.
 [**indexTapeStats**](TapesApi.md#indexTapeStats) | **GET** /tape_stats | List all tape statistics.
 [**indexTapes**](TapesApi.md#indexTapes) | **GET** /tapes | Lists all tapes.
 [**indexTapesByPool**](TapesApi.md#indexTapesByPool) | **GET** /pools/{pool_id}/tapes | Lists all tapes.
@@ -18,6 +19,79 @@ Method | HTTP request | Description
 [**showTapeStatByPool**](TapesApi.md#showTapeStatByPool) | **GET** /pools/{pool_id}/tapes/{tape_id}/tape_stat | Display statistic for a specific tape.
 [**showTapeStatByTapeLibrary**](TapesApi.md#showTapeStatByTapeLibrary) | **GET** /tape_libraries/{tape_library_id}/tapes/{tape_id}/tape_stat | Display statistic for a specific tape.
 
+
+<a name="destroyTape"></a>
+# **destroyTape**
+> destroyTape(tapeId)
+
+Destroys a specific tape. Only when it&#39;s an orphan.
+
+**API Key Scope**: tapes / destroy
+
+### Example
+```java
+// Import classes:
+import io.nodeum.sdk.client.ApiClient;
+import io.nodeum.sdk.client.ApiException;
+import io.nodeum.sdk.client.Configuration;
+import io.nodeum.sdk.client.auth.*;
+import io.nodeum.sdk.client.models.*;
+import io.nodeum.sdk.client.api.TapesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api/v2");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: BearerAuth
+    ApiKeyAuth BearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("BearerAuth");
+    BearerAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //BearerAuth.setApiKeyPrefix("Token");
+
+    TapesApi apiInstance = new TapesApi(defaultClient);
+    String tapeId = "tapeId_example"; // String | Numeric ID, or barcode of tape.
+    try {
+      apiInstance.destroyTape(tapeId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TapesApi#destroyTape");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tapeId** | **String**| Numeric ID, or barcode of tape. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Tape destroyed. |  -  |
 
 <a name="indexTapeStats"></a>
 # **indexTapeStats**

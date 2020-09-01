@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * NodeumFile
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class NodeumFile {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -123,6 +123,18 @@ public class NodeumFile {
   public static final String SERIALIZED_NAME_GID = "gid";
   @SerializedName(SERIALIZED_NAME_GID)
   private Integer gid;
+
+  public static final String SERIALIZED_NAME_IN_CACHE = "in_cache";
+  @SerializedName(SERIALIZED_NAME_IN_CACHE)
+  private Integer inCache;
+
+  public static final String SERIALIZED_NAME_OFFLINE = "offline";
+  @SerializedName(SERIALIZED_NAME_OFFLINE)
+  private Integer offline;
+
+  public static final String SERIALIZED_NAME_EXTERN = "extern";
+  @SerializedName(SERIALIZED_NAME_EXTERN)
+  private Integer extern;
 
 
    /**
@@ -293,6 +305,48 @@ public class NodeumFile {
 
 
 
+   /**
+   * Get inCache
+   * @return inCache
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
+
+  public Integer getInCache() {
+    return inCache;
+  }
+
+
+
+
+   /**
+   * Get offline
+   * @return offline
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
+
+  public Integer getOffline() {
+    return offline;
+  }
+
+
+
+
+   /**
+   * Get extern
+   * @return extern
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
+
+  public Integer getExtern() {
+    return extern;
+  }
+
+
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -313,12 +367,15 @@ public class NodeumFile {
         Objects.equals(this.modificationDate, nodeumFile.modificationDate) &&
         Objects.equals(this.accessDate, nodeumFile.accessDate) &&
         Objects.equals(this.uid, nodeumFile.uid) &&
-        Objects.equals(this.gid, nodeumFile.gid);
+        Objects.equals(this.gid, nodeumFile.gid) &&
+        Objects.equals(this.inCache, nodeumFile.inCache) &&
+        Objects.equals(this.offline, nodeumFile.offline) &&
+        Objects.equals(this.extern, nodeumFile.extern);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, parent, primaryId, type, permission, size, changeDate, modificationDate, accessDate, uid, gid);
+    return Objects.hash(id, name, parent, primaryId, type, permission, size, changeDate, modificationDate, accessDate, uid, gid, inCache, offline, extern);
   }
 
 
@@ -338,6 +395,9 @@ public class NodeumFile {
     sb.append("    accessDate: ").append(toIndentedString(accessDate)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    gid: ").append(toIndentedString(gid)).append("\n");
+    sb.append("    inCache: ").append(toIndentedString(inCache)).append("\n");
+    sb.append("    offline: ").append(toIndentedString(offline)).append("\n");
+    sb.append("    extern: ").append(toIndentedString(extern)).append("\n");
     sb.append("}");
     return sb.toString();
   }

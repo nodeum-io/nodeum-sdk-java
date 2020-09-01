@@ -60,6 +60,113 @@ public class TapesApi {
     }
 
     /**
+     * Build call for destroyTape
+     * @param tapeId Numeric ID, or barcode of tape. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Tape destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroyTapeCall(String tapeId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/tapes/{tape_id}"
+            .replaceAll("\\{" + "tape_id" + "\\}", localVarApiClient.escapeString(tapeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "BasicAuth", "BearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call destroyTapeValidateBeforeCall(String tapeId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'tapeId' is set
+        if (tapeId == null) {
+            throw new ApiException("Missing the required parameter 'tapeId' when calling destroyTape(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = destroyTapeCall(tapeId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Destroys a specific tape. Only when it&#39;s an orphan.
+     * **API Key Scope**: tapes / destroy
+     * @param tapeId Numeric ID, or barcode of tape. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Tape destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public void destroyTape(String tapeId) throws ApiException {
+        destroyTapeWithHttpInfo(tapeId);
+    }
+
+    /**
+     * Destroys a specific tape. Only when it&#39;s an orphan.
+     * **API Key Scope**: tapes / destroy
+     * @param tapeId Numeric ID, or barcode of tape. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Tape destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> destroyTapeWithHttpInfo(String tapeId) throws ApiException {
+        okhttp3.Call localVarCall = destroyTapeValidateBeforeCall(tapeId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Destroys a specific tape. Only when it&#39;s an orphan. (asynchronously)
+     * **API Key Scope**: tapes / destroy
+     * @param tapeId Numeric ID, or barcode of tape. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Tape destroyed. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroyTapeAsync(String tapeId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = destroyTapeValidateBeforeCall(tapeId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for indexTapeStats
      * @param limit The number of items to display for pagination. (optional)
      * @param offset The number of items to skip for pagination. (optional)

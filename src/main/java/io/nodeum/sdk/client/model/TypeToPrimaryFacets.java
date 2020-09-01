@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * TypeToPrimaryFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class TypeToPrimaryFacets {
   public static final String SERIALIZED_NAME_ON_PRIMARY_CONTAINER = "on_primary_container";
   @SerializedName(SERIALIZED_NAME_ON_PRIMARY_CONTAINER)

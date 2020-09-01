@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * StorageNasShareByTypeFacets
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T06:37:58.200Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-01T09:57:32.172Z[GMT]")
 public class StorageNasShareByTypeFacets {
   public static final String SERIALIZED_NAME_NAS_TYPE_I = "nas_type_i";
   @SerializedName(SERIALIZED_NAME_NAS_TYPE_I)
